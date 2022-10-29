@@ -5,6 +5,9 @@ module.exports = {
     node: true,
   },
   extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     '@mate-academy/eslint-config',
   ],
   overrides: [],
@@ -14,8 +17,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
-  rules: {
-  },
+  rules: {},
   settings: {
     react: {
       version: 'detect',
