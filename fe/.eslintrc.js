@@ -1,48 +1,37 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
-    'node': true
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-  'extends': [
+  extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
-  'overrides': [
-  ],
-  'parser': '@typescript-eslint/parser',
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'sourceType': 'module'
+  overrides: [],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  'plugins': [
-    'react',
-    'react-hooks',
-    '@typescript-eslint'
-  ],
-  'rules': {
-    'indent': [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
+  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  rules: {
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
     // JS
-    'semi': 'off',
+    semi: 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
-    'max-len': ['error', {
-      ignoreTemplateLiterals: true,
-      ignoreComments: true,
-    }],
+    'max-len': [
+      'error',
+      {
+        ignoreTemplateLiterals: true,
+        ignoreComments: true,
+      },
+    ],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': [2, 'before'],
@@ -54,9 +43,10 @@ module.exports = {
       2,
       { blankLine: 'always', prev: '*', next: 'return' },
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-      { blankLine: 'any',
+      {
+        blankLine: 'any',
         prev: ['const', 'let', 'var'],
-        next: ['const', 'let', 'var']
+        next: ['const', 'let', 'var'],
       },
       { blankLine: 'always', prev: 'directive', next: '*' },
       { blankLine: 'always', prev: 'block-like', next: '*' },
@@ -79,18 +69,20 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/indent': ['error', 2],
-    '@typescript-eslint/ban-types': ['error', {
-      extendDefaults: true,
-      types: {
-        '{}': false,
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false,
+        },
       },
-    },
     ],
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
-  'settings': {
-    'react': {
-      'version': 'detect'
-    }
-  }
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };

@@ -26,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ignore-path .gitignore --fix"
+    "lint": "eslint . --ignore-path .gitignore --fix",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "fix-style": "npm run format && npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
-    "eslint-plugin-react": "^7.31.10"
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "2.7.1"
   }
 }
