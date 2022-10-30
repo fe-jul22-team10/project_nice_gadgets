@@ -15,13 +15,14 @@ project_nice_gadgets = root dir
 `git pull origin master`
 `git checkout -b <your-feature-name>`
 
-	## WORKING WITH FRONTEND
-	
-	`cd fe`
-	`npm install`
+    ## WORKING WITH FRONTEND
+    -----------------------------------------------
 
-	`npm start` - start dev server
-	`npm run deploy` - deploy to gh-pages
+    `cd fe`
+    `npm install`
+
+    `npm start` - start dev server
+    `npm run deploy` - deploy to gh-pages
 
 `cd ../`
 `git status`
@@ -30,8 +31,9 @@ project_nice_gadgets = root dir
 `git commit -m '<description>'`
 `git push origin <your-feature-name>`
 
-	## WORKING WITH BACKEND
+    ## WORKING WITH BACKEND
+    -----------------------------------------------
 
-	`cd api`
-	`npm install`
+    `cd api`
+    `npm install`
 
