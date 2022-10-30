@@ -27,6 +27,14 @@ project_nice_gadgets = root dir
       npm start - start dev server
       npm run deploy - deploy to gh-pages
 
+    ## WORKING WITH BACKEND
+    -----------------------------------------------
+
+      cd api
+      npm install
+      npm start - build and start server
+      npm run dev - start server for development (restart on change)
+
 `cd ../`
 
 `git status`
@@ -35,14 +43,10 @@ project_nice_gadgets = root dir
 
 `git add fe/<filename>`
 
+`git add api/.`
+
+`git add api/<filename>`
+
 `git commit -m '<description>'`
 
 `git push origin <your-feature-name>`
-
-    ## WORKING WITH BACKEND
-    -----------------------------------------------
-
-      cd api
-      npm install
-      npm start - build and start server
-      npm run dev - start server for development (restart on change)

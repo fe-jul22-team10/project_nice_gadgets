@@ -11,7 +11,8 @@
     "dev": "nodemon --watch src -e ts,ejs --exec npx ts-node src",
     "lint": "eslint . --ignore-path .gitignore",
     "format": "prettier --write . --ignore-path .gitignore",
-    "fix-style": "npm run format && npm run lint -- --fix"
+    "fix-style": "npm run format && npm run lint -- --fix",
+    "prepare": "cd .. && husky install ./api/.husky"
   },
   "keywords": [],
   "author": "",
@@ -27,9 +28,15 @@
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "2.7.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
+  },
+  "lint-staged": {
+    "*.js": "npm run lint",
+    "*.ts": "npm run lint"
   }
 }
