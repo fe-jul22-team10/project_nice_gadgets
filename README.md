@@ -44,3 +44,5 @@ project_nice_gadgets = root dir
 
       cd api
       npm install
+      npm start - build and start server
+      npm run dev - start server for development (restart on change)
