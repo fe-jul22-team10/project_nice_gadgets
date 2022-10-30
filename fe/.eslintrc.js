@@ -5,10 +5,10 @@ module.exports = {
     node: true,
   },
   extends: [
+    '@mate-academy/eslint-config',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    '@mate-academy/eslint-config',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -17,7 +17,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'no-shadow': 'off',
+  },
   settings: {
     react: {
       version: 'detect',
