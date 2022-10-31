@@ -1,3 +1,5 @@
+[NICE GADGETS DEMO LINK](https://fe-jul22-team10.github.io/project_nice_gadgets/)
+
 # Get started
 
 1. clone repository -`git clone https://github.com/fe-jul22-team10/project_nice_gadgets.git`
@@ -40,7 +42,13 @@
 
     - `git push origin <feature-name>`
 
-###Solving conflicts
+7.  Make pull reques
+
+8.  Wait for review and approvement
+
+7.  Merge to master
+
+### Solving conflicts
 
 1. get the latest master
 
@@ -73,7 +81,7 @@ You should run listed commands in project root directory
 
 - `npm run dev:api` - start dev server for Backend;
 
-- `npm run lint:api` - run linter test in `fe/` dir;
+- `npm run lint:api` - run linter test in `api/` dir;
 - `npm run fix-style:api` - autofomat with prettier and autofix some lint issues
-- `npm run build:api` - compiles project in fe/build/
-- `npm run start:api` - compiles project in fe/build/ and starts it on your PC
+- `npm run build:api` - compiles project in api/build/
+- `npm run start:api` - compiles project in api/build/ and starts it on your PC
