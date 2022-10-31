@@ -1,0 +1,111 @@
+@import '../utils/mixins.scss';
+
+.header {
+    height: 48px;
+    box-sizing: border-box;
+    display: flex;
+    padding-left: 16px;
+    background-color: white;
+    align-items: center;
+    box-shadow: 0px 1px 0px #E2E6E9;
+
+    @include onDesktop {
+        height: 64px;
+        padding-left: 24px;
+    }
+
+    &__logo {
+        display: block;
+        height: 21px;
+        width: 64px;
+
+        @include onDesktop {
+                height: 26.5px;
+                width: 80px;
+            }
+    }
+
+    &__navbar {
+        display: flex;
+        gap: 32px;
+        flex-grow: 1;
+        padding-left: 32px;
+
+        @include onDesktop {
+            gap: 64px;
+            padding-left: 48px;
+        }
+    }
+
+    &__icon {
+        display: flex;
+        justify-self: end;
+        padding: 0;
+    }
+}
+
+.icon-box {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0px 0px #E2E6E9;
+
+    @include onDesktop {
+            width: 64px;
+            height: 64px;
+        }
+    @include onMobile {
+        display: none;
+    }
+
+    &__menu {
+        display: none;
+        @include onMobile {
+            display: flex;
+        }
+    }
+}
+
+.icon {
+    width: 15px;
+    height: 15px;
+}
+
+.navbar-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    text-decoration: none;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939A;
+    @include onDesktop {
+        height: 64px;
+        }
+
+    @include onMobile {
+        display: none;
+    }
+}
+
+.is-active {
+    color: #0F0F11;
+}
+
+.is-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #0F0F11;
+}
