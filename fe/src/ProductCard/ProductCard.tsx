@@ -79,7 +79,7 @@ export const ProductCard: React.FC/* <Props> */ = (/* { card } */) => {
             </div>
           </div>
           <div className="card__buttons">
-            {addedToCart ? (
+            {!addedToCart ? (
               <button
                 type="button"
                 className="card__buttons-cart"
