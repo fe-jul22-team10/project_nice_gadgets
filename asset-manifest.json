@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/project_nice_gadgets/static/css/main.eeb4ae37.css",
-    "main.js": "/project_nice_gadgets/static/js/main.d7f9d27d.js",
+    "main.css": "/project_nice_gadgets/static/css/main.af6d7204.css",
+    "main.js": "/project_nice_gadgets/static/js/main.6e40fc86.js",
     "static/js/787.7066aac0.chunk.js": "/project_nice_gadgets/static/js/787.7066aac0.chunk.js",
-    "static/media/logo.svg": "/project_nice_gadgets/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/Mont-Regular.otf": "/project_nice_gadgets/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
+    "static/media/Mont-SemiBold.otf": "/project_nice_gadgets/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
+    "static/media/Mont-Bold.otf": "/project_nice_gadgets/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "static/media/image.jpg": "/project_nice_gadgets/static/media/image.7257fc38903a49e73cc4.jpg",
+    "static/media/Favorite.svg": "/project_nice_gadgets/static/media/Favorite.7195329f8f148b59f1ce.svg",
+    "static/media/Favourite-selected.svg": "/project_nice_gadgets/static/media/Favourite-selected.b224c57f5cf288112dee.svg",
     "index.html": "/project_nice_gadgets/index.html",
-    "main.eeb4ae37.css.map": "/project_nice_gadgets/static/css/main.eeb4ae37.css.map",
-    "main.d7f9d27d.js.map": "/project_nice_gadgets/static/js/main.d7f9d27d.js.map",
+    "main.af6d7204.css.map": "/project_nice_gadgets/static/css/main.af6d7204.css.map",
+    "main.6e40fc86.js.map": "/project_nice_gadgets/static/js/main.6e40fc86.js.map",
     "787.7066aac0.chunk.js.map": "/project_nice_gadgets/static/js/787.7066aac0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eeb4ae37.css",
-    "static/js/main.d7f9d27d.js"
+    "static/css/main.af6d7204.css",
+    "static/js/main.6e40fc86.js"
   ]
 }
