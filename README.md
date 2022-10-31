@@ -1,52 +1,79 @@
-# Project Structure
+# Get started
 
-project_nice_gadgets = root dir
+1. clone repository -`git clone https://github.com/fe-jul22-team10/project_nice_gadgets.git`
 
-`fe` = frontend dir
+2. install modules for Frontend
 
-`api` = backend dir
+   - `cd fe`
+   - `npm install`
+   - `cd ../`
 
-# Scripts and Commands
+3. install modules for Backend
+   - `cd api`
+   - `npm install`
+   - `cd ../`
 
-`git clone https://github.com/fe-jul22-team10/project_nice_gadgets.git`
+## WORKING WITH PROJECT
 
-## WORKING WITH GIT
+1.  Switch to master and pull the latest master
 
-`pwd` - show current dir
+    - `git checkout master`
+    - `git pull origin master`
 
-`git pull origin master`
+2.  Create new branch with name `<feature-name>` to develop your feature
 
-`git checkout -b <your-feature-name>`
+    - `git checkout -b <feature-name>`
 
-    ## WORKING WITH FRONTEND
-    -----------------------------------------------
+3.  Write your code
 
-      cd fe
-      npm install
+4.  Add your changes
 
-      npm start - start dev server
-      npm run deploy - deploy to gh-pages
+    - `git add .` - add all
+    - `git add fe/.` - add all changes in fe/
+    - `git add api/.` - add all changes in api/
 
-    ## WORKING WITH BACKEND
-    -----------------------------------------------
+5.  Commit your changes
 
-      cd api
-      npm install
-      npm start - build and start server
-      npm run dev - start server for development (restart on change)
+    - `git commit -m '<description>'`
 
-`cd ../`
+6.  Push your commit to GitHub
 
-`git status`
+    - `git push origin <feature-name>`
 
-`git add fe/.`
+###Solving conflicts
 
-`git add fe/<filename>`
+1. get the latest master
 
-`git add api/.`
+   - `git checkout master`
+   - `git pull origin master`
 
-`git add api/<filename>`
+2. rebase your branch in the end of master branch (`lg` - to check)
 
-`git commit -m '<description>'`
+   - `git checkout <feature-name>`
+   - `git rebase master`
 
-`git push origin <your-feature-name>`
+3. push your changes
+
+   - `git push origin <feature-name>`
+
+# npm Scripts and Commands
+
+You should run listed commands in project root directory
+
+## for FRONTEND
+
+- `npm run dev:fe` - start dev server for Frontend;
+- `npm run deploy:fe` - deploys the project to gh-pages
+
+- `npm run lint:fe` - run linter test in `fe/` dir;
+- `npm run fix-style:fe` - autofomat with prettier and autofix some lint issues
+- `npm run build:fe` - compiles project in fe/build/
+
+## for BACKEND
+
+- `npm run dev:api` - start dev server for Backend;
+
+- `npm run lint:api` - run linter test in `fe/` dir;
+- `npm run fix-style:api` - autofomat with prettier and autofix some lint issues
+- `npm run build:api` - compiles project in fe/build/
+- `npm run start:api` - compiles project in fe/build/ and starts it on your PC
