@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
+import './styles/reset.scss';
 
 const Root: React.FC = () => (
   <React.StrictMode>
@@ -16,4 +17,3 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(<Root />);
-

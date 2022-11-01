@@ -6,6 +6,9 @@
   background: #FFFFFF;
   box-shadow: 0px -1px 0px #E2E6E9;
   padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 
   &__container {
     box-sizing: border-box;
@@ -62,6 +65,7 @@
     @include onMobile {
       width: 100%;
       justify-content: center;
+      padding-bottom: 32px;
     }
   }
 
