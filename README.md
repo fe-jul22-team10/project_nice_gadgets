@@ -1,4 +1,5 @@
-[NICE GADGETS DEMO LINK](https://fe-jul22-team10.github.io/project_nice_gadgets/)
+[NICE GADGETS: Client DEMO LINK](https://fe-jul22-team10.github.io/project_nice_gadgets/)
+[NICE GADGETS: Server DEMO LINK](https://project-nice-gadgets.herokuapp.com/)
 
 # Get started
 
