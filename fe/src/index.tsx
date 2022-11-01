@@ -5,11 +5,11 @@ import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
 
 const Root: React.FC = () => (
-  <>
+  <React.StrictMode>
     <Router>
       <App />
     </Router>
-  </>
+  </React.StrictMode>
 );
 
 const root = ReactDOM.createRoot(
