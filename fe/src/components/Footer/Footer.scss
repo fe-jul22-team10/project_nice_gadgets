@@ -1,0 +1,93 @@
+@import '../../styles/mixins';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background: #FFFFFF;
+  box-shadow: 0px -1px 0px #E2E6E9;
+  padding: 0;
+
+  &__container {
+    box-sizing: border-box;
+    margin: 0, auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    flex-grow: 1;
+    height: 96px;
+    padding: 32px 24px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 32px;
+      padding: 32px 16px;
+      align-items: start;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 33%;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 16px;
+      align-items: start;
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #89939A;
+  }
+
+  &__button-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include onMobile {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__button-text {
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: #89939A;
+  }
+
+  &__button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__icon {
+    content: url(../../assets/images/icons/footerButton.svg);
+  }
+
+  &__icon:hover {
+    content: url(../../assets/images/icons/buttonHover.svg);
+  }
+
+}
