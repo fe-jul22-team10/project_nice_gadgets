@@ -1,8 +1,7 @@
-// import { Card } from './types/Card';
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import './ProductCard.Catalog.scss';
-import img from './image/image.jpg';
+import './ProductCard.scss';
+import img from '../../assets/images/photos/categories/image.jpg';
 
 // type Props = {
 //   card: Card,

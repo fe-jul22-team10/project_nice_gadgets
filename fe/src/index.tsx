@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Catalog } from './pages/Catalog';
+import { NotFound } from './pages/NotFound';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -9,5 +10,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Catalog />
+    {/* <NotFound /> */}
   </React.StrictMode>,
 );

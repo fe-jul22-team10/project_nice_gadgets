@@ -8,11 +8,13 @@
     "fix-style:fe": "npm run fix-style --prefix ./fe",
     "build:fe": "npm run build --prefix ./fe",
     "deploy:fe": "npm run deploy --prefix ./fe",
-
     "dev:api": "npm run dev --prefix ./api",
     "lint:api": "npm run lint --prefix ./api",
     "fix-style:api": "npm run fix-style --prefix ./api",
     "build:api": "npm run build --prefix ./api",
     "start:api": "npm run start --prefix ./api"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2"
   }
 }
