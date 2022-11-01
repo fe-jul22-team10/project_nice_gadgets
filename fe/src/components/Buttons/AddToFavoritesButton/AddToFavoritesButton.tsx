@@ -6,18 +6,16 @@ export const AddToFavoritesButton: React.FC = () => {
   const [addedToFavorites, setAddedToFavorites] = useState(false);
 
   const hadleAddToFavorites = () => {
-    setAddedToFavorites(prevState => !prevState);
+    setAddedToFavorites((prevState) => !prevState);
   };
 
   return (
     <button
       type="button"
-      className={classNames(
-        'card__buttons-favorite',
-        { 'card__buttons-favorite--selected': addedToFavorites },
-      )}
+      className={classNames('card__buttons-favorite', {
+        'card__buttons-favorite--selected': addedToFavorites,
+      })}
       onClick={hadleAddToFavorites}
-    >
-    </button>
+    ></button>
   );
 };

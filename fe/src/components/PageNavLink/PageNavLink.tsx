@@ -11,9 +11,9 @@ type Props = {
 export const PageNavLink: React.FC<Props> = ({ text, to, end }) => (
   <NavLink
     className={({ isActive }) =>
-    // Instead default class past your header nav item class
-    // Instead hover class past your class for hover line
-      classNames('default', { 'hover': isActive })
+      // Instead default class past your header nav item class
+      // Instead hover class past your class for hover line
+      classNames('default', { hover: isActive })
     }
     to={to}
     end={end}
