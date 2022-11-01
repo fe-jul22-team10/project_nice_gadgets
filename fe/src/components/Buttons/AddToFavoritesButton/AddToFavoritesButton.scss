@@ -1,0 +1,25 @@
+.card__buttons-favorite {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #b4bdc3;
+  color: #e2e6e9;
+  background-image: url(../../../assets/images/icons/Favorite.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: border 0.2s;
+
+  &:hover {
+    border: 1px solid #0f0f11;
+    cursor: pointer;
+  }
+
+  &--selected {
+    background-image: url(../../../assets/images/icons/Favourite-selected.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #e2e6e9;
+  }
+}

@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header/Header';
-import { Catalog } from './pages/Catalog';
-import './styles/reset.scss';
+import { HashRouter as Router } from 'react-router-dom';
+import { App } from './App';
+
+const Root: React.FC = () => (
+  <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-root.render(
-  <React.StrictMode>
-    <HashRouter>
-      <Header />
-      <Catalog />
-      <Footer />
-    </HashRouter>
-  </React.StrictMode>,
-);
+root.render(<Root />);
+

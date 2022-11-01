@@ -8,7 +8,10 @@ const port = process.env.PORT || 5000; // default port to listen
 
 // define a route handler for the default home page
 app.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.send(
+    `Hello world!
+    This is Team10 api
+  `);
 });
 
 // start the Express server
