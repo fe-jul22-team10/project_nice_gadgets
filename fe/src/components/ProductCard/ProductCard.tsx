@@ -20,8 +20,8 @@ export const ProductCard: React.FC/* <Props> */ = (/* { card } */) => {
     color,
   } = card;
  */
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [addedToFavorites, setAddedToFavorites] = useState(false);
+  const [addedToCart, setAddedToCart] = useState<boolean>(false);
+  const [addedToFavorites, setAddedToFavorites] = useState<boolean>(false);
 
   const hadleAddToCart = () => {
     setAddedToCart(prevState => !prevState);
