@@ -5,7 +5,7 @@
   border-radius: 50%;
   border: 1px solid #B4BDC3;
   color: #E2E6E9;
-  background-image: url(../../../assets/images/icons/Favorite.svg);
+  background-image: url(../../../assets/images/icons/favorite.svg);
   background-repeat: no-repeat;
   background-position: center;
 
@@ -17,7 +17,7 @@
   }
 
   &--selected {
-    background-image: url(../../../assets/images/icons/Favourite-selected.svg);
+    background-image: url(../../../assets/images/icons/favourite-selected.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #E2E6E9;
