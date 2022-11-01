@@ -13,25 +13,20 @@ ul {
 
 @font-face {
   font-family: "Mont";
-  src: url(./fonts/Mont-Regular.otf);
+  src: url(../../assets/fonts/Mont-Regular.otf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Mont";
-  src: url(./fonts/Mont-SemiBold.otf);
+  src: url(../../assets/fonts/Mont-SemiBold.otf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Mont";
-  src: url(./fonts/Mont-Bold.otf);
+  src: url(../../assets/fonts/Mont-Bold.otf);
   font-weight: 700;
-}
-
-body {
-  box-sizing: border-box;
-  margin-left: 20px;
 }
 
 .container {
@@ -120,63 +115,5 @@ body {
   &__buttons {
     display: flex;
     justify-content: space-between;
-
-    &-cart {
-      display: flex;
-      align-items: center;
-      padding: 9px 39px;
-
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-      font-weight: 700;
-
-      text-decoration: none;
-      border: 1px solid transparent;
-      border-radius: 48px;
-      background-color: #4219D0;
-      color: #FFFFFF;
-
-      transition: box-shadow 0.2s;
-
-      &:hover {
-        box-shadow: 0 3px 13px
-        rgba(23, 32, 49, 0.4);
-        cursor: pointer;
-      }
-
-      &--selected {
-        background-color: transparent;
-        color: #4219D0;
-        border: 1px solid #E2E6E9;
-      }
-    }
-
-    &-favorite {
-      display: inline-block;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      border: 1px solid #B4BDC3;
-      color: #E2E6E9;
-      background-image: url(./Icons/Favorite.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-
-      transition: border 0.2s;
-
-      &:hover {
-        border: 1px solid #0F0F11;
-        cursor: pointer;
-      }
-
-      &--selected {
-        background-image: url(./Icons/Favourite-selected.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        border: 1px solid #E2E6E9;
-      }
-    }
-
   }
 }
