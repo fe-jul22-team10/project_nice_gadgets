@@ -1,7 +1,8 @@
 import React from 'react';
+import { ProductCard } from '../../components/ProductCard';
 
 export const Catalog = () => {
   return (
-    <div>Catalog page</div>
+    <ProductCard />
   );
 };
