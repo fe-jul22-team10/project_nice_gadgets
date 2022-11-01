@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { App } from './App';
 
-const Root = () => (
+const Root: React.FC = () => (
   <>
     <Router>
       <App />
