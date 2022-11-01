@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import './ProductCard.scss';
 import img from '../../assets/images/photos/categories/image.jpg';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
