@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import './ProductCard.scss';
 import img from '../../assets/images/photos/categories/image.jpg';
+import { AddToCartButton } from '../Buttons/AddToCartButton';
+import { AddToFavoritesButton } from '../Buttons/AddToFavoritesButton';
 
 // type Props = {
 //   card: Card,
@@ -19,16 +21,6 @@ export const ProductCard: React.FC/* <Props> */ = (/* { card } */) => {
     color,
   } = card;
  */
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [addedToFavorites, setAddedToFavorites] = useState(false);
-
-  const hadleAddToCart = () => {
-    setAddedToCart(prevState => !prevState);
-  };
-
-  const hadleAddToFavorites = () => {
-    setAddedToFavorites(prevState => !prevState);
-  };
 
   return (
     <body className="page">
@@ -78,25 +70,8 @@ export const ProductCard: React.FC/* <Props> */ = (/* { card } */) => {
             </div>
           </div>
           <div className="card__buttons">
-            <button
-              type="button"
-              className={classNames(
-                'card__buttons-cart',
-                { 'card__buttons-cart--selected': addedToCart },
-              )}
-              onClick={hadleAddToCart}
-            >
-              Add to cart
-            </button>
-            <button
-              type="button"
-              className={classNames(
-                'card__buttons-favorite',
-                { 'card__buttons-favorite--selected': addedToFavorites },
-              )}
-              onClick={hadleAddToFavorites}
-            >
-            </button>
+            <AddToCartButton />
+            <AddToFavoritesButton />
           </div>
         </div>
       </div>
