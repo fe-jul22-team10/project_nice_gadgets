@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
-
 import { App } from './App';
 
 const Root: React.FC = () => (
@@ -17,3 +16,4 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(<Root />);
+
