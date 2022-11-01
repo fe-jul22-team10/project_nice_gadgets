@@ -12,19 +12,19 @@ ul {
 }
 
 @font-face {
-  font-family: "Mont";
+  font-family: 'Mont';
   src: url(../../assets/fonts/Mont-Regular.otf);
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "Mont";
+  font-family: 'Mont';
   src: url(../../assets/fonts/Mont-SemiBold.otf);
   font-weight: 600;
 }
 
 @font-face {
-  font-family: "Mont";
+  font-family: 'Mont';
   src: url(../../assets/fonts/Mont-Bold.otf);
   font-weight: 700;
 }
@@ -38,9 +38,9 @@ ul {
   flex-direction: column;
 
   font-family: 'Mont';
-  color: #0F0F11;
+  color: #0f0f11;
 
-  border: 1px solid #E2E6E9;
+  border: 1px solid #e2e6e9;
   width: 272px;
   border-radius: 8px;
 
@@ -73,14 +73,14 @@ ul {
       line-height: 28px;
       font-weight: 500;
 
-      color: #89939A;
+      color: #89939a;
     }
 
     &-line {
       margin-bottom: 16px;
       height: 1px;
       width: 208px;
-      border-bottom: 1px solid #E2E6E9;
+      border-bottom: 1px solid #e2e6e9;
     }
   }
 
@@ -101,7 +101,7 @@ ul {
       line-height: 15px;
       font-weight: 600;
 
-      color: #89939A;
+      color: #89939a;
     }
 
     &-value {
