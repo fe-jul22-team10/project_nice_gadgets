@@ -1,0 +1,141 @@
+@import '../../styles/fonts';
+@import '../../styles/mixins';
+@import '../../styles/container.scss';
+@import '../../styles/variables';
+@import '../../styles/extends';
+
+* {
+  box-sizing: border-box;
+}
+
+.cart-item {
+  @extend %flex-center-vertical;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 752px;
+
+  padding: 16px;
+
+  font-family: 'Mont';
+
+  border-radius: 16px;
+  border: 1px solid $elements;
+
+  &__top {
+    @extend %flex-center-vertical;
+    width: 100%;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      width: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom {
+    @extend %flex-center-vertical;
+    justify-content: space-between;
+    width: 100%;
+
+    @include onTablet {
+      width: auto;
+    }
+  }
+
+  @include onTablet {
+    flex-direction: row;
+    padding: 24px;
+  }
+
+  &__close {
+    display: flex;
+    margin-right: 10px;
+    padding: 8px;
+
+    cursor: pointer;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__img {
+    margin-right: 16px;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__model-name {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $primary;
+
+    @include onTablet {
+      margin: 0 24px 0 0;
+    }
+  }
+
+  &__counter {
+    @extend %flex-center-vertical;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__decrease-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    background-color: transparent;
+
+    border: 1px solid $elements;
+    border-radius: 50%;
+
+    cursor: pointer;
+  }
+
+  &__decrease-btn--active {
+    border: 1px solid #b4bdc3;
+  }
+
+  &__increase-btn {
+    padding: 0;
+
+    background-color: transparent;
+
+    border: 1px solid #b4bdc3;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    img {
+      display: block;
+      padding: 7px;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    color: $primary;
+  }
+
+  &__amount {
+    width: 28px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $black;
+
+    text-align: center;
+  }
+}
