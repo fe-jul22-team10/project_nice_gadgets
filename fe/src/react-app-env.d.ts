@@ -27,3 +27,9 @@ declare module '*.module.css' {
 
   export = value;
 }
+
+declare module '*.module.scss' {
+  const value: string;
+
+  export = value;
+}
