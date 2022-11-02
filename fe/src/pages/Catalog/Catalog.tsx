@@ -1,6 +1,11 @@
 import React from 'react';
-import { ProductCard } from '../../components/ProductCard';
+
+import { PaginationBase } from '../../components/Pagination/PaginationBase';
 
 export const Catalog = () => {
-  return <ProductCard />;
+  return (
+    <>
+    <PaginationBase />
+    </>
+  );
 };
