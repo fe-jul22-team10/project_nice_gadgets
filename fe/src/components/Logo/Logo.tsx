@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export const Logo: React.FC = () => {
   return (
-      <Link to="/home" className="logo">
-        <img src={logo} alt="logo" className="logo" />
-      </Link>
+    <Link to="/home" className="logo">
+      <img src={logo} alt="logo" className="logo" />
+    </Link>
   );
 };

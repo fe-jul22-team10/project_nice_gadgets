@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
-import './styles/reset.scss';
+import './styles/index.scss';
 
 const Root: React.FC = () => (
   <React.StrictMode>
