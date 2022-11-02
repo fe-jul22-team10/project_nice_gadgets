@@ -6,12 +6,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000; // default port to listen
 
+app.use(express.static('img'));
+
 // define a route handler for the default home page
 app.get('/', (req, res) => {
-  res.send(
-    `Hello world!
-    This is Team10 api
-  `);
+  res.sendStatus(404);
 });
 
 // start the Express server
