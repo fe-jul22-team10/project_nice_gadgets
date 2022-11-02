@@ -1,0 +1,38 @@
+@import '../../styles/mixins';
+
+.navbar-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  text-decoration: none;
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  @include onDesktop {
+    height: 64px;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.is-active {
+  color: #0f0f11;
+}
+
+.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #0f0f11;
+}
