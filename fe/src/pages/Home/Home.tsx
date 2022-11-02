@@ -1,5 +1,6 @@
 import React from 'react';
+import { Loader } from '../../components/Loader';
 
-export const Home = () => {
-  return <h1>Home page</h1>;
-};
+export const Home = () => (
+  <Loader />
+);
