@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
+import './styles/index.scss';
 
 export const App: React.FC = () => {
   return (

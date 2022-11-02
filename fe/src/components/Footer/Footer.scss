@@ -3,8 +3,8 @@
 .footer {
   display: flex;
   justify-content: center;
-  background: #FFFFFF;
-  box-shadow: 0px -1px 0px #E2E6E9;
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #e2e6e9;
   padding: 0;
   position: absolute;
   bottom: 0;
@@ -53,7 +53,7 @@
     line-height: 11px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #89939A;
+    color: #89939a;
   }
 
   &__button-box {
@@ -76,7 +76,7 @@
     font-size: 12px;
     line-height: 15px;
     text-align: right;
-    color: #89939A;
+    color: #89939a;
   }
 
   &__button {
@@ -93,5 +93,4 @@
   &__icon:hover {
     content: url(../../assets/images/icons/buttonHover.svg);
   }
-
 }
