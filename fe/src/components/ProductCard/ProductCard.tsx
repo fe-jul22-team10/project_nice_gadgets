@@ -23,7 +23,7 @@ export const ProductCard: React.FC /* <Props> */ = (/* { card } */) => {
 
   return (
     <div className="card">
-      <div className="container">
+      <div className="card__container">
         <img src={img} alt="card__img" className="card__img" />
         <h2 className="card__title">
           Apple iPhone Xs 64GB Silver (iMT9G2FS/A)

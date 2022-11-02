@@ -11,10 +11,6 @@ ul {
   padding: 0;
 }
 
-.container {
-  padding: 32px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -25,6 +21,10 @@ ul {
   border: 1px solid #e2e6e9;
   width: 272px;
   border-radius: 8px;
+
+  &__container {
+    padding: 32px;
+  }
 
   &__img {
     margin-bottom: 24px;
