@@ -1,21 +1,14 @@
-import express from 'express';
-import dotenv from 'dotenv';
+'use strict';
 
-dotenv.config();
+import { server } from './server';
+import { initDatabase } from './database/initDatabase';
 
-const app = express();
-const port = process.env.PORT || 5000; // default port to listen
+const port = process.env.PORT || 5000;
+const newServer = server();
 
-// define a route handler for the default home page
-app.get('/', (req, res) => {
-  res.send(
-    `Hello world!
-    This is Team10 api
-  `);
-});
-
-// start the Express server
-app.listen(port, () => {
+newServer.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`server started at http://localhost:${port}`);
 });
+
+initDatabase();
