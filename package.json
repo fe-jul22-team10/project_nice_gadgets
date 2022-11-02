@@ -7,6 +7,7 @@
     "lint:fe": "npm run lint --prefix ./fe",
     "fix-style:fe": "npm run fix-style --prefix ./fe",
     "build:fe": "npm run build --prefix ./fe",
+    "ci:fe": "npm run ci --prefix ./fe",
     "deploy:fe": "npm run deploy --prefix ./fe",
     "dev:api": "npm run dev --prefix ./api",
     "lint:api": "npm run lint --prefix ./api",
