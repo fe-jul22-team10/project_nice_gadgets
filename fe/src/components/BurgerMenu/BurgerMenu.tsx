@@ -3,32 +3,30 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import heartLike from '../../assets/images/icons/favourite.svg';
-import logo from '../../assets/images/icons/logo.svg';
 import cross from '../../assets/images/icons/close.svg';
 import bag from '../../assets/images/icons/bag.svg';
 
 import { Link, NavLink } from 'react-router-dom';
+import { Logo } from '../Logo';
 
 import './burger-menu.scss';
 
 export const BurgerMenu: React.FC = () => {
-  const [showBurgerMenu, setShowBurgerMenu] = useState(false);
+  const [hideBurgerMenu, setHideBurgerMenu] = useState(false);
 
   const changeBurgerState = () => {
-    setShowBurgerMenu(true);
+    setHideBurgerMenu(true);
   };
 
   return (
-    <header
+    <div
       className={classNames('burger-menu', {
-        'hide-burger-menu': showBurgerMenu,
+        'hide-burger-menu': hideBurgerMenu,
       })}
     >
       <div className="burger-menu__wrap">
         <div className="burger-menu__logo">
-          <a href="#">
-            <img src={logo} alt="nice-gadgets" />
-          </a>
+          <Logo />
         </div>
         <div className="burger-menu__cross">
           <a href="#" className="burger-menu__link" onClick={changeBurgerState}>
@@ -76,6 +74,6 @@ export const BurgerMenu: React.FC = () => {
           <img src={bag} alt="bag" />
         </NavLink>
       </div>
-    </header>
+    </div>
   );
 };
