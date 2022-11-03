@@ -3,10 +3,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import {
-  getAllProductsFromDatabase,
-  getProductByIdFromDatabase,
-} from './services/products';
+import { getProductById, getProductsByQuery } from './controllers/products';
 
 export const server = () => {
   dotenv.config();
@@ -22,19 +19,9 @@ export const server = () => {
     );
   });
 
-  app.get('/products', async(req, res) => {
-    const { query } = req;
-    const products = await getAllProductsFromDatabase(query);
+  app.get('/products', getProductsByQuery);
 
-    res.send(products);
-  });
-
-  app.get('/products/:id', async(req, res) => {
-    const { id } = req.params;
-    const products = await getProductByIdFromDatabase(Number(id));
-
-    res.send(products);
-  });
+  app.get('/products/:id', getProductById);
 
   app.use(express.static('./src/public'));
 

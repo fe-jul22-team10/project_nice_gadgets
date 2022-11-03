@@ -5,7 +5,7 @@ import { Query } from 'src/types/query';
 import { WhereCondition } from 'src/types/whereCondition';
 import { Products } from '../database/models';
 
-export async function getAllProductsFromDatabase(query: Query) {
+export async function getProductsByQueryFromDatabase(query: Query) {
   const {
     page = 1,
     amount = 4,
