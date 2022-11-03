@@ -18,18 +18,6 @@ html {
     padding-left: 24px;
   }
 
-  &__navbar {
-    display: flex;
-    gap: 32px;
-    flex-grow: 1;
-    padding-left: 32px;
-
-    @include onDesktop {
-      gap: 64px;
-      padding-left: 48px;
-    }
-  }
-
   &__icon {
     display: flex;
     justify-self: end;
