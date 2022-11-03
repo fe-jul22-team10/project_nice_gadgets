@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Pagination.scss';
 import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
+
+import { getPhones } from '../../api/phones';
 
 export function getNumbers(from: number, to: number): number[] {
   const numbers = [];
@@ -18,6 +20,17 @@ const items = getNumbers(1, 15).map((n) => `Item ${n}`);
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [products, setProducts] = useState([]);
+
+console.log('products!!', products);
+
+/* eslint-disable */
+  useEffect(() => {
+    getPhones()
+      .then((res) => res.data)
+      .then(setProducts)
+      .catch(error => console.log(error));
+  }, []);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
