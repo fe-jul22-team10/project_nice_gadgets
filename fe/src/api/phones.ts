@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://fast-shelf-97147.herokuapp.com/';
+axios.defaults.baseURL = 'https://project-nice-gadgets.herokuapp.com/';
 
 export function getPhones() {
-  return axios.get('/phones');
+  return axios.get('/products');
 }

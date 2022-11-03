@@ -22,8 +22,6 @@ export const PaginationBase: React.FC = () => {
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [products, setProducts] = useState([]);
 
-console.log('products!!', products);
-
 /* eslint-disable */
   useEffect(() => {
     getPhones()
@@ -70,8 +68,8 @@ console.log('products!!', products);
       </div>
       <div className="container">
         <ul className="grid">
-          {visibleItems.map((item) => (
-            <li key={item}>{<ProductCard />}</li>
+          {products.map((item) => (
+            <li key={item}>{<ProductCard phone={item} />}</li>
           ))}
         </ul>
       </div>
