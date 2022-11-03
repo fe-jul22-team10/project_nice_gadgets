@@ -7,14 +7,21 @@
 }
 
 .burger-menu {
-  position: relative;
+  position: absolute;
+  bottom: 0px;
+
+  width: 100%;
   height: 100vh;
+
   font-family: 'Mont';
+
   overflow: hidden;
   z-index: 100;
 
-  transform: translateX(0);
-  transition: transform 5.3s;
+  background-color: $white;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s linear;
 
   &__wrap {
     @extend %flex-center-vertical;
@@ -33,9 +40,11 @@
     border-left: 1px solid $elements;
   }
 
-  &__link {
+  &__switcher {
     display: flex;
     padding: 16px;
+
+    cursor: pointer;
   }
 
   &__list {
@@ -107,16 +116,21 @@
 
 .hide-burger-menu {
   transform: translateX(-100%);
-
-  .burger-menu__tabs {
-    border: 1px solid $secondary;
-  }
-
-  .burger-menu__cross {
-    border-right: 1px solid $elements;
-  }
 }
 
-.is-active {
+.border-right-cross {
+  border-right: 1px solid $elements;
+}
+
+.is-active-tab {
   border-bottom: 2px solid $border-dark;
+}
+
+.show-burger {
+  transform: translateX(0);
+}
+
+.scroll-off {
+  height: 100vh;
+  overflow: hidden;
 }
