@@ -6,8 +6,25 @@ import { WhereCondition } from 'src/types/whereCondition';
 import { Products } from '../database/models';
 
 export async function getAllProductsFromDatabase(query: Query) {
-  const { phoneId, category, minPrice, maxPrice } = query;
-  let where: WhereCondition = {};
+  const {
+    page = 1,
+    amount = 4,
+    phoneId,
+    category,
+    minPrice = -2147483648,
+    maxPrice = 2147483647,
+    screen,
+    capacity,
+    color,
+    ram,
+    year,
+  } = query;
+  let where: WhereCondition = {
+    price: {
+      [Op.gte]: minPrice,
+      [Op.lte]: maxPrice,
+    },
+  };
 
   if (phoneId) {
     where = {
@@ -23,25 +40,44 @@ export async function getAllProductsFromDatabase(query: Query) {
     };
   }
 
-  if (minPrice) {
+  if (screen) {
     where = {
       ...where,
-      price: {
-        [Op.gte]: minPrice,
-      },
+      screen,
     };
   }
 
-  if (maxPrice) {
-    where.price = where.price
-      ? {
-        ...where.price,
-        [Op.lte]: maxPrice,
-      }
-      : { [Op.lte]: maxPrice };
+  if (capacity) {
+    where = {
+      ...where,
+      capacity,
+    };
+  }
+
+  if (color) {
+    where = {
+      ...where,
+      color,
+    };
+  }
+
+  if (ram) {
+    where = {
+      ...where,
+      ram,
+    };
+  }
+
+  if (year) {
+    where = {
+      ...where,
+      year,
+    };
   }
 
   const products = await Products.findAll({
+    limit: amount,
+    offset: (page - 1) * amount,
     where,
     order: ['id'],
     raw: true,
