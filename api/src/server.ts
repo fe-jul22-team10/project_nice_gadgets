@@ -2,6 +2,10 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
+import {
+  getAllProductsFromDatabase,
+  getProductByIdFromDatabase,
+} from './services/products';
 
 export const server = () => {
   dotenv.config();
@@ -13,6 +17,20 @@ export const server = () => {
       `Hello world!
       This is Team10 api`,
     );
+  });
+
+  app.get('/products', async(req, res) => {
+    const { query } = req;
+    const products = await getAllProductsFromDatabase(query);
+
+    res.send(products);
+  });
+
+  app.get('/products/:id', async(req, res) => {
+    const { id } = req.params;
+    const products = await getProductByIdFromDatabase(Number(id));
+
+    res.send(products);
   });
 
   return app;
