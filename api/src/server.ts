@@ -2,6 +2,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import {
   getAllProductsFromDatabase,
   getProductByIdFromDatabase,
@@ -32,6 +33,8 @@ export const server = () => {
 
     res.send(products);
   });
+
+  app.use(express.static(path.join(__dirname, 'public')));
 
   return app;
 };
