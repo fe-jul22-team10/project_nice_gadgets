@@ -1,8 +1,6 @@
 @import '../../styles/mixins';
 
-.header {
-
-  &__navbar {
+&__navbar {
     display: flex;
     gap: 32px;
     flex-grow: 1;
@@ -13,4 +11,3 @@
       padding-left: 48px;
     }
   }
-}
