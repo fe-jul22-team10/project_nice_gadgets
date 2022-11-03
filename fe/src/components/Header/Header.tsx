@@ -2,6 +2,8 @@ import React from 'react';
 import './Header.scss';
 import { Logo } from '../Logo';
 
+import { Link } from 'react-router-dom';
+
 import heart from '../../assets/images/icons/heart.svg';
 import bag from '../../assets/images/icons/bag.svg';
 import union from '../../assets/images/icons/union.svg';
@@ -17,7 +19,9 @@ export const Header: React.FC = () => {
           <img src={heart} alt="like" className="icon" />
         </div>
         <div className="icon-box">
-          <img src={bag} alt="bag" className="icon" />
+          <Link to="/cart">
+            <img src={bag} alt="bag" className="icon" />
+          </Link>
         </div>
         <div className="icon-box icon-box__menu">
           <img src={union} alt="shop" className="union" />
