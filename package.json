@@ -19,11 +19,13 @@
     "start": "npm run start --prefix ./api"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.25.3",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/node": "^18.11.7",
     "typescript": "^4.8.4"
