@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { CartItem } from './components/CartItem';
+import classNames from 'classnames';
 import './styles/index.scss';
 
 // имитация сервера для CartItem
@@ -17,10 +18,13 @@ const price = '$999';
 
 export const App: React.FC = () => {
   const [removeCartItem, setRemoveCartItem] = useState(false);
+  const [showBurger, setShowBurger] = useState(false);
 
   return (
-    <>
-      <Header />
+    <div className={classNames({
+      'scroll-off': showBurger,
+    })}>
+      <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
@@ -54,6 +58,6 @@ export const App: React.FC = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 };
