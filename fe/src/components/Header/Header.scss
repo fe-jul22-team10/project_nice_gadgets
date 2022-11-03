@@ -24,18 +24,6 @@ html {
     height: 64px;
   }
 
-  &__navbar {
-    display: flex;
-    gap: 32px;
-    flex-grow: 1;
-    padding-left: 32px;
-
-    @include onDesktop {
-      gap: 64px;
-      padding-left: 48px;
-    }
-  }
-
   &__icon {
     position: relative;
     display: flex;
