@@ -1,3 +1,6 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 li {
   list-style-type: none;
 }
@@ -57,16 +60,25 @@ li {
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    color: #89939A;
+    color: #89939a;
     padding-bottom: 4px;
   }
 
   &__select {
     height: 40px;
     width: 135px;
-    border: 1px solid #B4BDC4;
+    border: 1px solid #b4bdc4;
     border-radius: 8px;
     color: #000;
     padding: 10px;
   }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-card-width, 1fr));
+  justify-items: center;
+
+  column-gap: 16px;
+  row-gap: 40px;
 }

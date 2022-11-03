@@ -13,7 +13,7 @@ export function getNumbers(from: number, to: number): number[] {
   return numbers;
 }
 
-const items = getNumbers(1, 15).map(n => `Item ${n}`);
+const items = getNumbers(1, 15).map((n) => `Item ${n}`);
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,21 +31,20 @@ export const PaginationBase: React.FC = () => {
   };
 
   const startItemIndex = currentPage * itemsPerPage - itemsPerPage;
-  const endItemIndex = currentPage * itemsPerPage <= items.length
-    ? currentPage * itemsPerPage
-    : items.length;
+  const endItemIndex
+    = currentPage * itemsPerPage <= items.length
+      ? currentPage * itemsPerPage
+      : items.length;
 
   const visibleItems = items.slice(startItemIndex, endItemIndex);
 
   return (
     <div className="container-pagination">
-      <div className='items-count'>
-        <div className='items-count__name'>
-          Items on page
-        </div>
-        <div >
+      <div className="items-count">
+        <div className="items-count__name">Items on page</div>
+        <div>
           <select
-            className='items-count__select'
+            className="items-count__select"
             value={itemsPerPage}
             onChange={handleItemsPerPage}
           >
@@ -56,11 +55,13 @@ export const PaginationBase: React.FC = () => {
           </select>
         </div>
       </div>
-      <ul>
-        {visibleItems.map(item => (
-          <li key={item}>{<ProductCard />}</li>
-        ))}
-      </ul>
+      <div className="container">
+        <ul className="grid">
+          {visibleItems.map((item) => (
+            <li key={item}>{<ProductCard />}</li>
+          ))}
+        </ul>
+      </div>
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}

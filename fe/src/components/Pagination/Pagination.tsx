@@ -10,47 +10,46 @@ type Props = {
 };
 
 export const Pagination: React.FC<Props> = ({
-  totalPages, currentPage, onPageChange,
+  totalPages,
+  currentPage,
+  onPageChange,
 }) => {
   return (
     <ul className="pagination">
-      <li
-      className={cn('page-item', { disabled: currentPage === 1 })}
-      >
+      <li className={cn('page-item', { disabled: currentPage === 1 })}>
         <a
           className="page-item"
           href={`/project_nice_gadgets/#/phones/?${currentPage - 1}`}
           aria-disabled={currentPage === 1}
-          onClick={() => currentPage !== 1 && onPageChange((currentPage - 1))}
+          onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
         >
           ❮
         </a>
       </li>
 
-      {getNumbers(1, totalPages).map(pageNumber => (
+      {getNumbers(1, totalPages).map((pageNumber) => (
         <li
-          className={cn('page-item', { 'active': pageNumber === currentPage })}
+          className={cn('page-item', { active: pageNumber === currentPage })}
           key={pageNumber}
         >
           <a
             className="page-item"
             href={`/project_nice_gadgets/#/phones/?${pageNumber}`}
-             onClick={() => onPageChange(pageNumber)}
+            onClick={() => onPageChange(pageNumber)}
           >
             {pageNumber}
           </a>
         </li>
       ))}
 
-      <li
-        className={cn('page-item', { disabled: currentPage === totalPages })}
-      >
+      <li className={cn('page-item', { disabled: currentPage === totalPages })}>
         <a
           className="page-item"
           href={`/project_nice_gadgets/#/phones/?${currentPage + 1}`}
           aria-disabled={currentPage === totalPages}
-          onClick={() => currentPage !== totalPages
-            && onPageChange((currentPage + 1))}
+          onClick={() =>
+            currentPage !== totalPages && onPageChange(currentPage + 1)
+          }
         >
           ❯
         </a>
