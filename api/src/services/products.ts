@@ -75,6 +75,11 @@ export async function getProductsByQueryFromDatabase(query: Query) {
     };
   }
 
+  const totalProductsNumber = await Products.max(
+    'id',
+    { where },
+  );
+
   const products = await Products.findAll({
     limit: amount,
     offset: (page - 1) * amount,
@@ -84,7 +89,7 @@ export async function getProductsByQueryFromDatabase(query: Query) {
     logging: false,
   });
 
-  return products;
+  return [totalProductsNumber, ...products];
 }
 
 export async function getProductByIdFromDatabase(id: number) {
