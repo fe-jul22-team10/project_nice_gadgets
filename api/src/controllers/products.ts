@@ -6,10 +6,7 @@ import {
   getProductsByQueryFromDatabase,
 } from '../services/products';
 
-export async function getProductsByQuery(
-  req: Request,
-  res: Response,
-) {
+export async function getProductsByQuery(req: Request, res: Response) {
   const { query } = req;
 
   try {
@@ -17,33 +14,24 @@ export async function getProductsByQuery(
 
     res.send(queriedProducts);
   } catch (error) {
-    res
-      .status(400)
-      .send(error);
+    res.status(400).send(error);
   }
 }
 
-export async function getProductById(
-  req: Request,
-  res: Response,
-) {
+export async function getProductById(req: Request, res: Response) {
   const { id } = req.params;
 
   try {
     const foundProduct = await getProductByIdFromDatabase(Number(id));
 
     if (!foundProduct) {
-      res
-        .status(404)
-        .send('Item not found');
+      res.status(404).send('Item not found');
 
       return;
     }
 
     res.send(foundProduct);
   } catch (error) {
-    res
-      .status(400)
-      .send(error);
+    res.status(400).send(error);
   }
 }
