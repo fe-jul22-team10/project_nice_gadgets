@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageNavLink } from '../PageNavLink';
-import './Navigation.scss';
 
 export const Navigation: React.FC = () => {
   return (
