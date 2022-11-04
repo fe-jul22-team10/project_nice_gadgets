@@ -1,6 +1,8 @@
 import { Logo } from '../Logo';
 import './Footer.scss';
 import React from 'react';
+import arrow
+  from '../../assets/images/icons/arrow.svg';
 
 export const Footer: React.FC = () => {
   return (
@@ -41,7 +43,9 @@ export const Footer: React.FC = () => {
               window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
           >
-            <div className="footer__icon"></div>
+            <div className="footer__icon">
+              <img src={arrow} alt="arrow" className="arrow-img" />
+            </div>
           </button>
         </div>
       </div>
