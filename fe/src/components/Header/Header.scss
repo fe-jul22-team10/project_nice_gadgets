@@ -12,6 +12,19 @@ html {
   align-items: center;
   box-shadow: 0px 1px 0px #e2e6e9;
 
+  &__navbar {
+    display: flex;
+    gap: 32px;
+    flex-grow: 1;
+    padding-left: 32px;
+
+    @include onDesktop {
+      gap: 64px;
+      padding-left: 48px;
+    }
+  }
+
+
   > .logo {
     padding-left: 16px;
 
