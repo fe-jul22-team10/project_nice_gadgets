@@ -3,10 +3,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import {
-  getAllProductsFromDatabase,
-  getProductByIdFromDatabase,
-} from './services/products';
+import { productsRouter } from './routes/products';
 
 export const server = () => {
   dotenv.config();
@@ -16,25 +13,10 @@ export const server = () => {
   app.use(cors());
 
   app.get('/', (req, res) => {
-    res.send(
-      `Hello world!
-      This is Team10 api`,
-    );
+    res.send('Server status: is running');
   });
 
-  app.get('/products', async(req, res) => {
-    const { query } = req;
-    const products = await getAllProductsFromDatabase(query);
-
-    res.send(products);
-  });
-
-  app.get('/products/:id', async(req, res) => {
-    const { id } = req.params;
-    const products = await getProductByIdFromDatabase(Number(id));
-
-    res.send(products);
-  });
+  app.use('/products', express.json(), productsRouter);
 
   app.use(express.static('./src/public'));
 

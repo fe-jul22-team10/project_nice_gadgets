@@ -5,7 +5,7 @@ import { Query } from 'src/types/query';
 import { WhereCondition } from 'src/types/whereCondition';
 import { Products } from '../database/models';
 
-export async function getAllProductsFromDatabase(query: Query) {
+export async function getProductsByQueryFromDatabase(query: Query) {
   const {
     page = 1,
     amount = 4,
@@ -75,6 +75,11 @@ export async function getAllProductsFromDatabase(query: Query) {
     };
   }
 
+  const totalProductsNumber = await Products.max(
+    'id',
+    { where },
+  );
+
   const products = await Products.findAll({
     limit: amount,
     offset: (page - 1) * amount,
@@ -84,7 +89,7 @@ export async function getAllProductsFromDatabase(query: Query) {
     logging: false,
   });
 
-  return products;
+  return [totalProductsNumber, ...products];
 }
 
 export async function getProductByIdFromDatabase(id: number) {
