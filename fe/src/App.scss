@@ -1,0 +1,9 @@
+@import './styles/mixins';
+
+.body-main {
+  min-height: calc(100vh - 160px);
+
+  @include onMobile {
+    min-height: calc(100vh - 305px);
+  }
+}

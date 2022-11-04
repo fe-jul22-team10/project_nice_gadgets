@@ -8,6 +8,7 @@ import { NotFound } from './pages/NotFound';
 import { CartItem } from './components/CartItem';
 import classNames from 'classnames';
 import './styles/index.scss';
+import './App.scss';
 
 // имитация сервера для CartItem
 import phone from './assets/images/photos/cart-item/Phone.png';
@@ -25,7 +26,8 @@ export const App: React.FC = () => {
       'scroll-off': showBurger,
     })}>
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
-      <Routes>
+      <div className="body-main">
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<NotFound />} />
 
@@ -58,6 +60,7 @@ export const App: React.FC = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </div>
       <Footer />
     </div>
   );
