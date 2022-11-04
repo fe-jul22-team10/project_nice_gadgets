@@ -12,14 +12,18 @@
   @extend %flex-center-vertical;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 752px;
 
+  margin-bottom: 16px;
   padding: 16px;
 
   font-family: 'Mont';
 
   border-radius: 16px;
   border: 1px solid $elements;
+
+  @include onDesktop {
+    max-width: 752px;
+  }
 
   &__top {
     @extend %flex-center-vertical;

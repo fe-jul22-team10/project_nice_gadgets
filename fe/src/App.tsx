@@ -4,20 +4,12 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
+import { Cart } from './pages/Cart';
 import { NotFound } from './pages/NotFound';
-import { CartItem } from './components/CartItem';
 import classNames from 'classnames';
 import './styles/index.scss';
 
-// имитация сервера для CartItem
-import phone from './assets/images/photos/cart-item/Phone.png';
-
-const modelName = 'Apple iPhone 14 Pro 128GB Silver (MQ023)';
-
-const price = '$999';
-
 export const App: React.FC = () => {
-  const [removeCartItem, setRemoveCartItem] = useState(false);
   const [showBurger, setShowBurger] = useState(false);
 
   return (
@@ -44,16 +36,7 @@ export const App: React.FC = () => {
 
         <Route
           path="/cart"
-          element={
-            !removeCartItem ? (
-              <CartItem
-                phone={phone}
-                modelName={modelName}
-                price={price}
-                setRemoveCartItem={setRemoveCartItem}
-              />
-            ) : null
-          }
+          element={<Cart />}
         />
 
         <Route path="*" element={<NotFound />} />
