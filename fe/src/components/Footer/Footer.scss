@@ -54,6 +54,7 @@
   }
 
   &__button-box {
+    width: 118px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -84,10 +85,16 @@
   }
 
   &__icon {
-    content: url(../../assets/images/icons/footerButton.svg);
+    height: 32px;
+    width: 32px;
+    display: flex;
+    border: 1px solid grey;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
   }
 
   &__icon:hover {
-    content: url(../../assets/images/icons/buttonHover.svg);
+    border-color: black;
   }
 }
