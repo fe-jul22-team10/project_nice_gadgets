@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project_nice_gadgets/static/css/main.77f8f5ec.css",
-    "main.js": "/project_nice_gadgets/static/js/main.a0c198c4.js",
+    "main.css": "/project_nice_gadgets/static/css/main.e73105b3.css",
+    "main.js": "/project_nice_gadgets/static/js/main.e7b14506.js",
     "static/media/logo.svg": "/project_nice_gadgets/static/media/logo.24d237f350d3ae18d2c9333d916a25b7.svg",
     "static/media/Mont-Regular.otf": "/project_nice_gadgets/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/project_nice_gadgets/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
@@ -17,11 +17,11 @@
     "static/media/plus.svg": "/project_nice_gadgets/static/media/plus.3ae115f1c792b78efc34455de76b7b36.svg",
     "index.html": "/project_nice_gadgets/index.html",
     "static/media/arrow.svg": "/project_nice_gadgets/static/media/arrow.e49727cc78ef755c3fe81021899e2299.svg",
-    "main.77f8f5ec.css.map": "/project_nice_gadgets/static/css/main.77f8f5ec.css.map",
-    "main.a0c198c4.js.map": "/project_nice_gadgets/static/js/main.a0c198c4.js.map"
+    "main.e73105b3.css.map": "/project_nice_gadgets/static/css/main.e73105b3.css.map",
+    "main.e7b14506.js.map": "/project_nice_gadgets/static/js/main.e7b14506.js.map"
   },
   "entrypoints": [
-    "static/css/main.77f8f5ec.css",
-    "static/js/main.a0c198c4.js"
+    "static/css/main.e73105b3.css",
+    "static/js/main.e7b14506.js"
   ]
 }
