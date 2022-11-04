@@ -31,11 +31,11 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
           <div className="icon-box">
             <img src={heart} alt="like" className="icon" />
           </div>
-          <div className="icon-box">
-            <Link to="/cart">
-              <img src={bag} alt="bag" className="icon" />
-            </Link>
-          </div>
+          <Link to="/cart">
+            <div className="icon-box">
+            <img src={bag} alt="bag" className="icon" />
+            </div>
+          </Link>
           <div
             className="icon-box icon-box__menu"
             onClick={() => changeBurgerStatus(showBurger)}

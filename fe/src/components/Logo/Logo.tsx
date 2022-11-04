@@ -5,7 +5,7 @@ import './Logo.scss';
 
 export const Logo: React.FC = () => {
   return (
-    <Link to="/home" className="logo">
+    <Link to="/" className="logo">
       <img src={logo} alt="logo" className="logo-img" />
     </Link>
   );
