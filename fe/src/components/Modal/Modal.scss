@@ -21,7 +21,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       margin: 0;
-      max-width: 500px;
+      min-width: 500px;
       background-color: #ffffff;
       align-items: center;
       justify-content: center;
@@ -30,6 +30,10 @@
       border-radius: 16px;
       border-color: #e2e6e9;
       cursor: auto;
+
+      @include onMobile {
+        min-width: 240px;
+      }
     }
 
     &-icon {

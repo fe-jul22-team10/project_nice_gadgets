@@ -2,7 +2,7 @@ import React from 'react';
 import { Primary } from '../Buttons/Primary';
 import './Modal.scss';
 
-export const Modal: React.FC = () => {
+export const Modal = () => {
   return (
     <div className="modal">
       <div className="modal__background">
