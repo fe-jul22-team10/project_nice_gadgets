@@ -54,27 +54,19 @@ export const BurgerMenu: React.FC<Props> = ({ showBurger, setShowBurger }) => {
 
       <ul className="burger-menu__list">
         <li className="burger-menu__item">
-          <Link to="/">
-            Home
-          </Link>
+          <Link to="/">Home</Link>
         </li>
 
         <li className="burger-menu__item">
-          <Link to="/phones">
-            Phones
-          </Link>
+          <Link to="/phones">Phones</Link>
         </li>
 
         <li className="burger-menu__item">
-          <Link to="/tablets">
-            Tablets
-          </Link>
+          <Link to="/tablets">Tablets</Link>
         </li>
 
         <li className="burger-menu__item">
-          <Link to="/accessories">
-            Accessories
-          </Link>
+          <Link to="/accessories">Accessories</Link>
         </li>
       </ul>
       <div className="burger-menu__tabs">
