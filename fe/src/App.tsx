@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
@@ -27,9 +27,10 @@ export const App: React.FC = () => {
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/home" element={<NotFound />} />
 
-        <Route path="/tablets" element={<Navigate to="/phones" replace />} />
+        <Route path="/tablets" element={
+        <h1>Tablets page is currently under construction</h1>} />
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
@@ -38,7 +39,7 @@ export const App: React.FC = () => {
 
         <Route
           path="/accessories"
-          element={<Navigate to="/phones" replace />}
+          element={<h1>Accessories page is currently under construction</h1>}
         />
 
         <Route
