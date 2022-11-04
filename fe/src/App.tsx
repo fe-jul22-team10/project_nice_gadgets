@@ -8,18 +8,18 @@ import { Cart } from './pages/Cart';
 import { NotFound } from './pages/NotFound';
 import classNames from 'classnames';
 import './styles/index.scss';
+import './App.scss';
 
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
 
   return (
-    <div
-      className={classNames({
-        'scroll-off': showBurger,
-      })}
-    >
-      <Header showBurger={showBurger} setShowBurger={setShowBurger} />
-      <Routes>
+    <div className={classNames({
+      'scroll-off': showBurger,
+    })}>
+      <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
+      <div className="body-main">
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<NotFound />} />
 
@@ -42,6 +42,7 @@ export const App: React.FC = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </div>
       <Footer />
     </div>
   );
