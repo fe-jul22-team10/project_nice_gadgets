@@ -24,10 +24,14 @@ export const PaginationBase: React.FC = () => {
 
 /* eslint-disable */
   useEffect(() => {
-    getPhones()
-      .then((res) => res.data)
-      .then(setProducts)
-      .catch(error => console.log(error));
+      const request = async () => {
+        const productsFromServer = await getPhones({
+          amount: 20,
+          page: 1,
+        })
+        setProducts(productsFromServer)
+      }
+      request();
   }, []);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);

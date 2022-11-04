@@ -12,4 +12,6 @@ export interface Card {
   year: number,
   ram: string,
   image: string,
+  createdAt: string,
+  updatedAt: string,
 }
