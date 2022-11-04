@@ -1,6 +1,7 @@
 @import '../../styles/fonts';
 @import '../../styles/variables';
 @import '../../styles/extends';
+@import '../../styles/mixins';
 
 * {
   box-sizing: border-box;
@@ -8,7 +9,9 @@
 
 .burger-menu {
   position: absolute;
-  bottom: 0px;
+  // bottom: 0px;
+  top: 0;
+  right: 0;
 
   width: 100%;
   height: 100vh;
@@ -20,8 +23,15 @@
 
   background-color: $white;
 
-  transform: translateX(-100%);
-  transition: transform 0.3s linear;
+  // transform: translateX(100%);
+  // transition: transform 0.3s linear;
+
+  width: 0px;
+  transition: width 0.3s;
+
+  @include onDesktop {
+    display: none;
+  }
 
   &__wrap {
     @extend %flex-center-vertical;
@@ -115,7 +125,8 @@
 }
 
 .hide-burger-menu {
-  transform: translateX(-100%);
+  // transform: translateX(100%);
+  width: 0px;
 }
 
 .border-right-cross {
@@ -127,7 +138,8 @@
 }
 
 .show-burger {
-  transform: translateX(0);
+  // transform: translateX(0);
+  width: 100vw;
 }
 
 .scroll-off {

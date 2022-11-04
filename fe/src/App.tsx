@@ -14,11 +14,12 @@ export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
 
   return (
-    <div className={classNames({
-      'scroll-off': showBurger,
-    })}>
+    <div className={classNames(
+      'content',
+      { 'scroll-off': showBurger },
+    )}>
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
-      <div className="body-main">
+      <div className="content__body-main body-main">
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<NotFound />} />

@@ -24,6 +24,7 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
   return (
     <>
       <header className="header">
+        <div className="header__wrapper">
         <Logo />
         <Navigation />
         <BurgerMenu showBurger={showBurger} setShowBurger={setShowBurger} />
@@ -42,6 +43,7 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
           >
             <img src={union} alt="shop" className="union" />
           </div>
+        </div>
         </div>
       </header>
     </>
