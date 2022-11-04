@@ -17,24 +17,25 @@ export const Cart = () => {
   const lotsCartItems = [1, 2, 3];
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Cart</h1>
-      <div className='cart'>
-        <div className='cart__wrap'>
-        {!removeCartItem && (
-          lotsCartItems.map(index => {
-            return <CartItem
-          key={index}
-          phone={phone}
-          modelName={modelName}
-          price={price}
-          setRemoveCartItem={setRemoveCartItem}
-        />;
-          })
-        )}
+      <div className="cart">
+        <div className="cart__wrap">
+          {!removeCartItem
+            && lotsCartItems.map((index) => {
+              return (
+                <CartItem
+                  key={index}
+                  phone={phone}
+                  modelName={modelName}
+                  price={price}
+                  setRemoveCartItem={setRemoveCartItem}
+                />
+              );
+            })}
         </div>
 
-      <CartItemCalculator />
+        <CartItemCalculator />
       </div>
     </div>
   );

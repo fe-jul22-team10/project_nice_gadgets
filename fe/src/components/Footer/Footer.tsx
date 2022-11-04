@@ -1,8 +1,7 @@
 import { Logo } from '../Logo';
 import './Footer.scss';
 import React from 'react';
-import arrow
-  from '../../assets/images/icons/arrow.svg';
+import arrow from '../../assets/images/icons/arrow.svg';
 
 export const Footer: React.FC = () => {
   return (
