@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import classNames from 'classnames';
 import './cart-item-calculator.scss';
 
 // import CartItemCalculatorStyles from './cart-item-calculator.module.scss';
