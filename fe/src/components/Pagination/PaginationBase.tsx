@@ -23,16 +23,17 @@ export const PaginationBase: React.FC = () => {
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [products, setProducts] = useState<Card[]>([]);
 
-/* eslint-disable */
   useEffect(() => {
-      const request = async () => {
-        const productsFromServer = await getPhones({
-          amount: `${itemsPerPage}`,
-          page: `${currentPage}`,
-        })
-        setProducts(productsFromServer.slice(1))
-      }
-      request();
+    const request = async() => {
+      const productsFromServer = await getPhones({
+        amount: `${itemsPerPage}`,
+        page: `${currentPage}`,
+      });
+
+      setProducts(productsFromServer.slice(1));
+    };
+
+    void request();
   }, [currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -45,14 +46,6 @@ export const PaginationBase: React.FC = () => {
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  const startItemIndex = currentPage * itemsPerPage - itemsPerPage;
-  const endItemIndex
-    = currentPage * itemsPerPage <= items.length
-      ? currentPage * itemsPerPage
-      : items.length;
-
-  const visibleItems = items.slice(startItemIndex, endItemIndex);
 
   return (
     <div className="container-pagination">
