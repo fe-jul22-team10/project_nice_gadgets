@@ -36,10 +36,28 @@ li {
     color: #000;
   }
 
-  &:focus {
+  &:active {
     color: #fff;
     background-color: black;
     border-color: black;
+  }
+
+  &--selected {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+  }
+
+  &--selected:first-child {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+  }
+
+  &--disabled:first-child {
+    color: #b4bdc3;
+    background-color: #fff;
+    border-color: #e2e6e9;
   }
 }
 

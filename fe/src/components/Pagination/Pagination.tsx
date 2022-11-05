@@ -1,7 +1,15 @@
 import React from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
 
-import { getNumbers } from './PaginationBase';
+export function getNumbers(from: number, to: number): number[] {
+  const numbers = [];
+
+  for (let n = from; n <= to; n += 1) {
+    numbers.push(n);
+  }
+
+  return numbers;
+}
 
 type Props = {
   totalPages: number;
@@ -15,45 +23,52 @@ export const Pagination: React.FC<Props> = ({
   onPageChange,
 }) => {
   return (
-    <ul className="pagination">
-      <li className={cn('page-item', { disabled: currentPage === 1 })}>
-        <a
-          className="page-item"
-          href={`/project_nice_gadgets/#/phones/?${currentPage - 1}`}
-          aria-disabled={currentPage === 1}
-          onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
-        >
-          ❮
-        </a>
-      </li>
+    totalPages <= 1
+      ? (null)
+      : (
+        <ul className="pagination">
+          <li>
+            <button
+              type="button"
+              className={classNames('page-item', {
+                'page-item--disabled': currentPage === 1,
+              })}
+              onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
+            >
+              ❮
+            </button>
+          </li>
 
-      {getNumbers(1, totalPages).map((pageNumber) => (
-        <li
-          className={cn('page-item', { active: pageNumber === currentPage })}
-          key={pageNumber}
-        >
-          <a
-            className="page-item"
-            href={`/project_nice_gadgets/#/phones/?${pageNumber}`}
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </a>
-        </li>
-      ))}
+          {getNumbers(1, totalPages).map((pageNumber) => (
+            <li key={pageNumber}>
+              <button
+                type="button"
+                className={classNames('page-item', {
+                  'page-item--selected': currentPage === pageNumber,
+                })}
+                onClick={() =>
+                  currentPage !== pageNumber && onPageChange(pageNumber)
+                }
+              >
+                {pageNumber}
+              </button>
+            </li>
+          ))}
 
-      <li className={cn('page-item', { disabled: currentPage === totalPages })}>
-        <a
-          className="page-item"
-          href={`/project_nice_gadgets/#/phones/?${currentPage + 1}`}
-          aria-disabled={currentPage === totalPages}
-          onClick={() =>
-            currentPage !== totalPages && onPageChange(currentPage + 1)
-          }
-        >
-          ❯
-        </a>
-      </li>
-    </ul>
+          <li>
+            <button
+              type="button"
+              className={classNames('page-item', {
+                'page-item--disabled': currentPage === totalPages,
+              })}
+              onClick={() =>
+                currentPage !== totalPages && onPageChange(currentPage + 1)
+              }
+            >
+              ❯
+            </button>
+          </li>
+        </ul>
+      )
   );
 };

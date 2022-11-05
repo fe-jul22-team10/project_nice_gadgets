@@ -9,8 +9,5 @@ export const getPhones = async(obj: Record<string, string>) => {
     `/products/?${queryString}`,
   );
 
-  // eslint-disable-next-line no-console
-  console.log('OBJ:', obj);
-
   return result.data;
 };
