@@ -81,4 +81,8 @@ li {
 
   column-gap: 16px;
   row-gap: 40px;
+
+  &__cell {
+    width: 100%;
+  }
 }
