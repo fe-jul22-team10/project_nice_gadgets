@@ -23,50 +23,52 @@ export const Pagination: React.FC<Props> = ({
   onPageChange,
 }) => {
   return (
-    <ul className="pagination">
-      <li>
-        <button
-          type='button'
-          className={classNames(
-            'page-item',
-            { 'page-item--disabled': currentPage === 1 },
-          )}
+    totalPages <= 1
+      ? (null)
+      : (
+        <ul className="pagination">
+          <li>
+            <button
+              type="button"
+              className={classNames('page-item', {
+                'page-item--disabled': currentPage === 1,
+              })}
+              onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
+            >
+              ❮
+            </button>
+          </li>
 
-          onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
-        >
-          ❮
-        </button>
-      </li>
+          {getNumbers(1, totalPages).map((pageNumber) => (
+            <li key={pageNumber}>
+              <button
+                type="button"
+                className={classNames('page-item', {
+                  'page-item--selected': currentPage === pageNumber,
+                })}
+                onClick={() =>
+                  currentPage !== pageNumber && onPageChange(pageNumber)
+                }
+              >
+                {pageNumber}
+              </button>
+            </li>
+          ))}
 
-      {getNumbers(1, totalPages).map((pageNumber) => (
-        <li key={pageNumber}>
-        <button
-          type='button'
-          className={classNames(
-            'page-item',
-            { 'page-item--selected': currentPage === pageNumber },
-          )}
-          onClick={() => currentPage !== pageNumber && onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </button>
-        </li>
-      ))}
-
-      <li>
-        <button
-          type='button'
-          className={classNames(
-            'page-item',
-            { 'page-item--disabled': currentPage === totalPages },
-          )}
-          onClick={() =>
-            currentPage !== totalPages && onPageChange(currentPage + 1)
-          }
-        >
-          ❯
-        </button>
-      </li>
-    </ul>
+          <li>
+            <button
+              type="button"
+              className={classNames('page-item', {
+                'page-item--disabled': currentPage === totalPages,
+              })}
+              onClick={() =>
+                currentPage !== totalPages && onPageChange(currentPage + 1)
+              }
+            >
+              ❯
+            </button>
+          </li>
+        </ul>
+      )
   );
 };
