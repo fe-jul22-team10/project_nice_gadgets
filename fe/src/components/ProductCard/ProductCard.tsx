@@ -1,24 +1,15 @@
 import React from 'react';
 import './ProductCard.scss';
 import { Card } from '../../types/Card';
-import img from '../../assets/images/photos/categories/image.jpg';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavoritesButton } from '../Buttons/AddToFavoritesButton';
 
 type Props = {
-  phone: Card,
+  phone: Card;
 };
 
-export const ProductCard: React.FC <Props> = ({ phone }) => {
-  const {
-    name,
-    image,
-    price,
-    fullPrice,
-    screen,
-    capacity,
-    ram,
-  } = phone;
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const { name, image, price, fullPrice, screen, capacity, ram } = phone;
 
   return (
     <div className="card">
@@ -28,9 +19,7 @@ export const ProductCard: React.FC <Props> = ({ phone }) => {
           alt="card__img"
           className="card__img"
         />
-        <h2 className="card__title">
-          {name}
-        </h2>
+        <h2 className="card__title">{name}</h2>
         <div className="card__price">
           <p className="card__price-discount">{price}</p>
           <s className="card__price-fullPrice">{fullPrice}</s>
