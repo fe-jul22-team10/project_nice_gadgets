@@ -9,14 +9,23 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, image, price, fullPrice, screen, capacity, ram } = phone;
+  const {
+    itemId,
+    name,
+    image,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+  } = phone;
 
   return (
     <div className="card">
       <div className="card__container">
         <img
           src={`https://project-nice-gadgets.herokuapp.com/${image}`}
-          alt="card__img"
+          alt={itemId}
           className="card__img"
         />
         <h2 className="card__title">{name}</h2>

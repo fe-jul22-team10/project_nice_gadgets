@@ -67,7 +67,9 @@ export const PaginationBase: React.FC = () => {
       <div className="container">
         <ul className="grid">
           {products.map((item) => (
-            <li key={item.id}>{<ProductCard phone={item} />}</li>
+            <li className="grid__cell" key={item.id}>
+              <ProductCard phone={item} />
+            </li>
           ))}
         </ul>
       </div>

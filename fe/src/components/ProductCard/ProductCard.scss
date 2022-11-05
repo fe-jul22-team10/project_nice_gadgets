@@ -1,31 +1,19 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-ul {
-  margin: 0;
-  padding: 0;
-}
-
 .card {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  padding: 32px;
 
   font-family: 'Mont';
   color: #0f0f11;
 
   border: 1px solid #e2e6e9;
-  width: 272px;
   border-radius: 8px;
+
 
   &__container {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    justify-content: flex-end;
+    height: 100%;
   }
 
   &__img {
