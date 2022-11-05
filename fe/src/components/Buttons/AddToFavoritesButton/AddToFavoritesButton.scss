@@ -1,5 +1,6 @@
 .card__buttons-favorite {
-  display: inline-block;
+  display: block;
+  flex-shrink: 0;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -9,7 +10,7 @@
   background-repeat: no-repeat;
   background-position: center;
 
-  transition: border 0.2s;
+  transition: border 0.3s;
 
   &:hover {
     border: 1px solid #0f0f11;
