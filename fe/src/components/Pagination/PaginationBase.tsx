@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Pagination.scss';
 import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
+
+import { getPhones } from '../../api/phones';
+import { Card } from '../../types/Card';
 
 export function getNumbers(from: number, to: number): number[] {
   const numbers = [];
@@ -18,6 +21,20 @@ const items = getNumbers(1, 15).map((n) => `Item ${n}`);
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [products, setProducts] = useState<Card[]>([]);
+
+  useEffect(() => {
+    const request = async() => {
+      const productsFromServer = await getPhones({
+        amount: `${itemsPerPage}`,
+        page: `${currentPage}`,
+      });
+
+      setProducts(productsFromServer.slice(1));
+    };
+
+    void request();
+  }, [currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
@@ -29,14 +46,6 @@ export const PaginationBase: React.FC = () => {
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  const startItemIndex = currentPage * itemsPerPage - itemsPerPage;
-  const endItemIndex
-    = currentPage * itemsPerPage <= items.length
-      ? currentPage * itemsPerPage
-      : items.length;
-
-  const visibleItems = items.slice(startItemIndex, endItemIndex);
 
   return (
     <div className="container-pagination">
@@ -57,8 +66,8 @@ export const PaginationBase: React.FC = () => {
       </div>
       <div className="container">
         <ul className="grid">
-          {visibleItems.map((item) => (
-            <li key={item}>{<ProductCard />}</li>
+          {products.map((item) => (
+            <li key={item.id}>{<ProductCard phone={item} />}</li>
           ))}
         </ul>
       </div>
