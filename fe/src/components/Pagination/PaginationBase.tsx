@@ -4,6 +4,7 @@ import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
 
 import { getPhones } from '../../api/phones';
+import { Card } from '../../types/Card';
 
 export function getNumbers(from: number, to: number): number[] {
   const numbers = [];
@@ -20,19 +21,19 @@ const items = getNumbers(1, 15).map((n) => `Item ${n}`);
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Card[]>([]);
 
 /* eslint-disable */
   useEffect(() => {
       const request = async () => {
         const productsFromServer = await getPhones({
-          amount: 20,
-          page: 1,
+          amount: `${itemsPerPage}`,
+          page: `${currentPage}`,
         })
-        setProducts(productsFromServer)
+        setProducts(productsFromServer.slice(1))
       }
       request();
-  }, []);
+  }, [currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
@@ -73,7 +74,7 @@ export const PaginationBase: React.FC = () => {
       <div className="container">
         <ul className="grid">
           {products.map((item) => (
-            <li key={item}>{<ProductCard phone={item} />}</li>
+            <li key={item.id}>{<ProductCard phone={item} />}</li>
           ))}
         </ul>
       </div>
