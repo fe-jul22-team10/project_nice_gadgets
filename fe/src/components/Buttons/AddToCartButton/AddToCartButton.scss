@@ -1,7 +1,9 @@
 .card__buttons-cart {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 9px 39px;
+  width: 100%;
 
   font-size: 14px;
   font-weight: 700;
@@ -14,7 +16,7 @@
   background-color: #4219d0;
   color: #ffffff;
 
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.3s;
 
   &:hover {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);

@@ -17,7 +17,10 @@ export const AddToCartButton: React.FC = () => {
       })}
       onClick={hadleAddToCart}
     >
-      Add to cart
+      {addedToCart
+        ? 'Added'
+        : 'Add to cart'
+      }
     </button>
   );
 };
