@@ -89,7 +89,7 @@ export async function getProductsByQueryFromDatabase(query: Query) {
     logging: false,
   });
 
-  return [totalProductsNumber, ...products];
+  return [totalProductsNumber, products];
 }
 
 export async function getProductByIdFromDatabase(id: number) {

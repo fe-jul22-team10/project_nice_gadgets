@@ -24,16 +24,16 @@ export const PaginationBase: React.FC = () => {
   const [products, setProducts] = useState<Card[]>([]);
 
   useEffect(() => {
-    const request = async() => {
-      const productsFromServer = await getPhones({
+    const requestProductsFromServer = async() => {
+      const serverResponse = await getPhones({
         amount: `${itemsPerPage}`,
         page: `${currentPage}`,
       });
 
-      setProducts(productsFromServer.slice(1));
+      setProducts(serverResponse[1]);
     };
 
-    void request();
+    void requestProductsFromServer();
   }, [currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
