@@ -18,9 +18,10 @@ export const Cart = () => {
 
   return (
     <div className="container">
-      <h1>Cart</h1>
-      <div className="cart">
-        <div className="cart__wrap">
+      <div className='cart'>
+      <h1 className='cart__title'>Cart</h1>
+      <div className="cart__wrap">
+        <div className="cart__items">
           {!removeCartItem
             && lotsCartItems.map((index) => {
               return (
@@ -37,6 +38,8 @@ export const Cart = () => {
 
         <CartItemCalculator />
       </div>
+      </div>
+
     </div>
   );
 };

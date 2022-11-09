@@ -1,13 +1,27 @@
+@import '../../styles/variables';
 @import '../../styles/mixins';
 @import '../../styles/container.scss';
+@import '../../styles/fonts';
 
 .cart {
-  @include onDesktop {
-    display: flex;
-    align-items: flex-start;
+  &__title {
+    margin-bottom: 32px;
+
+    font-family: 'Mont';
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.17;
+    color: $primary;
   }
 
   &__wrap {
+    @include onDesktop {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__items {
     flex-grow: 1;
   }
 }
