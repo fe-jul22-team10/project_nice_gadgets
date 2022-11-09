@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
@@ -20,9 +20,9 @@ export const App: React.FC = () => {
     )}>
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
-        <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<NotFound />} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/phones"/> } />
+        <Route path="/home" element={<Home />} />
 
         <Route
           path="/tablets"
