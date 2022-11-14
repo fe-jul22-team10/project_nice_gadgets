@@ -11,7 +11,7 @@ import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(71);
+  const [itemsPerPage, setItemsPerPage] = useState(32);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
@@ -63,58 +63,53 @@ export const PaginationBase: React.FC = () => {
           </p>
         </div>
         ) : (
-          <>
-            <div className="container">
-              <Breadcrumbs />
-              <h1 className="page-title">Mobile Phones</h1>
-              <p className="page-total-models">{products.length} models</p>
-              <div className="sort-block">
-                <div className="items-count">
-                  <div className="items-count__name">Sort by</div>
-                  <div>
-                    <select
-                      className="items-count__select"
-                      value={itemsPerPage}
-                      onChange={handleItemsPerPage}
-                    >
-                      <option value="71">Newest</option>
-                      <option value="16">Cheap first</option>
-                      <option value="12">Expensive first</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="items-count">
-                  <div className="items-count__name">Items on page</div>
-                  <div>
-                    <select
-                      className="items-count__select"
-                      value={itemsPerPage}
-                      onChange={handleItemsPerPage}
-                    >
-                      <option value="71">All</option>
-                      <option value="32">32</option>
-                      <option value="16">16</option>
-                      <option value="4">4</option>
-                    </select>
-                  </div>
+          <div className="container">
+            <Breadcrumbs />
+            <h1 className="page-title">Mobile Phones</h1>
+            <p className="page-total-models">{products.length} models</p>
+            <div className="sort-block">
+              <div className="items-count">
+                <div className="items-count__name">Sort by</div>
+                <div>
+                  <select
+                    className="items-count__select"
+                  >
+                    <option>Newest</option>
+                    <option>Cheap first</option>
+                    <option>Expensive first</option>
+                  </select>
                 </div>
               </div>
 
-              <ul className="grid">
-                {products.map((item) => (
-                  <li className="grid__cell" key={item.id}>
-                    <ProductCard phone={item} />
-                  </li>
-                ))}
-              </ul>
-              <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                onPageChange={onPageChange}
-              />
+              <div className="items-count">
+                <div className="items-count__name">Items on page</div>
+                <div>
+                  <select
+                    className="items-count__select"
+                    value={itemsPerPage}
+                    onChange={handleItemsPerPage}
+                  >
+                    <option value="32">32</option>
+                    <option value="16">16</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+              </div>
             </div>
-          </>
+
+            <ul className="grid">
+              {products.map((item) => (
+                <li className="grid__cell" key={item.id}>
+                  <ProductCard phone={item} />
+                </li>
+              ))}
+            </ul>
+            <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onPageChange={onPageChange}
+            />
+          </div>
         )
       )}
     </div>
