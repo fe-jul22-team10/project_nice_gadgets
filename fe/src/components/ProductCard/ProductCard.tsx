@@ -30,8 +30,8 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         />
         <h2 className="card__title">{name}</h2>
         <div className="card__price">
-          <p className="card__price-discount">{price}</p>
-          <s className="card__price-fullPrice">{fullPrice}</s>
+          <p className="card__price-discount">${price}</p>
+          <s className="card__price-fullPrice">${fullPrice}</s>
           <div className="card__price-line"></div>
         </div>
         <div className="card__specification">
