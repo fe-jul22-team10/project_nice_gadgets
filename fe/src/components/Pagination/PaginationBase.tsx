@@ -11,7 +11,7 @@ import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(32);
+  const [itemsPerPage, setItemsPerPage] = useState(24);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
@@ -89,9 +89,9 @@ export const PaginationBase: React.FC = () => {
                     value={itemsPerPage}
                     onChange={handleItemsPerPage}
                   >
-                    <option value="32">32</option>
+                    <option value="24">24</option>
                     <option value="16">16</option>
-                    <option value="4">4</option>
+                    <option value="8">8</option>
                   </select>
                 </div>
               </div>
