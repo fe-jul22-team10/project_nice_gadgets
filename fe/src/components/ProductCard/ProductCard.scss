@@ -1,5 +1,4 @@
 .card {
-  height: 100%;
   padding: 32px;
 
   font-family: 'Mont';
@@ -23,7 +22,7 @@
   }
 
   &__title {
-    margin-bottom: 8px;
+    height: 42px;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -32,6 +31,7 @@
   &__price {
     &-discount {
       display: inline-block;
+      margin-top: 8px;
       margin-right: 8px;
       margin-bottom: 9px;
 
@@ -42,7 +42,6 @@
 
     &-fullPrice {
       display: inline-block;
-
       font-size: 22px;
       line-height: 28px;
       font-weight: 500;
