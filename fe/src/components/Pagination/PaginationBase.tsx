@@ -16,6 +16,7 @@ export const PaginationBase: React.FC = () => {
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
+  const [sortBy, setSortBy] = useState('new');
 
   useEffect(() => {
     const requestProductsFromServer = async() => {
@@ -35,11 +36,13 @@ export const PaginationBase: React.FC = () => {
     } catch (error) {
       setHaveError(true);
     } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
+      setIsLoading(false);
     }
   }, [currentPage, itemsPerPage]);
+
+  const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(event.target.value);
+  };
 
   const handleItemsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(+event.target.value);
@@ -49,6 +52,19 @@ export const PaginationBase: React.FC = () => {
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  products.sort((phone1, phone2) => {
+    switch (sortBy) {
+      case 'new':
+        return phone2.year - phone1.year;
+      case 'cheap':
+        return phone1.price - phone2.price;
+      case 'expensive':
+        return phone2.price - phone1.price;
+      default:
+        return 0;
+    }
+  });
 
   return (
     <div className="container-pagination">
@@ -62,10 +78,12 @@ export const PaginationBase: React.FC = () => {
             <div>
               <select
                 className="items-count__select"
+                value={sortBy}
+                onChange={handleSortBy}
               >
-                <option>Newest</option>
-                <option>Cheap first</option>
-                <option>Expensive first</option>
+                <option value="new">Newest</option>
+                <option value="cheap">Cheap first</option>
+                <option value="expensive">Expensive first</option>
               </select>
             </div>
           </div>
