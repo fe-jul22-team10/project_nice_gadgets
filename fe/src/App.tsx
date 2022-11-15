@@ -21,7 +21,7 @@ export const App: React.FC = () => {
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/phones"/> } /> */}
+        <Route path="/" element={<Navigate to="/phones"/> } />
         <Route path="*" element={<Home />} />
 
         <Route path="/phones">
@@ -41,7 +41,7 @@ export const App: React.FC = () => {
 
         <Route path="/cart" element={<Cart />} />
 
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </div>
       <Footer />

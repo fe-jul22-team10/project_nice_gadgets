@@ -12,7 +12,7 @@ import { NotFound } from '../NotFound';
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(24);
+  const [itemsPerPage, setItemsPerPage] = useState(71);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
@@ -96,6 +96,7 @@ export const PaginationBase: React.FC = () => {
                 value={itemsPerPage}
                 onChange={handleItemsPerPage}
               >
+                <option value="71">All</option>
                 <option value="24">24</option>
                 <option value="16">16</option>
                 <option value="8">8</option>
