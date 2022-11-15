@@ -6,11 +6,12 @@ import { ProductCard } from '../../components/ProductCard';
 import { getPhones } from '../../api/phones';
 import { Card } from '../../types/Card';
 import { Loader } from '../Loader';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(24);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
@@ -33,7 +34,9 @@ export const PaginationBase: React.FC = () => {
     } catch (error) {
       setHaveError(true);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     }
   }, [currentPage, itemsPerPage]);
 
@@ -60,38 +63,53 @@ export const PaginationBase: React.FC = () => {
           </p>
         </div>
         ) : (
-            <>
-            <div className="items-count">
-              <div className="items-count__name">Items on page</div>
-              <div>
-                <select
-                  className="items-count__select"
-                  value={itemsPerPage}
-                  onChange={handleItemsPerPage}
-                >
-                  <option value="4">4</option>
-                  <option value="8">8</option>
-                  <option value="12">12</option>
-                  <option value="16">16</option>
-                </select>
+          <div className="container">
+            <Breadcrumbs />
+            <h1 className="page-title">Mobile Phones</h1>
+            <p className="page-total-models">{products.length} models</p>
+            <div className="sort-block">
+              <div className="items-count">
+                <div className="items-count__name">Sort by</div>
+                <div>
+                  <select
+                    className="items-count__select"
+                  >
+                    <option>Newest</option>
+                    <option>Cheap first</option>
+                    <option>Expensive first</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="items-count">
+                <div className="items-count__name">Items on page</div>
+                <div>
+                  <select
+                    className="items-count__select"
+                    value={itemsPerPage}
+                    onChange={handleItemsPerPage}
+                  >
+                    <option value="24">24</option>
+                    <option value="16">16</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
               </div>
             </div>
 
-            <div className="container">
-              <ul className="grid">
-                {products.map((item) => (
-                  <li className="grid__cell" key={item.id}>
-                    <ProductCard phone={item} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="grid">
+              {products.map((item) => (
+                <li className="grid__cell" key={item.id}>
+                  <ProductCard phone={item} />
+                </li>
+              ))}
+            </ul>
             <Pagination
               totalPages={totalPages}
               currentPage={currentPage}
               onPageChange={onPageChange}
             />
-          </>
+          </div>
         )
       )}
     </div>

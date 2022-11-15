@@ -5,6 +5,10 @@ html {
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 48px;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -29,7 +33,7 @@ html {
     }
   }
 
-  > .logo {
+  .logo {
     padding-left: 16px;
 
     @include onDesktop {

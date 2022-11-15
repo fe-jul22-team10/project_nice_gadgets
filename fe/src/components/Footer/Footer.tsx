@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         <Logo />
         <div className="footer__link">
           <a
-            href="https://github.com/"
+            href="https://github.com/fe-jul22-team10/project_nice_gadgets"
             className="footer__nav-link"
             target="_blank"
             rel="noreferrer"

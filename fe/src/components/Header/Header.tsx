@@ -29,12 +29,14 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
         <Navigation />
         <BurgerMenu showBurger={showBurger} setShowBurger={setShowBurger} />
         <div className="header__icon">
-          <div className="icon-box">
-            <img src={heart} alt="like" className="icon" />
-          </div>
+          <Link to="/favorites">
+            <div className="icon-box">
+              <img src={heart} alt="like" className="icon" />
+            </div>
+          </Link>
           <Link to="/cart">
             <div className="icon-box">
-            <img src={bag} alt="bag" className="icon" />
+              <img src={bag} alt="bag" className="icon" />
             </div>
           </Link>
           <div
