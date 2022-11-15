@@ -51,6 +51,12 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #89939a;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: #0f0f11;
+    }
   }
 
   &__button-box {
@@ -92,9 +98,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-  }
 
-  &__icon:hover {
-    border-color: black;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: black;
+    }
   }
 }

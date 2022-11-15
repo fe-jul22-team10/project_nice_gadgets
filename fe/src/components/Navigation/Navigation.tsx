@@ -10,8 +10,8 @@ export const Navigation: React.FC = () => {
       aria-label="Main navigation"
     >
       <PageNavLink to="/" text="Home" end />
-      <PageNavLink to="/tablets" text="Tablets" />
       <PageNavLink to="/phones" text="Phones" />
+      <PageNavLink to="/tablets" text="Tablets" />
       <PageNavLink to="/accessories" text="Accessories" />
     </nav>
   );

@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
-import { NotFound } from './pages/NotFound';
+import { NotFound } from './components/NotFound';
 import classNames from 'classnames';
 import './styles/index.scss';
 import './App.scss';
@@ -21,18 +21,18 @@ export const App: React.FC = () => {
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
       <Routes>
-        <Route path="/" element={<Navigate to="/phones"/> } />
-        <Route path="/home" element={<Home />} />
-
-        <Route
-          path="/tablets"
-          element={<h1>Tablets page is currently under construction</h1>}
-        />
+        {/* <Route path="/" element={<Navigate to="/phones"/> } /> */}
+        <Route path="*" element={<Home />} />
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
           <Route path=":pageId" element={<Catalog />} />
         </Route>
+
+        <Route
+          path="/tablets"
+          element={<h1>Tablets page is currently under construction</h1>}
+        />
 
         <Route
           path="/accessories"
@@ -41,7 +41,7 @@ export const App: React.FC = () => {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       </div>
       <Footer />

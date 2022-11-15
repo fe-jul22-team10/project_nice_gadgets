@@ -7,6 +7,7 @@ import { getPhones } from '../../api/phones';
 import { Card } from '../../types/Card';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { NotFound } from '../NotFound';
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,52 +52,48 @@ export const PaginationBase: React.FC = () => {
 
   return (
     <div className="container-pagination">
+      <div className="container">
+        <Breadcrumbs />
+        <h1 className="page-title">Mobile Phones</h1>
+        <p className="page-total-models">{products.length} models</p>
+        <div className="sort-block">
+          <div className="items-count">
+            <div className="items-count__name">Sort by</div>
+            <div>
+              <select
+                className="items-count__select"
+              >
+                <option>Newest</option>
+                <option>Cheap first</option>
+                <option>Expensive first</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="items-count">
+            <div className="items-count__name">Items on page</div>
+            <div>
+              <select
+                className="items-count__select"
+                value={itemsPerPage}
+                onChange={handleItemsPerPage}
+              >
+                <option value="24">24</option>
+                <option value="16">16</option>
+                <option value="8">8</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {isLoading ? (
         <Loader />
       ) : (
         haveError ? (
-        <div className="not-found-page">
-          <h1 className="not-found-page__code">Error</h1>
-          <h3 className="not-found-page__title">Failed to load page</h3>
-          <p className="not-found-page__text">
-            Oops... something went wrong
-          </p>
-        </div>
+        <NotFound />
         ) : (
           <div className="container">
-            <Breadcrumbs />
-            <h1 className="page-title">Mobile Phones</h1>
-            <p className="page-total-models">{products.length} models</p>
-            <div className="sort-block">
-              <div className="items-count">
-                <div className="items-count__name">Sort by</div>
-                <div>
-                  <select
-                    className="items-count__select"
-                  >
-                    <option>Newest</option>
-                    <option>Cheap first</option>
-                    <option>Expensive first</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="items-count">
-                <div className="items-count__name">Items on page</div>
-                <div>
-                  <select
-                    className="items-count__select"
-                    value={itemsPerPage}
-                    onChange={handleItemsPerPage}
-                  >
-                    <option value="24">24</option>
-                    <option value="16">16</option>
-                    <option value="8">8</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
             <ul className="grid">
               {products.map((item) => (
                 <li className="grid__cell" key={item.id}>

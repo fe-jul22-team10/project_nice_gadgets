@@ -3,7 +3,7 @@ import FadeLoader from 'react-spinners/FadeLoader';
 
 const override: CSSProperties = {
   display: 'block',
-  margin: '0 auto',
+  margin: '10px auto',
 };
 
 export const Loader: React.FC = () => (
