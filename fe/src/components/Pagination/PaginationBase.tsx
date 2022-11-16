@@ -7,14 +7,16 @@ import { getPhones } from '../../api/phones';
 import { Card } from '../../types/Card';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { NotFound } from '../NotFound';
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(24);
+  const [itemsPerPage, setItemsPerPage] = useState(71);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
+  const [sortBy, setSortBy] = useState('new');
 
   useEffect(() => {
     const requestProductsFromServer = async() => {
@@ -34,11 +36,13 @@ export const PaginationBase: React.FC = () => {
     } catch (error) {
       setHaveError(true);
     } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
+      setIsLoading(false);
     }
   }, [currentPage, itemsPerPage]);
+
+  const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(event.target.value);
+  };
 
   const handleItemsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(+event.target.value);
@@ -49,54 +53,66 @@ export const PaginationBase: React.FC = () => {
     setCurrentPage(page);
   };
 
+  products.sort((phone1, phone2) => {
+    switch (sortBy) {
+      case 'new':
+        return phone2.year - phone1.year;
+      case 'cheap':
+        return phone1.price - phone2.price;
+      case 'expensive':
+        return phone2.price - phone1.price;
+      default:
+        return 0;
+    }
+  });
+
   return (
     <div className="container-pagination">
+      <div className="container">
+        <Breadcrumbs />
+        <h1 className="page-title">Mobile Phones</h1>
+        <p className="page-total-models">{products.length} models</p>
+        <div className="sort-block">
+          <div className="items-count">
+            <div className="items-count__name">Sort by</div>
+            <div>
+              <select
+                className="items-count__select"
+                value={sortBy}
+                onChange={handleSortBy}
+              >
+                <option value="new">Newest</option>
+                <option value="cheap">Cheap first</option>
+                <option value="expensive">Expensive first</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="items-count">
+            <div className="items-count__name">Items on page</div>
+            <div>
+              <select
+                className="items-count__select"
+                value={itemsPerPage}
+                onChange={handleItemsPerPage}
+              >
+                <option value="71">All</option>
+                <option value="24">24</option>
+                <option value="16">16</option>
+                <option value="8">8</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {isLoading ? (
         <Loader />
       ) : (
         haveError ? (
-        <div className="not-found-page">
-          <h1 className="not-found-page__code">Error</h1>
-          <h3 className="not-found-page__title">Failed to load page</h3>
-          <p className="not-found-page__text">
-            Oops... something went wrong
-          </p>
-        </div>
+        <NotFound />
         ) : (
           <div className="container">
-            <Breadcrumbs />
-            <h1 className="page-title">Mobile Phones</h1>
-            <p className="page-total-models">{products.length} models</p>
-            <div className="sort-block">
-              <div className="items-count">
-                <div className="items-count__name">Sort by</div>
-                <div>
-                  <select
-                    className="items-count__select"
-                  >
-                    <option>Newest</option>
-                    <option>Cheap first</option>
-                    <option>Expensive first</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="items-count">
-                <div className="items-count__name">Items on page</div>
-                <div>
-                  <select
-                    className="items-count__select"
-                    value={itemsPerPage}
-                    onChange={handleItemsPerPage}
-                  >
-                    <option value="24">24</option>
-                    <option value="16">16</option>
-                    <option value="8">8</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
             <ul className="grid">
               {products.map((item) => (
                 <li className="grid__cell" key={item.id}>
