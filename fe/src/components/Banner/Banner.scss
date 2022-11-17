@@ -1,0 +1,27 @@
+@import '../../styles/mixins.scss';
+
+.banner {
+  margin: 0 auto;
+  width: 320px;
+  border-radius: 8px;
+
+  @include onTablet {
+    width: 490px;
+  }
+
+  @include onDesktop {
+    width: 1040px;
+  }
+
+  &__image {
+    height: 320px;
+
+    @include onTablet {
+      height: 190px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+  }
+}
