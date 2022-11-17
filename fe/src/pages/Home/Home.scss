@@ -1,6 +1,13 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/container.scss';
 
+.categories {
+  &__block {
+    text-decoration: none;
+    color: #0f0f11;
+  }
+}
+
 .homepage {
   &__title {
     margin: 32px 0;
@@ -19,5 +26,10 @@
     line-height: 41px;
     letter-spacing: -1%;
     font-weight: 800;
+  }
+
+  &__categories {
+    display: flex;
+    justify-content: space-between;
   }
 }

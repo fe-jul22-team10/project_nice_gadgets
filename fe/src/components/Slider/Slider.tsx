@@ -26,7 +26,6 @@ export const Slider: React.FC<Props> = ({ phones }) => {
         spaceBetween={18}
         slidesPerView={4}
         navigation={true}
-        pagination={true}
         loop={true}
         >
           {visiblePhonse.map(phone =>
