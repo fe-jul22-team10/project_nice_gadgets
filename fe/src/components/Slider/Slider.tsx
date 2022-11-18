@@ -25,7 +25,10 @@ export const Slider: React.FC<Props> = ({ phones }) => {
         modules={[Navigation, Pagination]}
         spaceBetween={18}
         slidesPerView={4}
-        navigation={true}
+        navigation={{
+          prevEl: '.homepage__button-prev',
+          nextEl: '.homepage__button-next',
+        }}
         loop={true}
         >
           {visiblePhonse.map(phone =>

@@ -53,9 +53,15 @@ export const Home = () => {
           <div className="container">
             <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
             <Banner />
-            <h2 className="homepage__subtitle">Brand new models</h2>
+            <div className="homepage__title-block">
+              <h2 className="homepage__subtitle">Brand new models</h2>
+              <div className="homepage__button-wrapper">
+                <div className="homepage__button-prev"></div>
+                <div className="homepage__button-next"></div>
+              </div>
+            </div>
             <Slider phones={newModels} />
-            <h2 className="homepage__subtitle">Shop by category</h2>
+            <h2 className="homepage__subtitle homepage__subtitle--category">Shop by category</h2>
             <div className="homepage__categories categories">
             <NavLink to="/phones" className="categories__block">
               <Category
@@ -82,7 +88,13 @@ export const Home = () => {
                 />
             </NavLink>
             </div>
-            <h2 className="homepage__subtitle">Hot prices</h2>
+            <div className="homepage__title-block">
+              <h2 className="homepage__subtitle">Hot prices</h2>
+              <div className="homepage__button-wrapper">
+                <div className="homepage__button-prev"></div>
+                <div className="homepage__button-next"></div>
+              </div>
+            </div>
             <Slider phones={hotPrice} />
           </div>
         </div>
