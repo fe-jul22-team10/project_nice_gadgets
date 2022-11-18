@@ -61,7 +61,9 @@ export const Home = () => {
               </div>
             </div>
             <Slider phones={newModels} />
-            <h2 className="homepage__subtitle homepage__subtitle--category">Shop by category</h2>
+            <h2 className="homepage__subtitle homepage__subtitle--category">
+              Shop by category
+            </h2>
             <div className="homepage__categories categories">
             <NavLink to="/phones" className="categories__block">
               <Category
