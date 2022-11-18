@@ -11,6 +11,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 export const Banner: React.FC = () => {
+  const baseUrl = 'https://project-nice-gadgets.herokuapp.com/img/';
+
   return (
     <>
       <div className="banner">
@@ -29,21 +31,21 @@ export const Banner: React.FC = () => {
             >
             <SwiperSlide>
               <img
-                src="https://project-nice-gadgets.herokuapp.com/img/banner_1.png"
+                src={`${baseUrl}/banner_1.png`}
                 alt="banner_1"
                 className="banner__image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src="https://project-nice-gadgets.herokuapp.com/img/banner_2.png"
+                src={`${baseUrl}/banner_2.png`}
                 alt="banner_2"
                 className="banner__image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src="https://project-nice-gadgets.herokuapp.com/img/banner_3.png"
+                src={`${baseUrl}/banner_3.png`}
                 alt="banner_3"
                 className="banner__image"
               />
