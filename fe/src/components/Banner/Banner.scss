@@ -2,10 +2,12 @@
 
 .banner {
   display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
   border-radius: 8px;
 
   @include onTablet {
-    width: 490px;
+    width: 592px;
   }
 
   @include onDesktop {
@@ -25,16 +27,14 @@
   }
 
   &__slider {
-    margin: 0 auto 66px;
+    margin: 0 auto 18px;
     width: 320px;
 
     @include onTablet {
-      margin-bottom: 74px;
-      width: 570px;
+      width: 490px;
     }
 
     @include onDesktop {
-      margin-bottom: 90px;
       width: 1040px;
     }
   }
@@ -45,43 +45,96 @@
 }
 
 .prev {
-  display: inline-block;
-  position: relative;
-  width: 32px;
-  height: 400px;
-  border-radius: 48px;
-  border: 1px solid #b4bdc3;
-  cursor: pointer;
+  @include onMobile {
+    display: none;
+  }
 
-  &::after {
-    content: "<";
-    position: absolute;
-    top: 45%;
-    left: 30%;
-    color: #0f0f11;
+  @include onTablet {
+    display: inline-block;
+    position: relative;
+    margin-right: 19px;
+    width: 32px;
+    height: 189px;
+    border-radius: 48px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  @include onDesktop {
+    width: 32px;
+    height: 400px;
+  }
+
+  transition: border 0.3s;
+
+  &__arrow {
+    background-image: url(../../assets/images/icons/banner-button-prev.svg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:hover {
+    border: 1px solid #0f0f11;
   }
 }
 
 .next {
-  display: inline-block;
-  position: relative;
-  width: 32px;
-  height: 400px;
-  border-radius: 48px;
-  border: 1px solid #b4bdc3;
-  cursor: pointer;
+  @include onMobile {
+    display: none;
+  }
 
-  &::after {
-    content: ">";
-    position: absolute;
-    top: 45%;
-    right: 30%;
-    color: #0f0f11;
+  @include onTablet {
+    display: inline-block;
+    position: relative;
+    margin-left: 19px;
+    width: 32px;
+    height: 189px;
+    border-radius: 48px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  @include onDesktop {
+    width: 32px;
+    height: 400px;
+  }
+
+  transition: border 0.3s;
+
+  &__arrow {
+    background-image: url(../../assets/images/icons/banner-button-next.svg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:hover {
+    border: 1px solid #0f0f11;
   }
 }
 
-.pagination-bullet {
-  width: 14px;
-  height: 4px;
-  background-color: #0f0f11;
+.swiper-pagination {
+  position: relative !important;
+  z-index: 5 !important;
+  margin-bottom: 66px !important;
+
+  @include onTablet {
+    margin-bottom: 74px !important;
+  }
+
+  @include onDesktop {
+    margin-bottom: 90px !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  height: 4px !important;
+  width: 14px !important;
+  border-radius: 0 !important;
+  background-color: #0f0f11 !important;
+}
+
+.swiper-pagination-bullet-acative {
+  background-color: #e2e6e9 !important;
 }

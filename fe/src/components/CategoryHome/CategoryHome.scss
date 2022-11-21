@@ -1,10 +1,22 @@
+@import '../../styles/mixins.scss';
+
 .category {
   &__wrapper {
     position: relative;
     margin-bottom: 24px;
-    height: 370px;
-    width: 370px;
+    height: 350px;
+    width: 350px;
     border-radius: 8px;
+
+    @include onTablet {
+      height: 235px;
+      width: 235px;
+    }
+
+    @include onDesktop {
+      height: 370px;
+      width: 370px;
+    }
 
     transition: transform 0.3s;
 
@@ -30,6 +42,16 @@
     right: 0;
     bottom: 0;
     border-radius: 8px;
+
+    @include onTablet {
+      height: 235px;
+      width: 235px;
+    }
+
+    @include onDesktop {
+      height: 370px;
+      width: 370px;
+    }
   }
 
   &__title {

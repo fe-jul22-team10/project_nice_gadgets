@@ -1,4 +1,8 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
+import BannerMobile1 from '../../assets/images/photos/banner-mobile-1.png';
+import BannerMobile2 from '../../assets/images/photos/banner-mobile-2.png';
+import BannerMobile3 from '../../assets/images/photos/banner-mobile-3.png';
 import { Navigation, Pagination } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,11 +16,16 @@ import 'swiper/css/scrollbar';
 
 export const Banner: React.FC = () => {
   const baseUrl = 'https://project-nice-gadgets.herokuapp.com/img/';
+  const onTablet = useMediaQuery({
+    query: '(max-width: 640px)',
+  });
 
   return (
     <>
       <div className="banner">
-        <div className="prev" />
+        <div className="prev">
+          <div className="prev__arrow"></div>
+        </div>
         <div className="banner__slider">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -27,33 +36,39 @@ export const Banner: React.FC = () => {
               prevEl: '.prev',
               nextEl: '.next',
             }}
-            scrollbar={{ draggable: true }}
+            pagination={{
+              el: '.swiper-pagination',
+              clickable: true,
+            }}
             >
             <SwiperSlide>
               <img
-                src={`${baseUrl}/banner_1.png`}
+                src={onTablet ? BannerMobile1 : `${baseUrl}/banner_1.png`}
                 alt="banner_1"
                 className="banner__image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src={`${baseUrl}/banner_2.png`}
+                src={onTablet ? BannerMobile2 : `${baseUrl}/banner_2.png`}
                 alt="banner_2"
                 className="banner__image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                src={`${baseUrl}/banner_3.png`}
+                src={onTablet ? BannerMobile3 : `${baseUrl}/banner_3.png`}
                 alt="banner_3"
                 className="banner__image"
               />
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="next" />
+        <div className="next">
+          <div className="next__arrow"></div>
+        </div>
       </div>
+      <div className="swiper-pagination"></div>
     </>
   );
 };
