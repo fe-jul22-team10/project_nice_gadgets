@@ -3,6 +3,7 @@
 
 .categories {
   &__block {
+    margin: 0 auto;
     margin-bottom: 80px;
     text-decoration: none;
     color: #0f0f11;
@@ -99,7 +100,7 @@
   &__categories {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 
     @include onTablet {
       flex-direction: row;
