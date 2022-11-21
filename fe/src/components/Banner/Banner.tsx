@@ -1,4 +1,5 @@
 import React from 'react';
+import BannerMobile from '../../assets/images/photos/banner-mobile.png';
 import { Navigation, Pagination } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +17,9 @@ export const Banner: React.FC = () => {
   return (
     <>
       <div className="banner">
-        <div className="prev" />
+        <div className="prev">
+          <div className="prev__arrow"></div>
+        </div>
         <div className="banner__slider">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -26,6 +29,9 @@ export const Banner: React.FC = () => {
             navigation={{
               prevEl: '.prev',
               nextEl: '.next',
+            }}
+            pagination={{
+              clickable: true,
             }}
             scrollbar={{ draggable: true }}
             >
@@ -37,22 +43,24 @@ export const Banner: React.FC = () => {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img
+              {/* <img
                 src={`${baseUrl}/banner_2.png`}
                 alt="banner_2"
                 className="banner__image"
-              />
+              /> */}
             </SwiperSlide>
             <SwiperSlide>
-              <img
+              {/* <img
                 src={`${baseUrl}/banner_3.png`}
                 alt="banner_3"
                 className="banner__image"
-              />
+              /> */}
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="next" />
+        <div className="next">
+          <div className="next__arrow"></div>
+        </div>
       </div>
     </>
   );

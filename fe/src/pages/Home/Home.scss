@@ -11,12 +11,20 @@
 
 .homepage {
   &__title {
-    margin: 37px 0;
+    margin: 24px 0;
     font-family: 'Mont';
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 32px;
+    line-height: 41px;
     letter-spacing: -1%;
     font-weight: 800;
+
+    @include onTablet {
+      margin: 37px 0;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+      font-weight: 800;
+    }
   }
 
   &__title-block {
@@ -38,12 +46,14 @@
     border: 1px solid #b4bdc3;
     cursor: pointer;
 
-    &::after {
-      content: "<";
-      position: absolute;
-      top: 20%;
-      left: 30%;
-      color: #0f0f11;
+    transition: border 0.3s;
+
+    background-image: url(../../assets/images/icons/banner-button-prev.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid #0f0f11;
     }
   }
 
@@ -55,22 +65,31 @@
     border: 1px solid #b4bdc3;
     cursor: pointer;
 
-    &::after {
-      content: ">";
-      position: absolute;
-      top: 20%;
-      right: 30%;
-      color: #0f0f11;
+    transition: border 0.3s;
+
+    background-image: url(../../assets/images/icons/banner-button-next.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid #0f0f11;
     }
   }
 
   &__subtitle {
     display: inline-block;
     font-family: 'Mont';
-    font-size: 32px;
-    line-height: 41px;
+    font-size: 22px;
+    line-height: 31px;
     letter-spacing: -1%;
     font-weight: 800;
+
+    @include onTablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      font-weight: 800;
+    }
   }
 
   &__subtitle--category {
@@ -79,6 +98,11 @@
 
   &__categories {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+
+    @include onTablet {
+      flex-direction: row;
+    }
   }
 }
