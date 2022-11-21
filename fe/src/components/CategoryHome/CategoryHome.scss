@@ -4,13 +4,13 @@
   &__wrapper {
     position: relative;
     margin-bottom: 24px;
-    height: 288px;
-    width: 288px;
+    height: 350px;
+    width: 350px;
     border-radius: 8px;
 
     @include onTablet {
-      height: 220px;
-      width: 220px;
+      height: 235px;
+      width: 235px;
     }
 
     @include onDesktop {
@@ -41,13 +41,11 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    height: 288px;
-    width: 288px;
     border-radius: 8px;
 
     @include onTablet {
-      height: 200px;
-      width: 200px;
+      height: 235px;
+      width: 235px;
     }
 
     @include onDesktop {

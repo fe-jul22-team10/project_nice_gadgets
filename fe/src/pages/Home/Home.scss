@@ -4,9 +4,17 @@
 .categories {
   &__block {
     margin: 0 auto;
-    margin-bottom: 80px;
+    margin-bottom: 32px;
     text-decoration: none;
     color: #0f0f11;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
   }
 }
 

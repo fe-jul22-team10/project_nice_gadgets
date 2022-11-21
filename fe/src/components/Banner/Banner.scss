@@ -27,16 +27,14 @@
   }
 
   &__slider {
-    margin: 0 auto 66px;
+    margin: 0 auto 18px;
     width: 320px;
 
     @include onTablet {
-      margin-bottom: 74px;
       width: 490px;
     }
 
     @include onDesktop {
-      margin-bottom: 90px;
       width: 1040px;
     }
   }
@@ -114,4 +112,29 @@
   &:hover {
     border: 1px solid #0f0f11;
   }
+}
+
+.swiper-pagination {
+  position: relative !important;
+  z-index: 5 !important;
+  margin-bottom: 66px !important;
+
+  @include onTablet {
+    margin-bottom: 74px !important;
+  }
+
+  @include onDesktop {
+    margin-bottom: 90px !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  height: 4px !important;
+  width: 14px !important;
+  border-radius: 0 !important;
+  background-color: #0f0f11 !important;
+}
+
+.swiper-pagination-bullet-acative {
+  background-color: #e2e6e9 !important;
 }
