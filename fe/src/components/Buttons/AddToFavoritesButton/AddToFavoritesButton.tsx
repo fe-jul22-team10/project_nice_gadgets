@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
+import { Card } from '../../../types/Card';
 import './AddToFavoritesButton.scss';
 
-export const AddToFavoritesButton: React.FC = () => {
-  const [addedToFavorites, setAddedToFavorites] = useState(false);
+type Props = {
+  onAdd: () => void,
+  onRemove: () => void,
+  addedToFavorites: boolean,
+  favoriteItems: Card[],
+}
 
-  const hadleAddToFavorites = () => {
-    setAddedToFavorites((prevState) => !prevState);
-  };
-
+export const AddToFavoritesButton: React.FC<Props> = ({
+  onAdd,
+  onRemove,
+  addedToFavorites,
+  favoriteItems,
+}) => {
   return (
-    <button
-      type="button"
-      className={classNames('card__buttons-favorite', {
-        'card__buttons-favorite--selected': addedToFavorites,
-      })}
-      onClick={hadleAddToFavorites}
-    ></button>
+    <>
+      {!addedToFavorites ? (
+        <button
+          type="button"
+          className="card__buttons-favorite"
+          onClick={onAdd}
+        ></button>
+      ) : (
+        <button
+          type="button"
+          className="card__buttons-favorite card__buttons-favorite--selected"
+          onClick={onRemove}
+        ></button>
+      )}
+    </>
   );
 };
