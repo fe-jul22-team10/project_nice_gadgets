@@ -20,11 +20,11 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     setFavoriteItems(
-      JSON.parse(localStorage.getItem('favoriteItems') || '[]'),
+      JSON.parse(localStorage.getItem('favoriteItems') || '[]') as Card[],
     );
 
     setCartItems(
-      JSON.parse(localStorage.getItem('cartItems') || '[]'),
+      JSON.parse(localStorage.getItem('cartItems') || '[]') as Card[],
     );
   }, []);
 
