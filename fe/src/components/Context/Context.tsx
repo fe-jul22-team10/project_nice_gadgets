@@ -1,5 +1,4 @@
 import React from 'react';
-import { CardToRender } from '../../types/CartToRender';
 import { Card } from '../../types/Card';
 
 type callback = (prev: Card[]) => Card[];
