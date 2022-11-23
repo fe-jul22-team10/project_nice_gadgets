@@ -1,0 +1,9 @@
+@import '../../styles/mixins.scss';
+
+.card__wrapper {
+  margin-bottom: 40px;
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+}

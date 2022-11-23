@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './ProductCard.scss';
 import { Card } from '../../types/Card';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavoritesButton } from '../Buttons/AddToFavoritesButton';
+import StateContext from '../../components/Context/Context';
 
 type Props = {
   phone: Card;
@@ -19,6 +20,29 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     capacity,
     ram,
   } = phone;
+  const {
+    favoriteItems,
+    setFavoriteItems,
+  } = useContext(StateContext);
+
+  useEffect(() => {
+    localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+  }, [favoriteItems]);
+
+  const handleAddToFavorite = () => {
+    setFavoriteItems((prev) => [...prev, phone]);
+  };
+
+  const handleRemoveFromFavorite = () => {
+    localStorage.setItem(
+      'favoriteItems',
+      JSON.stringify(favoriteItems.filter(item => item.itemId !== itemId)),
+    );
+
+    setFavoriteItems((prevItems) => {
+      return prevItems.filter(prevItem => prevItem.itemId !== itemId);
+    });
+  };
 
   return (
     <div className="card">
@@ -49,8 +73,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           </div>
         </div>
         <div className="card__buttons">
-          <AddToCartButton />
-          <AddToFavoritesButton />
+          <AddToCartButton
+          />
+          <AddToFavoritesButton
+            onAdd={handleAddToFavorite}
+            onRemove={handleRemoveFromFavorite}
+            phone={phone}
+            favoriteItems={favoriteItems}
+          />
         </div>
       </div>
     </div>
