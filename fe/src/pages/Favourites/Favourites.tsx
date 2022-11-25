@@ -3,13 +3,13 @@ import { ProductCard } from '../../components/ProductCard';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Card } from '../../types/Card';
 
-import './Favorites.scss';
+import './Favourites.scss';
 
 type Props = {
   items: Card[],
 }
 
-export const Favorites: React.FC<Props> = ({ items }) => {
+export const Favourites: React.FC<Props> = ({ items }) => {
   return (
     <div className="container">
       <Breadcrumbs />

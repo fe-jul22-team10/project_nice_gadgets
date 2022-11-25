@@ -29,7 +29,7 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
         <Navigation />
         <BurgerMenu showBurger={showBurger} setShowBurger={setShowBurger} />
         <div className="header__icon">
-          <Link to="/favorites">
+          <Link to="/favourites">
             <div className="icon-box">
               <img src={heart} alt="like" className="icon" />
             </div>
