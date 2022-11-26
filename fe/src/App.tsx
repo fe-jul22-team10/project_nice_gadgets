@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
-import { Favorites } from './pages/Favorites';
+import { Favourites } from './pages/Favourites';
 import { NotFound } from './components/NotFound';
 import StateContext from './components/Context/Context';
 import classNames from 'classnames';
@@ -15,12 +15,12 @@ import { Card } from './types/Card';
 
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
-  const [favoriteItems, setFavoriteItems] = useState<Card[]>([]);
+  const [favouriteItems, setFavoriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
 
   useEffect(() => {
     setFavoriteItems(
-      JSON.parse(localStorage.getItem('favoriteItems') || '[]') as Card[],
+      JSON.parse(localStorage.getItem('favouriteItems') || '[]') as Card[],
     );
 
     setCartItems(
@@ -29,7 +29,7 @@ export const App: React.FC = () => {
   }, []);
 
   const value = {
-    favoriteItems,
+    favouriteItems,
     setFavoriteItems,
     cartItems,
     setCartItems,
@@ -63,8 +63,8 @@ export const App: React.FC = () => {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/favorites" element={
-          <Favorites items={favoriteItems}
+        <Route path="/favourites" element={
+          <Favourites items={favouriteItems}
         />} />
 
         <Route path="*" element={<NotFound />} />

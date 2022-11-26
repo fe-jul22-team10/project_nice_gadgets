@@ -1,26 +1,26 @@
 import React from 'react';
 import { Card } from '../../../types/Card';
-import './AddToFavoritesButton.scss';
+import './AddToFavouritesButton.scss';
 
 type Props = {
   onAdd: () => void,
   onRemove: () => void,
   phone: Card,
-  favoriteItems: Card[],
+  favouriteItems: Card[],
 }
 
-export const AddToFavoritesButton: React.FC<Props> = ({
+export const AddToFavouritesButton: React.FC<Props> = ({
   onAdd,
   onRemove,
   phone,
-  favoriteItems,
+  favouriteItems,
 }) => {
-  const isInFavorites = favoriteItems
+  const isInFavourites = favouriteItems
     .map((item: Card) => item.id).includes(phone.id);
 
   return (
     <>
-      {isInFavorites ? (
+      {isInFavourites ? (
         <button
           type="button"
           className="card__buttons-favorite card__buttons-favorite--selected"
