@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import StateContext from '../../components/Context/Context';
 
 import { BurgerMenu } from '../BurgerMenu';
 import { Navigation } from '../Navigation';
@@ -20,6 +21,7 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
   const changeBurgerStatus = (boolean: boolean) => {
     setShowBurger(!boolean);
   };
+  const { favouriteItems, cartItems } = useContext(StateContext);
 
   return (
     <>
@@ -32,11 +34,18 @@ export const Header: React.FC<Props> = ({ showBurger, setShowBurger }) => {
           <Link to="/favourites">
             <div className="icon-box">
               <img src={heart} alt="like" className="icon" />
+              {!!favouriteItems.length
+                && <div className="icon-box__favourite">
+                  {favouriteItems.length}
+                </div>}
             </div>
           </Link>
           <Link to="/cart">
             <div className="icon-box">
               <img src={bag} alt="bag" className="icon" />
+              {!!cartItems.length && <div className="icon-box__cart">
+                {cartItems.length}
+              </div>}
             </div>
           </Link>
           <div

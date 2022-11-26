@@ -15,11 +15,11 @@ import { Card } from './types/Card';
 
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
-  const [favouriteItems, setFavoriteItems] = useState<Card[]>([]);
+  const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
 
   useEffect(() => {
-    setFavoriteItems(
+    setFavouriteItems(
       JSON.parse(localStorage.getItem('favouriteItems') || '[]') as Card[],
     );
 
@@ -30,7 +30,7 @@ export const App: React.FC = () => {
 
   const value = {
     favouriteItems,
-    setFavoriteItems,
+    setFavouriteItems,
     cartItems,
     setCartItems,
   };
