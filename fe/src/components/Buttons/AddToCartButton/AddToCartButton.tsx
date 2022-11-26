@@ -1,26 +1,41 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import React from 'react';
+import { Card } from '../../../types/Card';
 import './AddToCartButton.scss';
 
-export const AddToCartButton: React.FC = () => {
-  const [addedToCart, setAddedToCart] = useState(false);
+type Props = {
+  onAdd: () => void,
+  onRemove: () => void,
+  phone: Card,
+  cartItems: Card[],
+}
 
-  const hadleAddToCart = () => {
-    setAddedToCart((prevState) => !prevState);
-  };
+export const AddToCartButton: React.FC<Props> = ({
+  onAdd,
+  onRemove,
+  phone,
+  cartItems,
+}) => {
+  const isInCart = cartItems.map(item => item.id).includes(phone.id);
 
   return (
-    <button
-      type="button"
-      className={classNames('card__buttons-cart', {
-        'card__buttons-cart--selected': addedToCart,
-      })}
-      onClick={hadleAddToCart}
-    >
-      {addedToCart
-        ? 'Added'
-        : 'Add to cart'
-      }
-    </button>
+    <>
+      {!isInCart ? (
+        <button
+          type="button"
+          className="card__buttons-cart"
+          onClick={onAdd}
+        >
+          Add to cart
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="card__buttons-cart card__buttons-cart--selected"
+          onClick={onRemove}
+        >
+          Added
+        </button>
+      )}
+    </>
   );
 };

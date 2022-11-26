@@ -22,25 +22,46 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   } = phone;
   const {
     favouriteItems,
-    setFavoriteItems,
+    setFavouriteItems,
+    cartItems,
+    setCartItems,
   } = useContext(StateContext);
 
   useEffect(() => {
-    localStorage.setItem('favoriteItems', JSON.stringify(favouriteItems));
+    localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
   }, [favouriteItems]);
 
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const handleAddToFavorite = () => {
-    setFavoriteItems((prev) => [...prev, phone]);
+    setFavouriteItems((prev) => [...prev, phone]);
   };
 
   const handleRemoveFromFavorite = () => {
     localStorage.setItem(
-      'favoriteItems',
+      'favouriteItems',
       JSON.stringify(favouriteItems.filter(item => item.itemId !== itemId)),
     );
 
-    setFavoriteItems((prevItems) => {
+    setFavouriteItems((prevItems) => {
       return prevItems.filter(prevItem => prevItem.itemId !== itemId);
+    });
+  };
+
+  const handleAddToCart = () => {
+    setCartItems((prev) => [...prev, phone]);
+  };
+
+  const handleRemoveFromCart = () => {
+    localStorage.setItem(
+      'cartItems',
+      JSON.stringify(cartItems.filter(item => item.itemId !== itemId)),
+    );
+
+    setCartItems((prevItems) => {
+      return prevItems.filter(prevItems => prevItems.itemId !== itemId);
     });
   };
 
@@ -74,6 +95,10 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
         <div className="card__buttons">
           <AddToCartButton
+            onAdd={handleAddToCart}
+            onRemove={handleRemoveFromCart}
+            phone={phone}
+            cartItems={cartItems}
           />
           <AddToFavouritesButton
             onAdd={handleAddToFavorite}
