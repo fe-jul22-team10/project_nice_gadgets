@@ -18,21 +18,26 @@ export const Cart: React.FC<Props> = ({ items }) => {
         <p className="cart-breadcrumbs__text">Back</p>
       </div>
       <div className='cart'>
-      <h1 className='cart__title'>Cart</h1>
-      <div className="cart__wrap">
-        <div className="cart__items">
-          {items.map((item) => {
-            return (
-              <CartItem
-                phone={item}
-                key={item.id}
-              />
-            );
-          })}
-        </div>
+        {items.length > 0 ? (
+          <>
+          <h1 className='cart__title'>Cart</h1>
+          <div className="cart__wrap">
+          <div className="cart__items">
+            {items.map((item) => {
+              return (
+                <CartItem
+                  phone={item}
+                  key={item.id}
+                />
+              );
+            })}
+          </div>
 
-        {items.length > 0 && <CartItemCalculator phones={items} />}
-      </div>
+          {items.length > 0 && <CartItemCalculator phones={items} />}
+          </div></>
+        ) : (
+          <h1 className="cart__subtitle">Your cart is empty</h1>
+        )}
       </div>
 
     </div>

@@ -7,3 +7,12 @@
     margin-bottom: 80px;
   }
 }
+
+.subtitle {
+  font-family: 'Mont';
+  font-size: 32px;
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
