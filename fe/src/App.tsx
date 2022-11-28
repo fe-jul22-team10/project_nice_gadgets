@@ -61,7 +61,7 @@ export const App: React.FC = () => {
           element={<h1>Accessories page is currently under construction</h1>}
         />
 
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart items={cartItems} />} />
 
         <Route path="/favourites" element={
           <Favourites items={favouriteItems}
