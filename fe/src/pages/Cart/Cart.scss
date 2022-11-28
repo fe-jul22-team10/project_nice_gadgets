@@ -46,6 +46,15 @@
     }
   }
 
+  &__subtitle {
+    font-family: 'Mont';
+    font-size: 32px;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+
   &__items {
     flex-grow: 1;
   }
