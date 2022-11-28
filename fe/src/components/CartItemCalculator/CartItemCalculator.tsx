@@ -8,11 +8,11 @@ type Props = {
 }
 
 export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
-  const amount = phones.reduce((sum, x) => sum + x.price, 0);
+  const total = phones.reduce((sum, x) => sum + x.price * x.amount, 0);
 
   return (
     <div className="cartItem-calculator">
-      <h2 className="cartItem-calculator__price">${amount}</h2>
+      <h2 className="cartItem-calculator__price">${total}</h2>
       <p className="cartItem-calculator__all-products">
         Total for {phones.length} items
       </p>

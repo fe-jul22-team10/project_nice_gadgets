@@ -1,6 +1,7 @@
 export interface Card {
   id: string,
   category: string,
+  amount: number,
   phoneId: string,
   itemId: string,
   name: string,
