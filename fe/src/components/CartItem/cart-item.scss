@@ -65,6 +65,7 @@
 
   &__img {
     margin-right: 16px;
+    height: 66px;
 
     @include onTablet {
       margin-right: 24px;
@@ -101,8 +102,13 @@
 
     border: 1px solid $elements;
     border-radius: 50%;
+    transition: border 0.3s;
 
     cursor: pointer;
+
+    &:hover {
+      border: 1px solid #0f0f11;
+    }
   }
 
   &__decrease-btn--active {
@@ -116,8 +122,13 @@
 
     border: 1px solid #b4bdc3;
     border-radius: 50%;
+    transition: border 0.3s;
 
     cursor: pointer;
+
+    &:hover {
+      border: 1px solid #0f0f11;
+    }
 
     img {
       display: block;
@@ -126,6 +137,7 @@
   }
 
   &__price {
+    width: 70px;
     font-weight: 700;
     font-size: 22px;
     line-height: 1.4;
