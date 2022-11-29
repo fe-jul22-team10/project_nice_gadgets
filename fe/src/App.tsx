@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
 import { Favourites } from './pages/Favourites';
 import { NotFound } from './components/NotFound';
+import { Tablets } from './pages/Tablets';
 import StateContext from './components/Context/Context';
 import classNames from 'classnames';
 import './styles/index.scss';
@@ -53,12 +54,16 @@ export const App: React.FC = () => {
 
         <Route
           path="/tablets"
-          element={<h1>Tablets page is currently under construction</h1>}
+          element={<Tablets />}
         />
 
         <Route
           path="/accessories"
-          element={<h1>Accessories page is currently under construction</h1>}
+          element={
+            <h1 className="accessories-page">
+              Accessories page is currently under construction
+            </h1>
+          }
         />
 
         <Route path="/cart" element={<Cart items={cartItems} />} />
