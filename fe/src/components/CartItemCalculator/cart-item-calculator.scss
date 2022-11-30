@@ -60,9 +60,12 @@
 
     background-color: $accent;
     border-radius: 48px;
+    border: 1px solid transparent;
 
     text-align: center;
     text-decoration: none;
+
+    cursor: pointer;
 
     transition: box-shadow 0.3s;
 

@@ -1,0 +1,13 @@
+@import '../../styles/mixins';
+@import '../../styles/container';
+
+.accessories-page {
+  margin-top: 24px;
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 700;
+
+  @include onDesktop {
+    font-size: 36px;
+  }
+}

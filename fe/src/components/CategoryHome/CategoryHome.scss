@@ -1,0 +1,72 @@
+@import '../../styles/mixins.scss';
+
+.category {
+  &__wrapper {
+    position: relative;
+    margin-bottom: 24px;
+    height: 350px;
+    width: 350px;
+    border-radius: 8px;
+
+    @include onTablet {
+      height: 235px;
+      width: 235px;
+    }
+
+    @include onDesktop {
+      height: 370px;
+      width: 370px;
+    }
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &--mobile {
+      background-color: #6d6474;
+    }
+
+    &--tablet {
+      background-color: #b4bdc3;
+    }
+
+    &--accessories {
+      background-color: #d53C51;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+
+    @include onTablet {
+      height: 235px;
+      width: 235px;
+    }
+
+    @include onDesktop {
+      height: 370px;
+      width: 370px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-family: 'Mont';
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 700;
+  }
+
+  &__text {
+    font-family: 'Mont';
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    color: #89939a;
+  }
+}

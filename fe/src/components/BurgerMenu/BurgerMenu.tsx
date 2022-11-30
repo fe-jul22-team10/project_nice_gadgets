@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import StateContext from '../../components/Context/Context';
 
 import classNames from 'classnames';
 
@@ -18,6 +19,7 @@ type Props = {
 
 export const BurgerMenu: React.FC<Props> = ({ showBurger, setShowBurger }) => {
   const [hideBurgerMenu, setHideBurgerMenu] = useState(false);
+  const { favouriteItems, cartItems } = useContext(StateContext);
 
   const location = useLocation();
 
@@ -79,6 +81,9 @@ export const BurgerMenu: React.FC<Props> = ({ showBurger, setShowBurger }) => {
           }
         >
           <img src={heartLike} alt="heart" />
+          {!!favouriteItems.length && <div className="icon-box__favourite">
+            {favouriteItems.length}
+          </div>}
         </NavLink>
         <NavLink
           to="/cart"
@@ -89,6 +94,9 @@ export const BurgerMenu: React.FC<Props> = ({ showBurger, setShowBurger }) => {
           }
         >
           <img src={bag} alt="bag" />
+          {!!cartItems.length && <div className="icon-box__cart">
+            {cartItems.length}
+          </div>}
         </NavLink>
       </div>
     </div>

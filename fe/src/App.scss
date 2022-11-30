@@ -8,10 +8,10 @@
 }
 
 .body-main {
-  min-height: calc(100vh - 160px);
-  max-width: 1440px;
-
   @include onMobile {
     min-height: calc(100vh - 305px);
   }
+
+  min-height: calc(100vh - 160px);
+  max-width: 1440px;
 }

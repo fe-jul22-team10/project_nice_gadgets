@@ -1,0 +1,117 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/container.scss';
+
+.categories {
+  &__block {
+    margin: 0 auto;
+    margin-bottom: 32px;
+    text-decoration: none;
+    color: #0f0f11;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.homepage {
+  &__title {
+    margin: 24px 0;
+    font-family: 'Mont';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    font-weight: 800;
+
+    @include onTablet {
+      margin: 37px 0;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+      font-weight: 800;
+    }
+  }
+
+  &__title-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__button-wrapper {
+    display: flex;
+  }
+
+  &__button-prev {
+    position: relative;
+    margin-right: 16px;
+    height: 32px;
+    width: 32px;
+    border-radius: 48px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../assets/images/icons/banner-button-prev.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid #0f0f11;
+    }
+  }
+
+  &__button-next {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border-radius: 48px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+
+    transition: border 0.3s;
+
+    background-image: url(../../assets/images/icons/banner-button-next.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid #0f0f11;
+    }
+  }
+
+  &__subtitle {
+    display: inline-block;
+    font-family: 'Mont';
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: -1%;
+    font-weight: 800;
+
+    @include onTablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      font-weight: 800;
+    }
+  }
+
+  &__subtitle--category {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+}

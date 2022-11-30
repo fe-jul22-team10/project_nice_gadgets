@@ -21,6 +21,7 @@
 
     @include onMobile {
       flex-direction: column;
+      height: 100%;
       gap: 32px;
       padding: 32px 16px;
       align-items: start;

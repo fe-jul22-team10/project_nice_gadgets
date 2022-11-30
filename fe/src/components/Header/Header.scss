@@ -6,6 +6,7 @@ html {
 
 .header {
   position: sticky;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -69,6 +70,46 @@ html {
     display: none;
   }
 
+  &__favourite {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    font-family: 'Mont';
+    left: 26%;
+    top: 28%;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 13px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #4219d0;
+    text-decoration: none;
+  }
+
+  &__cart {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    font-family: 'Mont';
+    left: 76%;
+    top: 30%;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 13px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #4219d0;
+    text-decoration: none;
+  }
+
   &__menu {
     display: none;
     cursor: pointer;
@@ -83,3 +124,4 @@ html {
   width: 15px;
   height: 15px;
 }
+

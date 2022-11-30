@@ -36,7 +36,9 @@ export const PaginationBase: React.FC = () => {
     } catch (error) {
       setHaveError(true);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     }
   }, [currentPage, itemsPerPage]);
 
