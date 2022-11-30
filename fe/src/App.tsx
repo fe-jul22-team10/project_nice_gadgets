@@ -9,6 +9,7 @@ import { Favourites } from './pages/Favourites';
 import { NotFound } from './components/NotFound';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
+import { Item } from './pages/Item';
 import StateContext from './components/Context/Context';
 import classNames from 'classnames';
 import './styles/index.scss';
@@ -50,7 +51,7 @@ export const App: React.FC = () => {
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
-          <Route path=":pageId" element={<Catalog />} />
+          <Route path=":id" element={<Item />} />
         </Route>
 
         <Route
