@@ -12,11 +12,11 @@ import { NotFound } from '../NotFound';
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(71);
+  const [itemsPerPage, setItemsPerPage] = useState(16);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
-  const [sortBy, setSortBy] = useState('new');
+  const [sortBy, setSortBy] = useState('newest');
 
   useEffect(() => {
     const requestProductsFromServer = async() => {
@@ -55,12 +55,12 @@ export const PaginationBase: React.FC = () => {
 
   products.sort((phone1, phone2) => {
     switch (sortBy) {
-      case 'new':
+      case 'newest':
         return phone2.year - phone1.year;
-      case 'cheap':
+      case 'alphabetically':
+        return phone1.phoneId.localeCompare(phone2.phoneId);
+      case 'cheapest':
         return phone1.price - phone2.price;
-      case 'expensive':
-        return phone2.price - phone1.price;
       default:
         return 0;
     }
@@ -81,9 +81,9 @@ export const PaginationBase: React.FC = () => {
                 value={sortBy}
                 onChange={handleSortBy}
               >
-                <option value="new">Newest</option>
-                <option value="cheap">Cheap first</option>
-                <option value="expensive">Expensive first</option>
+                <option value="newest">Newest</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="cheapest">Cheapest</option>
               </select>
             </div>
           </div>
@@ -97,9 +97,9 @@ export const PaginationBase: React.FC = () => {
                 onChange={handleItemsPerPage}
               >
                 <option value="71">All</option>
-                <option value="24">24</option>
                 <option value="16">16</option>
                 <option value="8">8</option>
+                <option value="4">4</option>
               </select>
             </div>
           </div>
