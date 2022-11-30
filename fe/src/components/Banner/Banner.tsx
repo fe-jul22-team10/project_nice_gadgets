@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import BannerMobile1 from '../../assets/images/photos/banner-mobile-1.png';
 import BannerMobile2 from '../../assets/images/photos/banner-mobile-2.png';
 import BannerMobile3 from '../../assets/images/photos/banner-mobile-3.png';
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -28,10 +28,14 @@ export const Banner: React.FC = () => {
         </div>
         <div className="banner__slider">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={18}
             slidesPerView={1}
             loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
             navigation={{
               prevEl: '.prev',
               nextEl: '.next',
