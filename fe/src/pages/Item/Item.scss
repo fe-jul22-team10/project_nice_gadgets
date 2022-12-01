@@ -24,20 +24,28 @@
 }
 
 .item-page-title {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   font-family: 'Mont';
-  font-size: 32px;
-  line-height: 41px;
+  font-size: 22px;
+  line-height: 31px;
   font-weight: 800;
   letter-spacing: -1%;
   color: #0f0f11;
+
+  @include onTablet {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
 
 .visual-block {
   display: flex;
+  flex-direction: column;
   margin-bottom: 56px;
 
   @include onTablet {
+    flex-direction: row;
     margin-bottom: 64px;
   }
 
@@ -55,8 +63,13 @@
   }
 
   &__poster {
+    order: -1;
+    margin: 0 auto 24px;
+
     @include onTablet {
-      margin-right: 16px;
+      order: 0;
+      margin: 0;
+      margin-right: 18px;
     }
 
     @include onDesktop {
@@ -67,12 +80,20 @@
 
 .gallery {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+
+  margin-bottom: 40px;
+
+  @include onTablet {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
   &__wrapper {
     margin-bottom: 13px;
 
     @include onTablet {
+      flex-direction: column;
       margin-bottom: 15px;
     }
 
@@ -86,13 +107,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
-  width: 80px;
+
+  margin-right: 8px;
+  height: 48px;
+  width: 50px;
   border: 1px solid #c4c4c4;
   border-radius: 8px;
   cursor: pointer;
 
   transition: border 0.3s;
+
+  @include onTablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include onDesktop {
+    height: 80px;
+    width: 80px;
+  }
 
   &--selected {
     border: 1px solid #0f0f11;
@@ -103,7 +136,15 @@
   }
 
   &__img {
-    height: 66px;
+    height: 39px;
+
+    @include onTablet {
+      height: 28px;
+    }
+
+    @include onDesktop{
+      height: 65px;
+    }
   }
 }
 
@@ -112,8 +153,8 @@
   justify-content: center;
 
   padding: 7px;
-  width: 275px;
-  height: 275px;
+  width: 288px;
+  height: 288px;
 
   @include onTablet {
     width: 287px;
@@ -132,7 +173,6 @@
 }
 
 .specification {
-
   &__identificator {
     margin-bottom: 8px;
   }
@@ -252,6 +292,7 @@
   &__button {
     margin-right: 8px;
     height: 32px;
+    width: 63px;
 
     font-family: 'Mont';
     font-size: 14px;
@@ -298,11 +339,11 @@
 .buttons {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
 
   &__cart {
-    margin-right: 8px;
     height: 48px;
-    width: 231px;
+    width: 270px;
     font-family: 'Mont';
     font-size: 14px;
     border-radius: 48px;
@@ -368,12 +409,17 @@
 
 .description-block {
   display: flex;
+  flex-direction: column;
   gap: 64px;
+  margin-bottom: 56px;
+
+  @include onDesktop {
+    flex-direction: row;
+    margin-bottom: 80px;
+  }
 }
 
 .about {
-  width: 512px;
-  
   &__title {
     margin-bottom: 16px;
     font-family: 'Mont';
@@ -385,6 +431,10 @@
   &__line {
     margin-bottom: 32px;
     border-bottom: 1px solid #e2e6e9;
+  }
+
+  @include onDesktop{
+    width: 600px;
   }
 }
 
