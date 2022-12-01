@@ -4,6 +4,8 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './Item.scss';
 
 export const Item: React.FC = () => {
+  const baseUrl = 'https://project-nice-gadgets.herokuapp.com/';
+
   return (
     <div className="container">
       <Breadcrumbs />
@@ -16,24 +18,48 @@ export const Item: React.FC = () => {
       </h1>
       <div className="visual-block">
         <div className="visual-block__gallery gallery">
-            <div className="gallery__img">
-              <img src="" alt="phone_icon_1" />
+            <div className="gallery__wrapper wrapper wrapper--selected">
+              <img
+                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/00.jpg`}
+                alt="phone_icon_1"
+                className="wrapper__img"
+              />
             </div>
-            <div className="gallery__img">
-              <img src="" alt="phone_icon_2" />
+            <div className="gallery__wrapper wrapper">
+              <img
+                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/01.jpg`}
+                alt="phone_icon_2"
+                className="wrapper__img"
+              />
             </div>
-            <div className="gallery__img">
-              <img src="" alt="phone_icon_3" />
+            <div className="gallery__wrapper wrapper">
+              <img
+                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/02.jpg`}
+                alt="phone_icon_3"
+                className="wrapper__img"
+              />
             </div>
-            <div className="gallery__img">
-              <img src="" alt="phone_icon_4" />
+            <div className="gallery__wrapper wrapper">
+              <img
+                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/03.jpg`}
+                alt="phone_icon_4"
+                className="wrapper__img"
+              />
             </div>
-            <div className="gallery__img">
-              <img src="" alt="phone_icon_5" />
+            <div className="gallery__wrapper wrapper">
+              <img
+                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/04.jpg`}
+                alt="phone_icon_5"
+                className="wrapper__img"
+              />
             </div>
         </div>
-        <div className="visual-block__img">
-          <img src="" alt="main__img" />
+        <div className="visual-block__poster poster">
+          <img
+            src={`${baseUrl}img/phones/apple-iphone-xr/yellow/00.jpg`}
+            alt="main__img"
+            className="poster__img"
+          />
         </div>
         <div className="visual-block__specification specification">
           <div className="specification__identificator identificator">
@@ -41,28 +67,39 @@ export const Item: React.FC = () => {
             <p className="identificator__id">ID: 802390</p>
           </div>
           <div className="specification__color-switch color-switch">
-            <div className="color-switch__color1"></div>
-            <div className="color-switch__color2"></div>
-            <div className="color-switch__color3"></div>
-            <div className="color-switch__color4"></div>
+            <div
+              className="color-switch__border color-switch__border--selected">
+              <div className="color-switch__color1"></div>
+            </div>
+            <div className="color-switch__border">
+              <div className="color-switch__color2"></div>
+            </div>
+            <div className="color-switch__border">
+              <div className="color-switch__color3"></div>
+            </div>
+            <div className="color-switch__border">
+              <div className="color-switch__color4"></div>
+            </div>
           </div>
           <div className="specification__line"></div>
           <div className="specification__capacity capacity">
             <div className="capacity__text">Select capacity</div>
             <div className="capacity__value value">
-              <button className="value__button">64 GB</button>
+              <button className="value__button value__button--selected">
+                64 GB
+              </button>
               <button className="value__button">256 GB</button>
               <button className="value__button">512 GB</button>
             </div>
           </div>
           <div className="specification__line"></div>
           <div className="specification__price price">
-            <div className="price__discount">$799</div>
-            <div className="price__full">$1199</div>
+            <span className="price__discount">$799</span>
+            <span className="price__full">$1199</span>
           </div>
-          <div className="spicification__buttons">
-            <button>Add to cart</button>
-            <button>Fav</button>
+          <div className="specification__buttons buttons">
+            <button className="buttons__cart">Add to cart</button>
+            <button className="buttons__favourite"></button>
           </div>
           <div className="specification__characteristics characteristics">
             <div className="characteristics__characteristic characteristic">
@@ -86,7 +123,7 @@ export const Item: React.FC = () => {
       </div>
       <div className="description-block">
         <div className="description-block__about about">
-          <h3 className="about">About</h3>
+          <h3 className="about__title">About</h3>
           <div className="about__line"></div>
           <div className="about__section section">
             <h4 className="section__title">And then there was Pro</h4>
@@ -129,9 +166,9 @@ export const Item: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="description-block__specs specs">
-          <h3 className="specs">Tech specs</h3>
-          <div className="specs__line"></div>
+        <div className="description-block__about about">
+          <h3 className="about__title">Tech specs</h3>
+          <div className="about__line"></div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Screen</p>
