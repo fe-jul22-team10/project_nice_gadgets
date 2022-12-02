@@ -69,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     <div className="card">
       <div className="card__container">
         <img
-          src={`https://project-nice-gadgets.herokuapp.com/${image}`}
+          src={`https://project-nice-gadgets.onrender.com/${image}`}
           alt={itemId}
           className="card__img"
         />

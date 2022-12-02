@@ -15,7 +15,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 export const Banner: React.FC = () => {
-  const baseUrl = 'https://project-nice-gadgets.herokuapp.com/img/';
+  const baseUrl = 'https://project-nice-gadgets.onrender.com/img/';
   const onTablet = useMediaQuery({
     query: '(max-width: 640px)',
   });
