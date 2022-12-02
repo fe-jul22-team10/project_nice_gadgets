@@ -1,3 +1,7 @@
+.navlink-card {
+  margin: 0 auto;
+}
+
 .card {
   padding: 32px;
   width: 270px;
@@ -8,6 +12,12 @@
   border: 1px solid #e2e6e9;
   border-radius: 8px;
   background-color: #fff;
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+  }
 
 
   &__container {
