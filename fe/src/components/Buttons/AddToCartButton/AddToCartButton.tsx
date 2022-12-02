@@ -3,8 +3,8 @@ import { Card } from '../../../types/Card';
 import './AddToCartButton.scss';
 
 type Props = {
-  onAdd?: () => void,
-  onRemove?: () => void,
+  onAdd: () => void,
+  onRemove: () => void,
   phone: Card,
   cartItems: Card[],
 }

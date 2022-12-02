@@ -4,7 +4,6 @@ import { Card } from '../../types/Card';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavouritesButton } from '../Buttons/AddToFavouritesButton';
 import StateContext from '../../components/Context/Context';
-import { NavLink } from 'react-router-dom';
 
 type Props = {
   phone: Card;
@@ -12,7 +11,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
-    id,
     itemId,
     name,
     image,
@@ -70,13 +68,11 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
     <div className="card">
       <div className="card__container">
-        <NavLink to={`/phones/${id}`} className="card-navlink">
-          <img
-            src={`https://project-nice-gadgets.herokuapp.com/${image}`}
-            alt={itemId}
-            className="card__img"
-          />
-        </NavLink>
+        <img
+          src={`https://project-nice-gadgets.herokuapp.com/${image}`}
+          alt={itemId}
+          className="card__img"
+        />
         <h2 className="card__title">{name}</h2>
         <div className="card__price">
           <p className="card__price-discount">${price}</p>
