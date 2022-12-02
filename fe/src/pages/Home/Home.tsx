@@ -35,7 +35,7 @@ export const Home = () => {
   const newModels = phones.filter(phone => phone.year >= 2019);
   const hotPrice = phones.filter(phone => phone.price >= 1300);
 
-  const baseUrl = 'https://project-nice-gadgets.herokuapp.com/img';
+  const baseUrl = 'https://project-nice-gadgets.onrender.com/img';
   const mobilePhonesImage = `${baseUrl}/category-phones.png`;
   const tabletsImage = `${baseUrl}/category-tablets.png`;
   const accessoriesImage = `${baseUrl}/category-accessories.png`;

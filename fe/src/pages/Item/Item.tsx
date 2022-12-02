@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './Item.scss';
 
 export const Item: React.FC = () => {
-  const baseUrl = 'https://project-nice-gadgets.herokuapp.com/';
+  const baseUrl = 'https://project-nice-gadgets.onrender.com/';
 
   return (
     <div className="container">

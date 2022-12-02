@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { Card } from '../types/Card';
 
-axios.defaults.baseURL = 'https://project-nice-gadgets.herokuapp.com/';
+axios.defaults.baseURL = 'https://project-nice-gadgets.onrender.com/';
 
 export const getPhones = async(obj: Record<string, string>) => {
   const queryString = new URLSearchParams(obj).toString();

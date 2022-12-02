@@ -51,7 +51,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         </div>
         <div>
           <img
-            src={`https://project-nice-gadgets.herokuapp.com/${image}`}
+            src={`https://project-nice-gadgets.onrender.com/${image}`}
             alt="phone"
             className="cart-item__img"
           />
