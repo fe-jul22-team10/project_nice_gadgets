@@ -47,7 +47,7 @@ export const App: React.FC = () => {
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
       <Routes>
-        <Route path="*" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
