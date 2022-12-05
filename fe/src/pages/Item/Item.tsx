@@ -39,47 +39,71 @@ export const Item: React.FC<Props> = ({ item }) => {
       <div className="visual-block">
         <div className="visual-block__gallery gallery">
             <div className="gallery__wrapper wrapper wrapper--selected">
-              <img
+              {item ? (
+                <img
                 src={`${baseUrl}${item?.images[0]}`}
                 alt="phone_icon_1"
                 className="wrapper__img"
-              />
+                />
+              ) : (
+                ''
+              )}
             </div>
             <div className="gallery__wrapper wrapper">
-              <img
-                src={`${baseUrl}${item?.images[1]}`}
-                alt="phone_icon_2"
-                className="wrapper__img"
-              />
+              {item ? (
+                <img
+                  src={`${baseUrl}${item?.images[1]}`}
+                  alt="phone_icon_1"
+                  className="wrapper__img"
+                />
+              ) : (
+                ''
+              )}
             </div>
             <div className="gallery__wrapper wrapper">
-              <img
+              {item ? (
+                <img
                 src={`${baseUrl}${item?.images[2]}`}
-                alt="phone_icon_3"
+                alt="phone_icon_1"
                 className="wrapper__img"
-              />
+                />
+              ) : (
+                ''
+              )}
             </div>
             <div className="gallery__wrapper wrapper">
-              <img
-                src={`${baseUrl}${item?.images[3]}`}
-                alt="phone_icon_4"
-                className="wrapper__img"
-              />
-            </div>
+              {item ? (
+                <img
+                  src={`${baseUrl}${item?.images[3]}`}
+                  alt="phone_icon_1"
+                  className="wrapper__img"
+                />
+              ) : (
+                ''
+              )}
+              </div>
             <div className="gallery__wrapper wrapper">
-              <img
-                src={`${baseUrl}${item?.images[4]}`}
-                alt="phone_icon_5"
-                className="wrapper__img"
-              />
+              {item ? (
+                <img
+                  src={`${baseUrl}${item?.images[4]}`}
+                  alt="phone_icon_1"
+                  className="wrapper__img"
+                />
+              ) : (
+                ''
+              )}
             </div>
         </div>
         <div className="visual-block__poster poster">
-          <img
-            src={`${baseUrl}${item?.images[0]}`}
-            alt="main__img"
-            className="poster__img"
-          />
+          {item ? (
+            <img
+              src={`${baseUrl}${item?.images[0]}`}
+              alt="main__img"
+              className="poster__img"
+            />
+          ) : (
+            ''
+          )}
         </div>
         <div className="visual-block__specification specification">
           <div className="specification__identificator identificator">
