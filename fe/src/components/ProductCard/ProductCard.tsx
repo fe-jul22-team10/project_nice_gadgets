@@ -5,6 +5,7 @@ import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavouritesButton } from '../Buttons/AddToFavouritesButton';
 import StateContext from '../../components/Context/Context';
 import { NavLink } from 'react-router-dom';
+import { getPhone } from '../../api/item';
 
 type Props = {
   phone: Card;
@@ -12,7 +13,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
-    id,
     itemId,
     name,
     image,
@@ -28,6 +28,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     cartItems,
     setCartItems,
   } = useContext(StateContext);
+
+  const handleSetId = (itemId: string) => {
+    getPhone(itemId)
+      .then(res => localStorage.setItem('setId', JSON.stringify(res)))
+      .catch(() => {
+        throw new Error('Somthing went wrong');
+      });
+  };
 
   useEffect(() => {
     localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
@@ -68,9 +76,9 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" onClick={() => handleSetId(itemId)}>
       <div className="card__container">
-        <NavLink to={`/phones/${id}`} className="navlink-card">
+        <NavLink to={`/phones/${itemId}`} className="navlink-card">
           <img
             src={`https://project-nice-gadgets.onrender.com/${image}`}
             alt={itemId}
