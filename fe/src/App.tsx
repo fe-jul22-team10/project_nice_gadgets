@@ -10,6 +10,7 @@ import { NotFound } from './components/NotFound';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { Item } from './pages/Item';
+import { ItemPage } from './types/ItemPage';
 import StateContext from './components/Context/Context';
 import classNames from 'classnames';
 import './styles/index.scss';
@@ -20,6 +21,7 @@ export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
+  const [item, setItem] = useState<ItemPage>();
 
   useEffect(() => {
     setFavouriteItems(
@@ -28,6 +30,10 @@ export const App: React.FC = () => {
 
     setCartItems(
       JSON.parse(localStorage.getItem('cartItems') || '[]') as Card[],
+    );
+
+    setItem(
+      JSON.parse(localStorage.getItem('setId') || '{}') as ItemPage,
     );
   }, []);
 
@@ -51,7 +57,7 @@ export const App: React.FC = () => {
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
-          <Route path=":id" element={<Item />} />
+          <Route path=":itemId" element={item && <Item item={item} />} />
         </Route>
 
         <Route

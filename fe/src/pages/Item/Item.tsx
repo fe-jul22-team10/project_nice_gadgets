@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getPhones } from '../../api/phones';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Slider } from '../../components/Slider';
+import { Card } from '../../types/Card';
+import { ItemPage } from '../../types/ItemPage';
 
 import './Item.scss';
 
-export const Item: React.FC = () => {
+type Props = {
+  item: ItemPage | undefined,
+}
+
+export const Item: React.FC<Props> = ({ item }) => {
   const baseUrl = 'https://project-nice-gadgets.onrender.com/';
+  const [youMayLike, setYouMayLike] = useState<Card[]>([]);
+
+  useEffect(() => {
+    getPhones({
+      amount: '7',
+      page: '1',
+    })
+      .then(result => setYouMayLike(result[1]))
+      .catch(() => {
+        throw new Error('Something went wrong');
+      });
+  }, []);
 
   return (
     <div className="container">
@@ -14,41 +34,41 @@ export const Item: React.FC = () => {
         <p className="back-block__text">Back</p>
       </div>
       <h1 className="item-page-title">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        {item?.name}
       </h1>
       <div className="visual-block">
         <div className="visual-block__gallery gallery">
             <div className="gallery__wrapper wrapper wrapper--selected">
               <img
-                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/00.jpg`}
+                src={`${baseUrl}${item?.images[0]}`}
                 alt="phone_icon_1"
                 className="wrapper__img"
               />
             </div>
             <div className="gallery__wrapper wrapper">
               <img
-                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/01.jpg`}
+                src={`${baseUrl}${item?.images[1]}`}
                 alt="phone_icon_2"
                 className="wrapper__img"
               />
             </div>
             <div className="gallery__wrapper wrapper">
               <img
-                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/02.jpg`}
+                src={`${baseUrl}${item?.images[2]}`}
                 alt="phone_icon_3"
                 className="wrapper__img"
               />
             </div>
             <div className="gallery__wrapper wrapper">
               <img
-                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/03.jpg`}
+                src={`${baseUrl}${item?.images[3]}`}
                 alt="phone_icon_4"
                 className="wrapper__img"
               />
             </div>
             <div className="gallery__wrapper wrapper">
               <img
-                src={`${baseUrl}img/phones/apple-iphone-xr/yellow/04.jpg`}
+                src={`${baseUrl}${item?.images[4]}`}
                 alt="phone_icon_5"
                 className="wrapper__img"
               />
@@ -56,7 +76,7 @@ export const Item: React.FC = () => {
         </div>
         <div className="visual-block__poster poster">
           <img
-            src={`${baseUrl}img/phones/apple-iphone-xr/yellow/00.jpg`}
+            src={`${baseUrl}${item?.images[0]}`}
             alt="main__img"
             className="poster__img"
           />
@@ -94,8 +114,8 @@ export const Item: React.FC = () => {
           </div>
           <div className="specification__line"></div>
           <div className="specification__price price">
-            <span className="price__discount">$799</span>
-            <span className="price__full">$1199</span>
+            <span className="price__discount">${item?.priceDiscount}</span>
+            <span className="price__full">${item?.priceRegular}</span>
           </div>
           <div className="specification__buttons buttons">
             <button className="buttons__cart">Add to cart</button>
@@ -104,19 +124,19 @@ export const Item: React.FC = () => {
           <div className="specification__characteristics characteristics">
             <div className="characteristics__characteristic characteristic">
               <p className="characteristic__key">Screen</p>
-              <p className="characteristic__value">6.5” OLED</p>
+              <p className="characteristic__value">{item?.screen}</p>
             </div>
             <div className="characteristics__characteristic characteristic">
               <p className="characteristic__key">Resolution</p>
-              <p className="characteristic__value">2688x1242</p>
+              <p className="characteristic__value">{item?.resolution}</p>
             </div>
             <div className="characteristics__characteristic characteristic">
               <p className="characteristic__key">Processor</p>
-              <p className="characteristic__value">6.5” OLED</p>
+              <p className="characteristic__value">{item?.processor}</p>
             </div>
             <div className="characteristics__characteristic characteristic">
               <p className="characteristic__key">RAM</p>
-              <p className="characteristic__value">3 GB</p>
+              <p className="characteristic__value">{item?.ram}</p>
             </div>
           </div>
         </div>
@@ -126,44 +146,16 @@ export const Item: React.FC = () => {
           <h3 className="about__title">About</h3>
           <div className="about__line"></div>
           <div className="about__section section">
-            <h4 className="section__title">And then there was Pro</h4>
-            <p className="section__text">
-              A transformative triple-camera system that
-              adds tons of capability without complexity.
-            </p>
-            <p className="section__text">
-              An unprecedented leap in battery life.
-              And a mind-qblowing chip that doubles down on machine learning
-              and pushes the boundaries of what a smartphone can do.
-              Welcome to the first iPhone powerful enough to be called Pro.
-            </p>
+            <h4 className="section__title">{item?.description[0].title}</h4>
+            <p className="section__text">{item?.description[0].text}</p>
           </div>
           <div className="about__section section">
-            <h4 className="section__title">Camera</h4>
-            <p className="section__text">
-              Meet the first triple-camera system to combine cutting-edge
-              technology with the legendary simplicity of iPhone.
-              Capture up to four times more scene.
-              Get beautiful images in drastically lower light.
-              Shoot the highest-quality video in a smartphone —
-              then edit with the same tools you love for photos.
-              You`ve never shot with anything like it.
-            </p>
+            <h4 className="section__title">{item?.description[1].title}</h4>
+            <p className="section__text">{item?.description[1].text}</p>
           </div>
           <div className="about__section section">
-            <h4 className="section__title">
-              Shoot it. Flip it. Zoom it. Crop it.
-              Cut it. Light it. Tweak it. Love it.
-            </h4>
-            <p className="section__text">
-              iPhone 11 Pro lets you capture videos that are
-              beautifully true to life, with greater detail and smoother motion.
-              Epic processing power means it can shoot 4K video
-              with extended dynamic range and cinematic video
-              stabilization — all at 60 fps.
-              You get more creative control, too, with four times
-              more scene and powerful new editing tools to play with.
-            </p>
+            <h4 className="section__title">{item?.description[2].title}</h4>
+            <p className="section__text">{item?.description[2].text}</p>
           </div>
         </div>
         <div className="description-block__about about">
@@ -172,53 +164,61 @@ export const Item: React.FC = () => {
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Screen</p>
-              <p className="feature__value">6.5” OLED</p>
+              <p className="feature__value">{item?.screen}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Resolution</p>
-              <p className="feature__value">2688x1242</p>
+              <p className="feature__value">{item?.resolution}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Processor</p>
-              <p className="feature__value">Apple A12 Bionic</p>
+              <p className="feature__value">{item?.processor}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">RAM</p>
-              <p className="feature__value">3 GB</p>
+              <p className="feature__value">{item?.ram}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Built in memory</p>
-              <p className="feature__value">64 GB</p>
+              <p className="feature__value">{item?.capacity}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Camera</p>
-              <p className="feature__value">12 Mp + 12 Mp + 12 Mp (Triple)</p>
+              <p className="feature__value">{item?.camera}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Zoom</p>
-              <p className="feature__value">Optical, 2x</p>
+              <p className="feature__value">{item?.zoom}</p>
             </div>
           </div>
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Cell</p>
-              <p className="feature__value">GSM, LTE, UMTS</p>
+              <p className="feature__value">{item?.cell}</p>
             </div>
           </div>
         </div>
       </div>
+      <div className="homepage__title-block">
+        <h2 className="homepage__subtitle">You may also like</h2>
+        <div className="homepage__button-wrapper">
+          <div className="homepage__button-prev"></div>
+          <div className="homepage__button-next"></div>
+        </div>
+      </div>
+      <Slider phones={youMayLike} />
     </div>
   );
 };
