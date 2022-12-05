@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { CartItem } from '../../components/CartItem';
 import { CartItemCalculator } from '../../components/CartItemCalculator';
@@ -14,8 +15,10 @@ export const Cart: React.FC<Props> = ({ items }) => {
   return (
     <div className="container">
       <div className="cart-breadcrumbs">
-        <span className="cart-breadcrumbs__arrow"></span>
-        <p className="cart-breadcrumbs__text">Back</p>
+        <Link to="phones" className="cart-back-block">
+          <div className="cart-breadcrumbs__arrow"></div>
+          <p className="cart-breadcrumbs__text">Back</p>
+        </Link>
       </div>
       <div className='cart'>
         {items.length > 0 ? (

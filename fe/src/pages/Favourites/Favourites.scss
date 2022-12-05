@@ -16,3 +16,16 @@
     font-size: 48px;
   }
 }
+
+.back-block {
+  &__text {
+    display: inline;
+    margin-right: 14px;
+    font-family: 'Mont';
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #0f0f11;
+  }
+}
+
