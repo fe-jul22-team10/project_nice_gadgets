@@ -8,6 +8,7 @@ import { Card } from '../../types/Card';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { NotFound } from '../NotFound';
+import { Link } from 'react-router-dom';
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +72,15 @@ export const PaginationBase: React.FC = () => {
   return (
     <div className="container-pagination">
       <div className="container">
-        <Breadcrumbs />
+      <div className="back-block">
+        <Link to="/home" className="link-breadcrumbs">
+          <Breadcrumbs />
+        </Link>
+        <div className="back-block__arrow"></div>
+        <Link to="/phones" className="link-breadcrumbs">
+          <p className="back-block__link">Phones</p>
+        </Link>
+      </div>
         <h1 className="page-title">Mobile Phones</h1>
         <p className="page-total-models">{products.length} models</p>
         <div className="sort-block">

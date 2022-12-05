@@ -11,11 +11,16 @@
   @include onDesktop {
     margin-bottom: 24px;
   }
+  .cart-back-block {
+    display: flex;
+    text-decoration: none;
+  }
 
   &__arrow {
     height: 9px;
     width: 9px;
     margin-right: 9px;
+    align-items: center;
     background-image: url(../../assets/images/icons/breadcrumbs-prev.svg);
     background-repeat: no-repeat;
   }
@@ -23,7 +28,7 @@
   &__text {
     font-family: 'Mont';
     font-size: 12px;
-    line-height: 13px;
+    line-height: 12px;
     color: #89939a;
   }
 }

@@ -4,6 +4,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Card } from '../../types/Card';
 
 import './Favourites.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   items: Card[],
@@ -12,7 +13,15 @@ type Props = {
 export const Favourites: React.FC<Props> = ({ items }) => {
   return (
     <div className="container">
-      <Breadcrumbs />
+      <div className="back-block">
+        <Link to="/home">
+          <Breadcrumbs />
+        </Link>
+        <div className="back-block__arrow"></div>
+        <Link to="/phones" className="link-breadcrumbs">
+          <p className="back-block__text">Favourites</p>
+        </Link>
+      </div>
       {items.length > 0 ? (
         <>
         <h1 className="page-title">Favourites</h1>

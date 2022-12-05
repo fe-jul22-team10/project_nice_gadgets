@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getPhones } from '../../api/phones';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Slider } from '../../components/Slider';
 import { Card } from '../../types/Card';
 import { ItemPage } from '../../types/ItemPage';
+import classNames from 'classnames';
 
 import './Item.scss';
 
@@ -12,8 +14,11 @@ type Props = {
 }
 
 export const Item: React.FC<Props> = ({ item }) => {
-  const baseUrl = 'https://project-nice-gadgets.onrender.com/';
   const [youMayLike, setYouMayLike] = useState<Card[]>([]);
+  const [selectedImage, setSelectedImage] = useState('00.jpg');
+  const [selectedColor, setSelectedColor] = useState('black');
+  const [selectedCapacity, setSelectedCapacity] = useState('64GB');
+  const baseUrl = 'https://project-nice-gadgets.onrender.com/';
 
   useEffect(() => {
     getPhones({
@@ -26,78 +31,63 @@ export const Item: React.FC<Props> = ({ item }) => {
       });
   }, []);
 
+  const handleSelectImage = (image: string) => {
+    const numberOfImage = image.slice(-6);
+
+    return setSelectedImage(numberOfImage);
+  };
+  const handleSelectedColor = (color: string) => setSelectedColor(color);
+  const handleSelectCapacity = (value: string) => setSelectedCapacity(value);
+
   return (
     <div className="container">
-      <Breadcrumbs />
       <div className="back-block">
+        <Link to="/home" className="link-breadcrumbs">
+          <Breadcrumbs />
+        </Link>
+        <div className="back-block__arrow"></div>
+        <Link to="/phones" className="link-breadcrumbs">
+          <p className="back-block__link">Phones</p>
+        </Link>
+        <div className="back-block__arrow"></div>
+        <p className="back-block__text">{item?.name}</p>
+      </div>
+      <div className="back-block">
+      <Link to="/phones" className="link-breadcrumbs">
         <div className="back-block__img"></div>
         <p className="back-block__text">Back</p>
+      </Link>
       </div>
       <h1 className="item-page-title">
         {item?.name}
       </h1>
       <div className="visual-block">
         <div className="visual-block__gallery gallery">
-            <div className="gallery__wrapper wrapper wrapper--selected">
-              {item ? (
-                <img
-                src={`${baseUrl}${item?.images[0]}`}
-                alt="phone_icon_1"
+          {item?.images.map(image => {
+            const isSelected = image.slice(-6) === selectedImage;
+
+            return (
+              <div
+                className={classNames(
+                  'gallery__wrapper wrapper',
+                  { 'wrapper--selected': isSelected },
+                )}
+                key={Math.random()}
+              >
+              <img
+                src={`${baseUrl}${image}`}
+                alt={`img_${image.slice(-5, -4)}`}
                 className="wrapper__img"
-                />
-              ) : (
-                ''
-              )}
+                onClick={() => handleSelectImage(image)}
+              />
             </div>
-            <div className="gallery__wrapper wrapper">
-              {item ? (
-                <img
-                  src={`${baseUrl}${item?.images[1]}`}
-                  alt="phone_icon_1"
-                  className="wrapper__img"
-                />
-              ) : (
-                ''
-              )}
-            </div>
-            <div className="gallery__wrapper wrapper">
-              {item ? (
-                <img
-                src={`${baseUrl}${item?.images[2]}`}
-                alt="phone_icon_1"
-                className="wrapper__img"
-                />
-              ) : (
-                ''
-              )}
-            </div>
-            <div className="gallery__wrapper wrapper">
-              {item ? (
-                <img
-                  src={`${baseUrl}${item?.images[3]}`}
-                  alt="phone_icon_1"
-                  className="wrapper__img"
-                />
-              ) : (
-                ''
-              )}
-              </div>
-            <div className="gallery__wrapper wrapper">
-              {item ? (
-                <img
-                  src={`${baseUrl}${item?.images[4]}`}
-                  alt="phone_icon_1"
-                  className="wrapper__img"
-                />
-              ) : (
-                ''
-              )}
-            </div>
+            );
+          })}
         </div>
         <div className="visual-block__poster poster">
           {item ? (
             <img
-              src={`${baseUrl}${item?.images[0]}`}
+              src={`${baseUrl}${item?.images[0].slice(0, -6)}/${selectedImage}`}
               alt="main__img"
               className="poster__img"
             />
@@ -111,29 +101,43 @@ export const Item: React.FC<Props> = ({ item }) => {
             <p className="identificator__id">ID: 802390</p>
           </div>
           <div className="specification__color-switch color-switch">
-            <div
-              className="color-switch__border color-switch__border--selected">
-              <div className="color-switch__color1"></div>
-            </div>
-            <div className="color-switch__border">
-              <div className="color-switch__color2"></div>
-            </div>
-            <div className="color-switch__border">
-              <div className="color-switch__color3"></div>
-            </div>
-            <div className="color-switch__border">
-              <div className="color-switch__color4"></div>
-            </div>
+            {item?.colorsAvailable.map(color => {
+              const isSelected = color === selectedColor;
+
+              return (
+                <div
+                  className={classNames(
+                    'color-switch__border',
+                    { 'color-switch__border--selected': isSelected },
+                  )}
+                  onClick={() => handleSelectedColor(color)}
+                  key={Math.random()}
+                >
+                  <div className={`color-switch__${color}`}></div>
+                </div>
+              );
+            })}
           </div>
           <div className="specification__line"></div>
           <div className="specification__capacity capacity">
             <div className="capacity__text">Select capacity</div>
             <div className="capacity__value value">
-              <button className="value__button value__button--selected">
-                64 GB
-              </button>
-              <button className="value__button">256 GB</button>
-              <button className="value__button">512 GB</button>
+              {item?.capacityAvailable.map(value => {
+                const isSelected = value === selectedCapacity;
+
+                return (
+                  <button
+                    className={classNames(
+                      'value__button',
+                      { 'value__button--selected': isSelected },
+                    )}
+                    key={Math.random()}
+                    onClick={() => handleSelectCapacity(value)}
+                  >
+                    {value}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div className="specification__line"></div>
@@ -230,7 +234,7 @@ export const Item: React.FC<Props> = ({ item }) => {
           <div className="specs__features features">
             <div className="features__feature feature">
               <p className="feature__key">Cell</p>
-              <p className="feature__value">{item?.cell}</p>
+              <p className="feature__value">{item?.cell.map(cell => `${cell}, `)}</p>
             </div>
           </div>
         </div>
