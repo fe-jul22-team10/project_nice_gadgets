@@ -17,11 +17,10 @@ import { AddToCartButton } from '../../components/Buttons/AddToCartButton';
 import { Loader } from '../../components/Loader';
 
 type Props = {
-  phones: Card[],
   phoneId: number,
 };
 
-export const Item: React.FC<Props> = ({ phones, phoneId }) => {
+export const Item: React.FC<Props> = ({ phoneId }) => {
   const [youMayLike, setYouMayLike] = useState<Card[]>([]);
   const [selectedImage, setSelectedImage] = useState('00.jpg');
   const [selectedColor, setSelectedColor] = useState('black');
@@ -35,7 +34,11 @@ export const Item: React.FC<Props> = ({ phones, phoneId }) => {
     setCartItems,
   } = useContext(StateContext);
 
-  const findPhone = phones.filter(phone => phone.id === phoneId);
+  const phonesFromLocalStorage: Card[] = JSON.parse(
+    localStorage.getItem('phonesFromServer') || '[]',
+  );
+  const findPhone = phonesFromLocalStorage
+    .filter(phone => phone.id === phoneId);
   const fetchId = findPhone[0].itemId;
 
   useEffect(() => {
