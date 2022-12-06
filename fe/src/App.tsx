@@ -10,30 +10,36 @@ import { NotFound } from './components/NotFound';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { Item } from './pages/Item';
-import { ItemPage } from './types/ItemPage';
 import StateContext from './components/Context/Context';
 import classNames from 'classnames';
 import './styles/index.scss';
 import './App.scss';
 import { Card } from './types/Card';
+import { getPhones } from './api/phones';
 
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
-  const [item, setItem] = useState<ItemPage>();
+  const [phonesFromServer, setPhonesFromServer] = useState<Card[]>([]);
+  const [phoneId, setPhoneId] = useState(1);
 
   useEffect(() => {
+    getPhones({
+      amount: '71',
+      page: `1`,
+    })
+      .then(res => setPhonesFromServer(res[1]))
+      .catch(() => {
+        throw new Error('Something went wrong');
+      });
+
     setFavouriteItems(
       JSON.parse(localStorage.getItem('favouriteItems') || '[]') as Card[],
     );
 
     setCartItems(
       JSON.parse(localStorage.getItem('cartItems') || '[]') as Card[],
-    );
-
-    setItem(
-      JSON.parse(localStorage.getItem('setId') || '{}') as ItemPage,
     );
   }, []);
 
@@ -42,6 +48,7 @@ export const App: React.FC = () => {
     setFavouriteItems,
     cartItems,
     setCartItems,
+    setPhoneId,
   };
 
   return (
@@ -57,7 +64,10 @@ export const App: React.FC = () => {
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
-          <Route path=":itemId" element={item && <Item item={item} />} />
+          <Route
+            path=":itemId"
+            element={<Item phones={phonesFromServer} phoneId={phoneId} />}
+          />
         </Route>
 
         <Route

@@ -5,7 +5,7 @@ import './AddToCartButton.scss';
 type Props = {
   onAdd?: () => void,
   onRemove?: () => void,
-  phone: Card,
+  phone: Card | undefined,
   cartItems: Card[],
 }
 
@@ -15,11 +15,15 @@ export const AddToCartButton: React.FC<Props> = ({
   phone,
   cartItems,
 }) => {
-  const isInCart = cartItems.map(item => item.id).includes(phone.id);
+  const isInCart = () => {
+    if (phone !== undefined) {
+      return cartItems.map(item => item.id).includes(phone.id);
+    }
+  };
 
   return (
     <>
-      {!isInCart ? (
+      {!isInCart() ? (
         <button
           type="button"
           className="card__buttons-cart"
