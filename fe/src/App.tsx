@@ -21,15 +21,22 @@ export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
-  const [phonesFromServer, setPhonesFromServer] = useState<Card[]>([]);
-  const [phoneId, setPhoneId] = useState(1);
+  const [phoneId, setPhoneId] = useState(Number(localStorage.getItem('id')));
+
+  useEffect(() => {
+    setPhoneId(
+      Number(localStorage.getItem('id')),
+    );
+  }, [phoneId]);
 
   useEffect(() => {
     getPhones({
       amount: '71',
       page: `1`,
     })
-      .then(res => setPhonesFromServer(res[1]))
+      .then(res => {
+        localStorage.setItem('phonesFromServer', JSON.stringify(res[1]));
+      })
       .catch(() => {
         throw new Error('Something went wrong');
       });
@@ -66,7 +73,7 @@ export const App: React.FC = () => {
           <Route index element={<Catalog />} />
           <Route
             path=":itemId"
-            element={<Item phones={phonesFromServer} phoneId={phoneId} />}
+            element={<Item phoneId={phoneId} />}
           />
         </Route>
 

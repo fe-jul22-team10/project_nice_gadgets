@@ -68,10 +68,16 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     });
   };
 
+  const handleSetItemId = (id: number) => {
+    setPhoneId(id);
+
+    localStorage.setItem('id', String(id));
+  };
+
   return (
     <div
       className="card"
-      onClick={() => setPhoneId(id)}
+      onClick={() => handleSetItemId(id)}
     >
       <div className="card__container">
         <NavLink to={`/phones/${itemId}`} className="navlink-card">
