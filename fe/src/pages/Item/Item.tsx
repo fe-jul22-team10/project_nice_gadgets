@@ -34,9 +34,9 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
     setCartItems,
   } = useContext(StateContext);
 
-  const phonesFromLocalStorage: Card[] = JSON.parse(
+  const phonesFromLocalStorage = JSON.parse(
     localStorage.getItem('phonesFromServer') || '[]',
-  );
+  ) as Card[];
   const findPhone = phonesFromLocalStorage
     .filter(phone => phone.id === phoneId);
   const fetchId = findPhone[0].itemId;
