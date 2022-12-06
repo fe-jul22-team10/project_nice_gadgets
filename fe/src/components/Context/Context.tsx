@@ -8,6 +8,7 @@ interface ContextState {
   setFavouriteItems: (callback: callback) => void,
   cartItems: Card[],
   setCartItems: (callback: callback) => void,
+  setPhoneId: (id: number) => void,
 }
 
 export default React.createContext<ContextState>({} as ContextState);

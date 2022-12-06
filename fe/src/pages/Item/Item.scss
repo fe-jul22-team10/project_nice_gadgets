@@ -201,6 +201,12 @@
 }
 
 .specification {
+  min-width: 280px;
+
+  @include onTablet {
+    min-width: 300px;
+  }
+
   &__identificator {
     margin-bottom: 8px;
   }
