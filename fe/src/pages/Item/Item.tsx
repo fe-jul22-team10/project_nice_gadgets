@@ -49,14 +49,6 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
       });
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
-  }, [favouriteItems]);
-
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
   const handleAddToFavorite = () => {
     setFavouriteItems((prev) => [...prev, findPhone[0]]);
   };
