@@ -24,7 +24,7 @@ export const Slider: React.FC<Props> = ({ phones }) => {
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={18}
-        slidesPerView={1.4}
+        slidesPerView={1.3}
         breakpoints={{
           640: { slidesPerView: 2.5 },
           1200: { slidesPerView: 4 },

@@ -9,10 +9,6 @@ li {
   list-style-type: none;
 }
 
-.container-pagination {
-  padding: 0 32px 32px;
-}
-
 .page-title {
   margin-bottom: 8px;
 
@@ -34,7 +30,12 @@ li {
 
 .sort-block {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
+
+  @include onTablet {
+    justify-content: flex-start;
+  }
 }
 
 .page-item {
@@ -113,11 +114,21 @@ li {
 
   &__select {
     height: 40px;
-    width: 135px;
+    width: 163px;
     border: 1px solid #b4bdc4;
     border-radius: 8px;
     color: #000;
     padding: 10px;
+
+    @include onTablet {
+      width: 128px;
+    }
+  }
+
+  &__sort {
+    @include onTablet {
+      width: 180px;
+    }
   }
 
   &:first-child {

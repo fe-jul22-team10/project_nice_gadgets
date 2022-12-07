@@ -75,7 +75,7 @@ export const BurgerMenu: React.FC<Props> = ({ showBurger, setShowBurger }) => {
         <NavLink
           to="/favourites"
           className={({ isActive }) =>
-            classNames('burger-menu__btn', {
+            classNames('burger-menu__btn burger-menu__fav', {
               'is-active-tab': isActive,
             })
           }
