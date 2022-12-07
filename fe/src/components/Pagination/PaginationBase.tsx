@@ -88,10 +88,9 @@ export const PaginationBase: React.FC = () => {
             <div className="items-count__name">Sort by</div>
             <div>
               <select
-                className="items-count__select"
+                className="items-count__select items-count__sort"
                 value={sortBy}
                 onChange={handleSortBy}
-                style={{ width: '180px' }}
               >
                 <option value="newest">Newest</option>
                 <option value="alphabetically">Alphabetically</option>
