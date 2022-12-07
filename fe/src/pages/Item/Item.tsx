@@ -26,6 +26,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
   const [selectedColor, setSelectedColor] = useState('black');
   const [selectedCapacity, setSelectedCapacity] = useState('64GB');
   const [item, setItem] = useState<ItemPage>();
+  const [isLoading, setIsLoading] = useState(true);
   const baseUrl = 'https://project-nice-gadgets.onrender.com/';
   const {
     favouriteItems,
@@ -43,11 +44,18 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
 
   useEffect(() => {
     getPhone(fetchId)
-      .then(res => setItem(res))
+      .then(res => {
+        setIsLoading(true);
+
+        return setItem(res);
+      })
       .catch(() => {
         throw new Error('Something went wrong');
-      });
-  }, []);
+      })
+      .finally(() => setTimeout(() => {
+        setIsLoading(false);
+      }, 500));
+  }, [fetchId]);
 
   const handleAddToFavorite = () => {
     setFavouriteItems((prev) => [...prev, findPhone[0]]);
@@ -121,7 +129,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
         <p className="back-block__text">Back</p>
       </Link>
       </div>
-      {!item ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
