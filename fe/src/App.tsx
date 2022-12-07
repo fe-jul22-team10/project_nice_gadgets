@@ -27,7 +27,7 @@ export const App: React.FC = () => {
     setPhoneId(
       Number(localStorage.getItem('id')),
     );
-  }, [phoneId]);
+  }, []);
 
   useEffect(() => {
     getPhones({
