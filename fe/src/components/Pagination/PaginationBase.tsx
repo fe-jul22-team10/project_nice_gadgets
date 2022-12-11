@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Pagination.scss';
 import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
@@ -9,15 +9,21 @@ import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { NotFound } from '../NotFound';
 import { Link } from 'react-router-dom';
+import StateContext from '../../components/Context/Context';
+
+const isIncludesName = (name: string, query: string) => {
+  return name.toLowerCase().includes(query.toLowerCase());
+};
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+  const [itemsPerPage, setItemsPerPage] = useState(71);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [haveError, setHaveError] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
+  const { query } = useContext(StateContext);
 
   useEffect(() => {
     const requestProductsFromServer = async() => {
@@ -56,7 +62,7 @@ export const PaginationBase: React.FC = () => {
     setCurrentPage(page);
   };
 
-  products.sort((phone1, phone2) => {
+  const sortedPhones = [...products].sort((phone1, phone2) => {
     switch (sortBy) {
       case 'newest':
         return phone2.year - phone1.year;
@@ -68,6 +74,9 @@ export const PaginationBase: React.FC = () => {
         return 0;
     }
   });
+
+  const visiblePhones = sortedPhones
+    .filter(({ name }) => isIncludesName(name, query));
 
   return (
     <div className="container-pagination">
@@ -125,7 +134,7 @@ export const PaginationBase: React.FC = () => {
         ) : (
           <div className="container">
             <ul className="grid">
-              {products.map((item) => (
+              {visiblePhones.map((item) => (
                 <li className="grid__cell" key={item.id}>
                   <ProductCard phone={item} />
                 </li>

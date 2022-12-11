@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageNavLink } from '../PageNavLink';
+import { Search } from '../Search';
 
 export const Navigation: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const Navigation: React.FC = () => {
       <PageNavLink to="/phones" text="Phones" />
       <PageNavLink to="/tablets" text="Tablets" />
       <PageNavLink to="/accessories" text="Accessories" />
+      <Search />
     </nav>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
@@ -22,6 +22,7 @@ export const App: React.FC = () => {
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
   const [phoneId, setPhoneId] = useState(Number(localStorage.getItem('id')));
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setPhoneId(
@@ -50,12 +51,18 @@ export const App: React.FC = () => {
     );
   }, []);
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    return setQuery(event.target.value);
+  };
+
   const value = {
     favouriteItems,
     setFavouriteItems,
     cartItems,
     setCartItems,
     setPhoneId,
+    query,
+    handleChange,
   };
 
   return (

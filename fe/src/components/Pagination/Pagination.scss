@@ -1,6 +1,10 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
+.container-pagination {
+  margin-bottom: 40px;
+}
+
 body {
   background-color: #fafbfc;
 }
