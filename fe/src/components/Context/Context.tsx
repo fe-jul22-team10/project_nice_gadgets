@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Card } from '../../types/Card';
 
 type callback = (prev: Card[]) => Card[];
@@ -9,6 +9,8 @@ interface ContextState {
   cartItems: Card[],
   setCartItems: (callback: callback) => void,
   setPhoneId: (id: number) => void,
+  query: string,
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
 export default React.createContext<ContextState>({} as ContextState);
