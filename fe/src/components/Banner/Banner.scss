@@ -15,7 +15,9 @@
   }
 
   &__image {
-    height: 320px;
+    @include onMobile {
+      width: 100vw;
+    }
 
     @include onTablet {
       height: 190px;
@@ -28,7 +30,10 @@
 
   &__slider {
     margin: 0 auto 18px;
-    width: 320px;
+
+    @include onMobile {
+      width: 100vw;
+    }
 
     @include onTablet {
       width: 490px;
