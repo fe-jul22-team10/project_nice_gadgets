@@ -26,28 +26,39 @@ export const PaginationBase: React.FC = () => {
   const { query } = useContext(StateContext);
 
   useEffect(() => {
-    const requestProductsFromServer = async() => {
-      const serverResponse = await getPhones({
-        amount: `${itemsPerPage}`,
-        page: `${currentPage}`,
-      });
-
-      setTotalPages(Math.ceil(serverResponse[0] / itemsPerPage));
-      setProducts(serverResponse[1]);
-    };
-
-    try {
-      setIsLoading(true);
-
-      void requestProductsFromServer();
-    } catch (error) {
-      setHaveError(true);
-    } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
-    }
+    getPhones({
+      amount: `${itemsPerPage}`,
+      page: `${currentPage}`,
+    }).then((res) => {
+      setProducts(res[1]);
+      setTotalPages(Math.ceil(res[0] / itemsPerPage));
+      setProducts(res[1]);
+    })
+      .catch(() => setHaveError(true))
+      .finally(() => setIsLoading(false));
   }, [currentPage, itemsPerPage]);
+
+  // useEffect(() => {
+  //   const requestProductsFromServer = async() => {
+  //     const serverResponse = await getPhones({
+  //       amount: `${itemsPerPage}`,
+  //       page: `${currentPage}`,
+  //     });
+
+  //     setTotalPages(Math.ceil(serverResponse[0] / itemsPerPage));
+  //     setProducts(serverResponse[1]);
+  //   };
+
+  //   try {
+  //     setIsLoading(true);
+
+  //     void requestProductsFromServer();
+  //   } catch {
+  //     setHaveError(true);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }, [currentPage, itemsPerPage]);
 
   const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
@@ -133,18 +144,26 @@ export const PaginationBase: React.FC = () => {
         <NotFound />
         ) : (
           <div className="container">
-            <ul className="grid">
+            {visiblePhones.length > 0 ? (
+              <ul className="grid">
               {visiblePhones.map((item) => (
                 <li className="grid__cell" key={item.id}>
                   <ProductCard phone={item} />
                 </li>
               ))}
             </ul>
-            <Pagination
-              totalPages={totalPages}
-              currentPage={currentPage}
-              onPageChange={onPageChange}
-            />
+            ) : (
+              <h3 className="no-match-block">
+                There are no phones matching the query
+              </h3>
+            )}
+            {visiblePhones.length > 0
+              && <Pagination
+                  totalPages={totalPages}
+                  currentPage={currentPage}
+                  onPageChange={onPageChange}
+                  />
+            }
           </div>
         )
       )}

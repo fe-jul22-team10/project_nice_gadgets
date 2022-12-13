@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Loader } from '../../components/Loader';
 
 import './Accessories.scss';
 
-export const Accessories = () => {
+export const Accessories: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 700);
+  }, []);
+
   return (
-    <div className="container">
-      <h1 className="accessories-page">
-        Accessories page is currently under construction
-      </h1>
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="container">
+          <h1 className="accessories-page">
+            No accessories yet
+          </h1>
+        </div>
+      )}
+      </>
   );
 };

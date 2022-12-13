@@ -118,7 +118,7 @@ li {
 
   &__select {
     height: 40px;
-    width: 163px;
+    width: 173px;
     border: 1px solid #b4bdc4;
     border-radius: 8px;
     color: #000;
@@ -150,5 +150,14 @@ li {
 
   &__cell {
     width: 100%;
+  }
+}
+
+.no-match-block {
+  font-family: 'Mont';
+  font-size: 18px;
+
+  @include onDesktop {
+    font-size: 28px;
   }
 }

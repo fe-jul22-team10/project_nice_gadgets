@@ -10,10 +10,12 @@ import { Card } from '../../types/Card';
 import { getPhones } from '../../api/phones';
 
 import './Home.scss';
+import { NotFound } from '../../components/NotFound';
 
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Card[]>([]);
+  const [haveError, setHaveError] = useState(false);
 
   useEffect(() => {
     getPhones({
@@ -21,9 +23,8 @@ export const Home = () => {
       page: '1',
     })
       .then(result => setPhones(result[1]))
-      .catch(() => {
-        throw new Error('Something went wrong');
-      });
+      .catch(() => setHaveError(true))
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
@@ -48,59 +49,61 @@ export const Home = () => {
     <div>
       {isLoading ? (
         <Loader />
+      ) : (haveError ? (
+        <NotFound />
       ) : (
         <div className="homepage">
-          <div className="container">
-            <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
-            <Banner />
-            <div className="homepage__title-block">
-              <h2 className="homepage__subtitle">Brand new models</h2>
-              <div className="homepage__button-wrapper">
-                <div className="homepage__button-prev"></div>
-                <div className="homepage__button-next"></div>
-              </div>
+        <div className="container">
+          <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+          <Banner />
+          <div className="homepage__title-block">
+            <h2 className="homepage__subtitle">Brand new models</h2>
+            <div className="homepage__button-wrapper">
+              <div className="homepage__button-prev"></div>
+              <div className="homepage__button-next"></div>
             </div>
-            <Slider phones={newModels} />
-            <h2 className="homepage__subtitle homepage__subtitle--category">
-              Shop by category
-            </h2>
-            <div className="homepage__categories categories">
-            <NavLink to="/phones" className="categories__block">
-              <Category
-                image={mobilePhonesImage}
-                title={'Mobile phones'}
-                text={'95 models'}
-                backgroundColor={bgcPhone}
-                />
-            </NavLink>
-            <NavLink to="/tablets" className="categories__block">
-              <Category
-                image={tabletsImage}
-                title={'Tablets'}
-                text={'24 models'}
-                backgroundColor={bgcPTablet}
-              />
-            </NavLink>
-            <NavLink to="/accessories" className="categories__block">
-              <Category
-                image={accessoriesImage}
-                title={'Accessories'}
-                text={'100 models'}
-                backgroundColor={bgcAccessories}
-                />
-            </NavLink>
-            </div>
-            <div className="homepage__title-block">
-              <h2 className="homepage__subtitle">Hot prices</h2>
-              <div className="homepage__button-wrapper">
-                <div className="homepage__button-prev"></div>
-                <div className="homepage__button-next"></div>
-              </div>
-            </div>
-            <Slider phones={hotPrice} />
           </div>
+          <Slider phones={newModels} />
+          <h2 className="homepage__subtitle homepage__subtitle--category">
+            Shop by category
+          </h2>
+          <div className="homepage__categories categories">
+          <NavLink to="/phones" className="categories__block">
+            <Category
+              image={mobilePhonesImage}
+              title={'Mobile phones'}
+              text={'95 models'}
+              backgroundColor={bgcPhone}
+              />
+          </NavLink>
+          <NavLink to="/tablets" className="categories__block">
+            <Category
+              image={tabletsImage}
+              title={'Tablets'}
+              text={'24 models'}
+              backgroundColor={bgcPTablet}
+            />
+          </NavLink>
+          <NavLink to="/accessories" className="categories__block">
+            <Category
+              image={accessoriesImage}
+              title={'Accessories'}
+              text={'100 models'}
+              backgroundColor={bgcAccessories}
+              />
+          </NavLink>
+          </div>
+          <div className="homepage__title-block">
+            <h2 className="homepage__subtitle">Hot prices</h2>
+            <div className="homepage__button-wrapper">
+              <div className="homepage__button-prev"></div>
+              <div className="homepage__button-next"></div>
+            </div>
+          </div>
+          <Slider phones={hotPrice} />
         </div>
-      )}
+      </div>
+      ))}
     </div>
   );
 };
