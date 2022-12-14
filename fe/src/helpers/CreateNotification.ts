@@ -1,10 +1,20 @@
-import { Notification } from "../types/Notification";
+import { Notification } from '../types/Notification';
 import { NotificationManager } from 'react-notifications';
+
+type NotificationManager = {
+  message: string,
+  title: string,
+  timeOut: number,
+  callback?: () => void,
+  priority?: boolean,
+}
 
 export const createNotification = (type: Notification) => {
   switch (type) {
     case Notification.checkout:
-      NotificationManager.success('Please check your email', 'Your order has been placed!', 3000);
+      NotificationManager.success(
+        'Please check your email', 'Your order has been placed!', 3000,
+      );
       break;
     case Notification.addFavorites:
       NotificationManager.info('Added to Favorites', '', 2000);
@@ -17,6 +27,8 @@ export const createNotification = (type: Notification) => {
       break;
     case Notification.removeCart:
       NotificationManager.warning('Removed from Cart', '', 2000);
+      break;
+    default:
       break;
   }
 };

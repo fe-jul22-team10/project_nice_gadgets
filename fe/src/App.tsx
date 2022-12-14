@@ -19,7 +19,6 @@ import { getPhones } from './api/phones';
 
 import 'react-notifications/lib/notifications.css';
 
-
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);

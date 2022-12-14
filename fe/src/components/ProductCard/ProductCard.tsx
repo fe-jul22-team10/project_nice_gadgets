@@ -6,6 +6,7 @@ import { AddToFavouritesButton } from '../Buttons/AddToFavouritesButton';
 import StateContext from '../../components/Context/Context';
 import { NavLink } from 'react-router-dom';
 import { createNotification } from '../../helpers/CreateNotification';
+import { Notification } from '../../types/Notification';
 
 type Props = {
   phone: Card;
@@ -38,6 +39,7 @@ export const ProductCard = React.memo(function productCard({ phone }: Props) {
   }, [favouriteItems, cartItems]);
 
   const handleAddToFavorite = useCallback(() => {
+    createNotification(Notification.addFavorites);
     setFavouriteItems((prev) => [...prev, phone]);
   }, [favouriteItems]);
 
@@ -46,6 +48,7 @@ export const ProductCard = React.memo(function productCard({ phone }: Props) {
       'favouriteItems',
       JSON.stringify(favouriteItems.filter(item => item.itemId !== itemId)),
     );
+    createNotification(Notification.removeFavorites);
 
     setFavouriteItems((prevItems) => {
       return prevItems.filter(prevItem => prevItem.itemId !== itemId);
@@ -54,6 +57,7 @@ export const ProductCard = React.memo(function productCard({ phone }: Props) {
 
   const handleAddToCart = useCallback(() => {
     setCartItems((prev) => [...prev, phone]);
+    createNotification(Notification.addCart);
   }, [cartItems]);
 
   const handleRemoveFromCart = useCallback(() => {
@@ -61,6 +65,7 @@ export const ProductCard = React.memo(function productCard({ phone }: Props) {
       'cartItems',
       JSON.stringify(cartItems.filter(item => item.itemId !== itemId)),
     );
+    createNotification(Notification.removeCart);
 
     setCartItems((prevItems) => {
       return prevItems.filter(prevItems => prevItems.itemId !== itemId);

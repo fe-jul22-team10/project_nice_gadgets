@@ -4,4 +4,4 @@ export enum Notification {
   removeFavorites,
   addCart,
   removeCart,
-};
+}

@@ -15,6 +15,7 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
   const total = phones.reduce((sum, x) => sum + x.price * x.amount, 0);
 
   const handleCheckout = () => {
+    createNotification(Notification.checkout);
     setCartItems(() => []);
 
     localStorage.setItem(
@@ -22,8 +23,6 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
       JSON.stringify('[]'),
     );
   };
-
-
 
   return (
     <div className="cartItem-calculator">
@@ -35,7 +34,7 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
       <Link to="/phones">
         <button
           className="cartItem-calculator__btn"
-          onClick={() => createNotification(Notification.checkout)}
+          onClick={handleCheckout}
         >
           Checkout
         </button>
