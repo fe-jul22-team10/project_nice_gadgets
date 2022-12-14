@@ -7,5 +7,9 @@ const override: CSSProperties = {
 };
 
 export const Loader: React.FC = () => (
-  <FadeLoader color="#D5D5D5" loading={true} cssOverride={override} />
+  <FadeLoader
+    color="#36d7b7"
+    loading={true}
+    cssOverride={override}
+  />
 );

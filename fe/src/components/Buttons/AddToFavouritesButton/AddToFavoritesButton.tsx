@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Card } from '../../../types/Card';
 import './AddToFavouritesButton.scss';
 
@@ -15,11 +15,11 @@ export const AddToFavouritesButton: React.FC<Props> = ({
   phone,
   favouriteItems,
 }) => {
-  const isInFavourites = () => {
+  const isInFavourites = useCallback(() => {
     if (phone !== undefined) {
       return favouriteItems.map((item: Card) => item.id).includes(phone.id);
     }
-  };
+  }, [favouriteItems, phone]);
 
   return (
     <>

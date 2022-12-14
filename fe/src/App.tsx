@@ -6,7 +6,6 @@ import { Catalog } from './pages/Catalog';
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
 import { Favourites } from './pages/Favourites';
-import { NotFound } from './components/NotFound';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { Item } from './pages/Item';
@@ -22,13 +21,10 @@ export const App: React.FC = () => {
   const [favouriteItems, setFavouriteItems] = useState<Card[]>([]);
   const [cartItems, setCartItems] = useState<Card[]>([]);
   const [phoneId, setPhoneId] = useState(Number(localStorage.getItem('id')));
+  const [phonesFromSerever, setPhonesFromServers] = useState<Card[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [haveError, setHaveError] = useState(false);
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    setPhoneId(
-      Number(localStorage.getItem('id')),
-    );
-  }, []);
 
   useEffect(() => {
     getPhones({
@@ -37,10 +33,10 @@ export const App: React.FC = () => {
     })
       .then(res => {
         localStorage.setItem('phonesFromServer', JSON.stringify(res[1]));
+        setPhonesFromServers(res[1]);
       })
-      .catch(() => {
-        throw new Error('Something went wrong');
-      });
+      .catch(() => setHaveError(true))
+      .finally(() => setIsLoading(false));
 
     setFavouriteItems(
       JSON.parse(localStorage.getItem('favouriteItems') || '[]') as Card[],
@@ -48,6 +44,10 @@ export const App: React.FC = () => {
 
     setCartItems(
       JSON.parse(localStorage.getItem('cartItems') || '[]') as Card[],
+    );
+
+    setPhoneId(
+      Number(localStorage.getItem('id')),
     );
   }, []);
 
@@ -74,7 +74,16 @@ export const App: React.FC = () => {
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
       <Routes>
-        <Route path="*" element={<Home />} />
+        <Route
+          path="*"
+          element={
+            <Home
+              phones={phonesFromSerever}
+              isLoading={isLoading}
+              haveError={haveError}
+            />
+          }
+        />
 
         <Route path="/phones">
           <Route index element={<Catalog />} />
@@ -99,8 +108,6 @@ export const App: React.FC = () => {
         <Route path="/favourites" element={
           <Favourites items={favouriteItems}
         />} />
-
-        <Route path="*" element={<NotFound />} />
       </Routes>
       </div>
       <Footer />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import './Pagination.scss';
 import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
@@ -38,28 +38,6 @@ export const PaginationBase: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, [currentPage, itemsPerPage]);
 
-  // useEffect(() => {
-  //   const requestProductsFromServer = async() => {
-  //     const serverResponse = await getPhones({
-  //       amount: `${itemsPerPage}`,
-  //       page: `${currentPage}`,
-  //     });
-
-  //     setTotalPages(Math.ceil(serverResponse[0] / itemsPerPage));
-  //     setProducts(serverResponse[1]);
-  //   };
-
-  //   try {
-  //     setIsLoading(true);
-
-  //     void requestProductsFromServer();
-  //   } catch {
-  //     setHaveError(true);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }, [currentPage, itemsPerPage]);
-
   const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
   };
@@ -73,21 +51,25 @@ export const PaginationBase: React.FC = () => {
     setCurrentPage(page);
   };
 
-  const sortedPhones = [...products].sort((phone1, phone2) => {
-    switch (sortBy) {
-      case 'newest':
-        return phone2.year - phone1.year;
-      case 'alphabetically':
-        return phone1.phoneId.localeCompare(phone2.phoneId);
-      case 'cheapest':
-        return phone1.price - phone2.price;
-      default:
-        return 0;
-    }
-  });
+  const sortedPhones = useMemo(() => {
+    return [...products].sort((phone1, phone2) => {
+      switch (sortBy) {
+        case 'newest':
+          return phone2.year - phone1.year;
+        case 'alphabetically':
+          return phone1.phoneId.localeCompare(phone2.phoneId);
+        case 'cheapest':
+          return phone1.price - phone2.price;
+        default:
+          return 0;
+      }
+    });
+  }, [products, sortBy]);
 
-  const visiblePhones = sortedPhones
-    .filter(({ name }) => isIncludesName(name, query));
+  const visiblePhones = useMemo(() => {
+    return sortedPhones
+      .filter(({ name }) => isIncludesName(name, query));
+  }, [sortedPhones, query]);
 
   return (
     <div className="container-pagination">
@@ -102,39 +84,7 @@ export const PaginationBase: React.FC = () => {
         </Link>
       </div>
         <h1 className="page-title">Mobile Phones</h1>
-        <p className="page-total-models">{products.length} models</p>
-        <div className="sort-block">
-          <div className="items-count">
-            <div className="items-count__name">Sort by</div>
-            <div>
-              <select
-                className="items-count__select items-count__sort"
-                value={sortBy}
-                onChange={handleSortBy}
-              >
-                <option value="newest">Newest</option>
-                <option value="alphabetically">Alphabetically</option>
-                <option value="cheapest">Cheapest</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="items-count">
-            <div className="items-count__name">Items on page</div>
-            <div>
-              <select
-                className="items-count__select"
-                value={itemsPerPage}
-                onChange={handleItemsPerPage}
-              >
-                <option value="71">All</option>
-                <option value="16">16</option>
-                <option value="8">8</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <p className="page-total-models">{visiblePhones.length} models</p>
       </div>
 
       {isLoading ? (
@@ -144,6 +94,38 @@ export const PaginationBase: React.FC = () => {
         <NotFound />
         ) : (
           <div className="container">
+            <div className="sort-block">
+              <div className="items-count">
+                <div className="items-count__name">Sort by</div>
+                <div>
+                  <select
+                    className="items-count__select items-count__sort"
+                    value={sortBy}
+                    onChange={handleSortBy}
+                  >
+                    <option value="newest">Newest</option>
+                    <option value="alphabetically">Alphabetically</option>
+                    <option value="cheapest">Cheapest</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="items-count">
+                <div className="items-count__name">Items on page</div>
+                <div>
+                  <select
+                    className="items-count__select"
+                    value={itemsPerPage}
+                    onChange={handleItemsPerPage}
+                  >
+                    <option value="71">All</option>
+                    <option value="16">16</option>
+                    <option value="8">8</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             {visiblePhones.length > 0 ? (
               <ul className="grid">
               {visiblePhones.map((item) => (

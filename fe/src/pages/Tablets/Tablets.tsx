@@ -9,7 +9,7 @@ export const Tablets: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 700);
+    }, 500);
   }, []);
 
   return (

@@ -57,6 +57,15 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
       .finally(() => setTimeout(() => {
         setIsLoading(false);
       }, 700));
+
+    getPhones({
+      amount: '7',
+      page: '1',
+    })
+      .then(result => setYouMayLike(result[1]))
+      .catch(() => {
+        throw new Error('Something went wrong');
+      });
   }, [fetchId]);
 
   const handleAddToFavorite = () => {
@@ -93,21 +102,10 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
     });
   };
 
-  useEffect(() => {
-    getPhones({
-      amount: '7',
-      page: '1',
-    })
-      .then(result => setYouMayLike(result[1]))
-      .catch(() => {
-        throw new Error('Something went wrong');
-      });
-  }, []);
-
   const handleSelectImage = (image: string) => {
     const numberOfImage = image.slice(-6);
 
-    return setSelectedImage(numberOfImage);
+    setSelectedImage(numberOfImage);
   };
   const handleSelectedColor = (color: string) => setSelectedColor(color);
   const handleSelectCapacity = (value: string) => setSelectedCapacity(value);
