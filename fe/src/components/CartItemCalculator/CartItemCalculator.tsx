@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Card } from '../../types/Card';
+import { Notification } from '../../types/Notification';
 import StateContext from '../../components/Context/Context';
 import './cart-item-calculator.scss';
 import { Link } from 'react-router-dom';
+import { createNotification } from '../../helpers/CreateNotification';
 
 type Props = {
   phones: Card[],
@@ -21,6 +23,8 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
     );
   };
 
+
+
   return (
     <div className="cartItem-calculator">
       <h2 className="cartItem-calculator__price">${total}</h2>
@@ -31,7 +35,7 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
       <Link to="/phones">
         <button
           className="cartItem-calculator__btn"
-          onClick={handleCheckout}
+          onClick={() => createNotification(Notification.checkout)}
         >
           Checkout
         </button>

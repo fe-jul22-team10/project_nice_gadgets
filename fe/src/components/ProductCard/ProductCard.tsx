@@ -5,12 +5,13 @@ import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFavouritesButton } from '../Buttons/AddToFavouritesButton';
 import StateContext from '../../components/Context/Context';
 import { NavLink } from 'react-router-dom';
+import { createNotification } from '../../helpers/CreateNotification';
 
 type Props = {
   phone: Card;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard = React.memo(function productCard({ phone }: Props) {
   const {
     id,
     itemId,
@@ -122,4 +123,4 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
     </div>
   );
-};
+});
