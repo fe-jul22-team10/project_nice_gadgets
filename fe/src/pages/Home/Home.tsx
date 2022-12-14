@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Banner } from '../../components/Banner';
 import { Loader } from '../../components/Loader';
 import { Slider } from '../../components/Slider';
@@ -7,34 +7,26 @@ import { Category } from '../../components/CategoryHome';
 
 import { Card } from '../../types/Card';
 
-import { getPhones } from '../../api/phones';
-
 import './Home.scss';
 import { NotFound } from '../../components/NotFound';
 
-export const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [phones, setPhones] = useState<Card[]>([]);
-  const [haveError, setHaveError] = useState(false);
+type Props = {
+  phones: Card[],
+  isLoading: boolean,
+  haveError: boolean,
+};
 
-  useEffect(() => {
-    getPhones({
-      amount: '71',
-      page: '1',
-    })
-      .then(result => setPhones(result[1]))
-      .catch(() => setHaveError(true))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, [isLoading]);
-
-  const newModels = phones.filter(phone => phone.year >= 2019);
-  const hotPrice = phones.filter(phone => phone.price >= 1300);
+export const Home: React.FC<Props> = ({
+  phones,
+  isLoading,
+  haveError,
+}) => {
+  const newModels = useMemo(() => {
+    return phones.filter(phone => phone.year >= 2019);
+  }, [phones]);
+  const hotPrice = useMemo(() => {
+    return phones.filter(phone => phone.price >= 1300);
+  }, [phones]);
 
   const baseUrl = 'https://project-nice-gadgets.onrender.com/img';
   const mobilePhonesImage = `${baseUrl}/category-phones.png`;
@@ -46,64 +38,66 @@ export const Home = () => {
   const bgcAccessories = 'category__wrapper category__wrapper--accessories';
 
   return (
-    <div>
-      {isLoading ? (
-        <Loader />
-      ) : (haveError ? (
-        <NotFound />
-      ) : (
-        <div className="homepage">
-        <div className="container">
-          <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
-          <Banner />
-          <div className="homepage__title-block">
-            <h2 className="homepage__subtitle">Brand new models</h2>
-            <div className="homepage__button-wrapper">
-              <div className="homepage__button-prev"></div>
-              <div className="homepage__button-next"></div>
+    <div className="homepage">
+      <div className="container">
+        <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+        {isLoading ? (
+          <Loader />
+        ) : (haveError ? (
+          <NotFound />
+        ) : (
+          <>
+            <NavLink to="/phones">
+              <Banner />
+            </NavLink>
+            <div className="homepage__title-block">
+              <h2 className="homepage__subtitle">Brand new models</h2>
+              <div className="homepage__button-wrapper">
+                <div className="homepage__button-prev"></div>
+                <div className="homepage__button-next"></div>
+              </div>
             </div>
-          </div>
-          <Slider phones={newModels} />
-          <h2 className="homepage__subtitle homepage__subtitle--category">
-            Shop by category
-          </h2>
-          <div className="homepage__categories categories">
-          <NavLink to="/phones" className="categories__block">
-            <Category
-              image={mobilePhonesImage}
-              title={'Mobile phones'}
-              text={'95 models'}
-              backgroundColor={bgcPhone}
+            <Slider phones={newModels} />
+            <h2 className="homepage__subtitle homepage__subtitle--category">
+              Shop by category
+            </h2>
+            <div className="homepage__categories categories">
+            <NavLink to="/phones" className="categories__block">
+              <Category
+                image={mobilePhonesImage}
+                title={'Mobile phones'}
+                text={'95 models'}
+                backgroundColor={bgcPhone}
+                />
+            </NavLink>
+            <NavLink to="/tablets" className="categories__block">
+              <Category
+                image={tabletsImage}
+                title={'Tablets'}
+                text={'24 models'}
+                backgroundColor={bgcPTablet}
               />
-          </NavLink>
-          <NavLink to="/tablets" className="categories__block">
-            <Category
-              image={tabletsImage}
-              title={'Tablets'}
-              text={'24 models'}
-              backgroundColor={bgcPTablet}
-            />
-          </NavLink>
-          <NavLink to="/accessories" className="categories__block">
-            <Category
-              image={accessoriesImage}
-              title={'Accessories'}
-              text={'100 models'}
-              backgroundColor={bgcAccessories}
-              />
-          </NavLink>
-          </div>
-          <div className="homepage__title-block">
-            <h2 className="homepage__subtitle">Hot prices</h2>
-            <div className="homepage__button-wrapper">
-              <div className="homepage__button-prev"></div>
-              <div className="homepage__button-next"></div>
+            </NavLink>
+            <NavLink to="/accessories" className="categories__block">
+              <Category
+                image={accessoriesImage}
+                title={'Accessories'}
+                text={'100 models'}
+                backgroundColor={bgcAccessories}
+                />
+            </NavLink>
             </div>
-          </div>
-          <Slider phones={hotPrice} />
-        </div>
+            <div className="homepage__title-block">
+              <h2 className="homepage__subtitle">Hot prices</h2>
+              <div className="homepage__button-wrapper">
+                <div className="homepage__button-prev"></div>
+                <div className="homepage__button-next"></div>
+              </div>
+            </div>
+            <Slider phones={hotPrice} />
+          </>
+        ))}
       </div>
-      ))}
     </div>
   );
 };

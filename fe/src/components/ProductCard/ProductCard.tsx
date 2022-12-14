@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import './ProductCard.scss';
 import { Card } from '../../types/Card';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
@@ -32,17 +32,15 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
   useEffect(() => {
     localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [favouriteItems, cartItems]);
+
+  const handleAddToFavorite = useCallback(() => {
+    setFavouriteItems((prev) => [...prev, phone]);
   }, [favouriteItems]);
 
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  const handleAddToFavorite = () => {
-    setFavouriteItems((prev) => [...prev, phone]);
-  };
-
-  const handleRemoveFromFavorite = () => {
+  const handleRemoveFromFavorite = useCallback(() => {
     localStorage.setItem(
       'favouriteItems',
       JSON.stringify(favouriteItems.filter(item => item.itemId !== itemId)),
@@ -51,13 +49,13 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     setFavouriteItems((prevItems) => {
       return prevItems.filter(prevItem => prevItem.itemId !== itemId);
     });
-  };
+  }, [favouriteItems]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     setCartItems((prev) => [...prev, phone]);
-  };
+  }, [cartItems]);
 
-  const handleRemoveFromCart = () => {
+  const handleRemoveFromCart = useCallback(() => {
     localStorage.setItem(
       'cartItems',
       JSON.stringify(cartItems.filter(item => item.itemId !== itemId)),
@@ -66,13 +64,13 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     setCartItems((prevItems) => {
       return prevItems.filter(prevItems => prevItems.itemId !== itemId);
     });
-  };
+  }, [cartItems]);
 
-  const handleSetItemId = (id: number) => {
+  const handleSetItemId = useCallback((id: number) => {
     setPhoneId(id);
 
     localStorage.setItem('id', String(id));
-  };
+  }, [id]);
 
   return (
     <div

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Card } from '../../../types/Card';
 import './AddToCartButton.scss';
 
@@ -15,11 +15,11 @@ export const AddToCartButton: React.FC<Props> = ({
   phone,
   cartItems,
 }) => {
-  const isInCart = () => {
+  const isInCart = useCallback(() => {
     if (phone !== undefined) {
       return cartItems.map(item => item.id).includes(phone.id);
     }
-  };
+  }, [cartItems, phone]);
 
   return (
     <>
