@@ -26,3 +26,6 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+// @ts-ignore
+import { NotificationManager, NotificationContainer } from 'react-notifications';

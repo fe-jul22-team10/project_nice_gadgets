@@ -1,4 +1,5 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
+import { NotificationContainer } from 'react-notifications';
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
@@ -15,6 +16,8 @@ import './styles/index.scss';
 import './App.scss';
 import { Card } from './types/Card';
 import { getPhones } from './api/phones';
+
+import 'react-notifications/lib/notifications.css';
 
 export const App: React.FC = () => {
   const [showBurger, setShowBurger] = useState(false);
@@ -71,6 +74,7 @@ export const App: React.FC = () => {
         'content',
         { 'scroll-off': showBurger },
       )}>
+      <NotificationContainer />
       <Header showBurger={showBurger} setShowBurger={setShowBurger}/>
       <div className="content__body-main body-main">
       <Routes>

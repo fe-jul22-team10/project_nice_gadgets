@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Card } from '../../types/Card';
+import { Notification } from '../../types/Notification';
 import StateContext from '../../components/Context/Context';
 import './cart-item-calculator.scss';
 import { Link } from 'react-router-dom';
+import { createNotification } from '../../helpers/CreateNotification';
 
 type Props = {
   phones: Card[],
@@ -13,6 +15,7 @@ export const CartItemCalculator: React.FC<Props> = ({ phones }) => {
   const total = phones.reduce((sum, x) => sum + x.price * x.amount, 0);
 
   const handleCheckout = () => {
+    createNotification(Notification.checkout);
     setCartItems(() => []);
 
     localStorage.setItem(
