@@ -1,15 +1,7 @@
 import { Notification } from '../types/Notification';
 import { NotificationManager } from 'react-notifications';
 
-type NotificationManager = {
-  message: string,
-  title: string,
-  timeOut: number,
-  callback?: () => void,
-  priority?: boolean,
-}
-
-export const createNotification = (type: Notification) => {
+export const createNotification = (type) => {
   switch (type) {
     case Notification.checkout:
       NotificationManager.success(
