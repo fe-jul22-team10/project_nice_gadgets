@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project_nice_gadgets/static/css/main.125c3ac2.css",
-    "main.js": "/project_nice_gadgets/static/js/main.3505ba87.js",
+    "main.css": "/project_nice_gadgets/static/css/main.c4389a1d.css",
+    "main.js": "/project_nice_gadgets/static/js/main.8399b24a.js",
     "static/media/logo.svg": "/project_nice_gadgets/static/media/logo.24d237f350d3ae18d2c9333d916a25b7.svg",
     "static/media/Mont-Regular.otf": "/project_nice_gadgets/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/project_nice_gadgets/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
@@ -9,6 +9,10 @@
     "static/media/banner-mobile-3.png": "/project_nice_gadgets/static/media/banner-mobile-3.5a29591410009f7a5496.png",
     "static/media/banner-mobile-2.png": "/project_nice_gadgets/static/media/banner-mobile-2.a3c2db3945c076695707.png",
     "static/media/banner-mobile-1.png": "/project_nice_gadgets/static/media/banner-mobile-1.5ab4e0f94787219dc791.png",
+    "static/media/notification.svg?s3g3t9": "/project_nice_gadgets/static/media/notification.5d0158671dd860c714c4.svg",
+    "static/media/notification.eot": "/project_nice_gadgets/static/media/notification.3657084dc0419605a91c.eot",
+    "static/media/notification.woff?s3g3t9": "/project_nice_gadgets/static/media/notification.c392cd33d9d9de730f9d.woff",
+    "static/media/notification.ttf?s3g3t9": "/project_nice_gadgets/static/media/notification.c5d9251ea82e42f75381.ttf",
     "static/media/bag.svg": "/project_nice_gadgets/static/media/bag.df23e4fbb25ff3701b16978082a61721.svg",
     "static/media/heart.svg": "/project_nice_gadgets/static/media/heart.a8d9e1341bff31e7955d9527573dbff5.svg",
     "static/media/favourite.svg": "/project_nice_gadgets/static/media/favourite.7195329f8f148b59f1ce1847aa8213d5.svg",
@@ -23,11 +27,11 @@
     "static/media/breadcrumbs-prev.svg": "/project_nice_gadgets/static/media/breadcrumbs-prev.7054fc20b9c0c4527770.svg",
     "static/media/arrow.svg": "/project_nice_gadgets/static/media/arrow.e49727cc78ef755c3fe81021899e2299.svg",
     "static/media/banner-button-prev.svg": "/project_nice_gadgets/static/media/banner-button-prev.b18d031caaaea7e6e0c8.svg",
-    "main.125c3ac2.css.map": "/project_nice_gadgets/static/css/main.125c3ac2.css.map",
-    "main.3505ba87.js.map": "/project_nice_gadgets/static/js/main.3505ba87.js.map"
+    "main.c4389a1d.css.map": "/project_nice_gadgets/static/css/main.c4389a1d.css.map",
+    "main.8399b24a.js.map": "/project_nice_gadgets/static/js/main.8399b24a.js.map"
   },
   "entrypoints": [
-    "static/css/main.125c3ac2.css",
-    "static/js/main.3505ba87.js"
+    "static/css/main.c4389a1d.css",
+    "static/js/main.8399b24a.js"
   ]
 }
