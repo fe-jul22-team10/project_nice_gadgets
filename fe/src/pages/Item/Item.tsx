@@ -16,6 +16,8 @@ import {
 import { AddToCartButton } from '../../components/Buttons/AddToCartButton';
 import { Loader } from '../../components/Loader';
 import { NotFound } from '../../components/NotFound';
+import { createNotification } from '../../helpers/CreateNotification';
+import { Notification } from '../../types/Notification';
 
 type Props = {
   phoneId: number,
@@ -70,6 +72,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
 
   const handleAddToFavorite = () => {
     setFavouriteItems((prev) => [...prev, findPhone[0]]);
+    createNotification(Notification.addFavorites);
   };
 
   const handleRemoveFromFavorite = () => {
@@ -78,6 +81,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
       JSON.stringify(favouriteItems
         .filter(favourite => favourite.itemId !== findPhone[0].itemId)),
     );
+    createNotification(Notification.removeFavorites);
 
     setFavouriteItems((prevItems) => {
       return prevItems
@@ -87,6 +91,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
 
   const handleAddToCart = () => {
     setCartItems((prev) => [...prev, findPhone[0]]);
+    createNotification(Notification.addCart);
   };
 
   const handleRemoveFromCart = () => {
@@ -95,6 +100,7 @@ export const Item: React.FC<Props> = ({ phoneId }) => {
       JSON.stringify(cartItems
         .filter(cart => cart.itemId !== findPhone[0].itemId)),
     );
+    createNotification(Notification.removeCart);
 
     setCartItems((prevItems) => {
       return prevItems
