@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Banner } from '../../components/Banner';
 import { Loader } from '../../components/Loader';
 import { Slider } from '../../components/Slider';
-import { NavLink } from 'react-router-dom';
 import { Category } from '../../components/CategoryHome';
+import { NotFound } from '../../components/NotFound';
 
 import { Card } from '../../types/Card';
 
 import './Home.scss';
-import { NotFound } from '../../components/NotFound';
 
 type Props = {
   phones: Card[],
