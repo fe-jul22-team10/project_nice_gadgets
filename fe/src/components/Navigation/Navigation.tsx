@@ -1,8 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { PageNavLink } from '../PageNavLink';
 import { Search } from '../Search';
 
 export const Navigation: React.FC = () => {
+  const location = useLocation();
+
   return (
     <nav
       className="header__navbar"
@@ -14,7 +18,7 @@ export const Navigation: React.FC = () => {
       <PageNavLink to="/phones" text="Phones" />
       <PageNavLink to="/tablets" text="Tablets" />
       <PageNavLink to="/accessories" text="Accessories" />
-      <Search />
+      <>{location.pathname === '/phones' && <Search />}</>
     </nav>
   );
 };

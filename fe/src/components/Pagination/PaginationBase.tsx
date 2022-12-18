@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import './Pagination.scss';
 import { Pagination } from './Pagination';
 import { ProductCard } from '../../components/ProductCard';
-
 import { getPhones } from '../../api/phones';
 import { Card } from '../../types/Card';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { NotFound } from '../NotFound';
 import { Link } from 'react-router-dom';
+import { CheckQueryIncludes } from '../../helpers/checkQueryIncludes';
 import StateContext from '../../components/Context/Context';
-
-const isIncludesName = (name: string, query: string) => {
-  return name.toLowerCase().includes(query.toLowerCase());
-};
+import './Pagination.scss';
 
 export const PaginationBase: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,7 +64,7 @@ export const PaginationBase: React.FC = () => {
 
   const visiblePhones = useMemo(() => {
     return sortedPhones
-      .filter(({ name }) => isIncludesName(name, query));
+      .filter(({ name }) => CheckQueryIncludes(name, query));
   }, [sortedPhones, query]);
 
   return (
@@ -119,9 +115,9 @@ export const PaginationBase: React.FC = () => {
                     onChange={handleItemsPerPage}
                   >
                     <option value="71">All</option>
-                    <option value="16">16</option>
-                    <option value="8">8</option>
-                    <option value="4">4</option>
+                    <option value="32">32</option>
+                    <option value="24">24</option>
+                    <option value="12">12</option>
                   </select>
                 </div>
               </div>
